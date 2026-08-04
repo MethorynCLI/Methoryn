@@ -26,7 +26,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.22 — Free to install
+        <span></span> v0.1.23 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em><br/>lives in the terminal.</h1>
@@ -44,7 +44,7 @@
 
       <div class="install-box">
         <span class="prompt">$</span>
-        <span id="install-cmd">pip install CORVUS</span>
+        <span id="install-cmd">pip install corvus-cli</span>
         <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
       </div>
 
@@ -230,7 +230,7 @@
         <div style="display:flex; justify-content:center; margin-bottom:1.5rem;">
           <div class="install-box">
             <span class="prompt">$</span>
-            <span id="install-cmd-2">pip install CORVUS</span>
+            <span id="install-cmd-2">pip install corvus-cli</span>
             <button class="copy-btn" onclick="copyInstall2(this)">Copy</button>
           </div>
         </div>
@@ -259,14 +259,14 @@
       window.initCorvusLogo('corvus-logo-footer');
     });
     function copyInstall(btn) {
-      navigator.clipboard.writeText('pip install CORVUS').then(() => {
+      navigator.clipboard.writeText('pip install corvus-cli').then(() => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
         setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
     function copyInstall2(btn) {
-      navigator.clipboard.writeText('pip install CORVUS').then(() => {
+      navigator.clipboard.writeText('pip install corvus-cli').then(() => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
         setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
@@ -275,6 +275,7 @@
   </script>
 </body>
 </html>
+
 
 
 
