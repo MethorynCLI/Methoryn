@@ -42,8 +42,10 @@
       const grd = ctx.createRadialGradient(cx, cy, 2, cx, cy, 32);
       grd.addColorStop(0, GLOW);
       grd.addColorStop(1, "transparent");
+      ctx.save();
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, W, H);
+      ctx.restore();
 
       // Draw orbiting characters
       particles.forEach(p => {
@@ -55,7 +57,7 @@
         }
 
         const x = cx + Math.cos(p.angle) * p.radius;
-        const y = cy + Math.sin(p.angle) * p.radius * 0.55; // flatten to ellipse
+        const y = cy + Math.sin(p.angle) * p.radius * 0.55;
 
         ctx.save();
         ctx.globalAlpha = p.alpha;
@@ -68,25 +70,25 @@
       });
 
       // Left accent bar
+      ctx.save();
       ctx.fillStyle = ACCENT;
       ctx.globalAlpha = 0.9;
       ctx.beginPath();
       ctx.roundRect(8, 10, 3, 24, 2);
       ctx.fill();
-      ctx.globalAlpha = 1;
+      ctx.restore();
 
-      // Bold "CORVUS" text on top
-      ctx.font = "bold 18px 'Courier New', monospace";
+      // Bold "CORVUS" text — fully reset state before drawing
+      ctx.save();
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = ACCENT;
+      ctx.font = "bold 17px 'Courier New', monospace";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.letterSpacing = "3px";
-
-      // Subtle text glow
       ctx.shadowColor = ACCENT;
       ctx.shadowBlur = 8;
-      ctx.fillStyle = ACCENT;
       ctx.fillText("CORVUS", cx + 4, cy + 1);
-      ctx.shadowBlur = 0;
+      ctx.restore();
 
       frame++;
       requestAnimationFrame(draw);
