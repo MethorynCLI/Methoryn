@@ -16,7 +16,7 @@
     const ctx = canvas.getContext("2d");
 
     // Physical size — wider to fit CORVUS (6 chars)
-    const W = canvas.width  = 190;
+    const W = canvas.width  = 160;
     const H = canvas.height = 44;
     const cx = W / 2;
     const cy = H / 2;
@@ -106,3 +106,4 @@
 
   window.initCorvusLogo = initLogo;
 })();
+
