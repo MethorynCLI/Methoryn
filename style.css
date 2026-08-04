@@ -492,6 +492,8 @@ footer {
   align-self: flex-start;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
+  z-index: 1;
+  background: var(--bg);
 }
 
 .docs-sidebar nav { display: flex; flex-direction: column; gap: 0.25rem; }
