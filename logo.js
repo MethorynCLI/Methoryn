@@ -1,7 +1,7 @@
 /**
- * logo.js — ANVYL animated canvas logo
- * Renders a swirl of random characters orbiting behind bold "ANVYL" text.
- * Drop a <canvas id="anvyl-logo"> anywhere, then call initLogo(canvasId).
+ * logo.js — CORVUS animated canvas logo
+ * Renders a swirl of random characters orbiting behind bold "CORVUS" text.
+ * Drop a <canvas id="corvus-logo"> anywhere, then call initLogo(canvasId).
  */
 
 (function () {
@@ -85,7 +85,7 @@
       ctx.shadowColor = ACCENT;
       ctx.shadowBlur = 8;
       ctx.fillStyle = ACCENT;
-      ctx.fillText("ANVYL", cx + 6, cy + 1);
+      ctx.fillText("CORVUS", cx + 6, cy + 1);
       ctx.shadowBlur = 0;
 
       frame++;
@@ -95,12 +95,12 @@
     draw();
   }
 
-  // Auto-init any canvas with data-anvyl-logo attribute
+  // Auto-init any canvas with data-corvus-logo attribute
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("canvas[data-anvyl-logo]").forEach(c => {
+    document.querySelectorAll("canvas[data-corvus-logo]").forEach(c => {
       initLogo(c.id);
     });
   });
 
-  window.initAnvylLogo = initLogo;
+  window.initCorvusLogo = initLogo;
 })();
