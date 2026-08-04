@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Docs — ANVYL</title>
-  <meta name="description" content="Get started with ANVYL — installation, setup, and Google Sign-In walkthrough."/>
+  <title>Installation — ANVYL</title>
+  <meta name="description" content="Detailed ANVYL installation reference — system requirements, virtual environments, updating, and uninstalling."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -15,11 +15,11 @@
     <a class="nav-logo" href="index.html"><canvas id="anvyl-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="docs.html" class="active">Docs</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
       <li><a href="api-keys.html">API Keys</a></li>
       <li><a href="commands.html">Commands</a></li>
       <li><a href="guidelines.html">Guidelines</a></li>
-      <li><a href="docs.html" class="nav-cta">Get Started →</a></li>
+      <li><a href="get-started.html" class="nav-cta">Get Started →</a></li>
     </ul>
   </nav>
 
@@ -28,276 +28,280 @@
   <div class="docs-body">
 
     <div class="docs-hero">
-      <div class="section-label">Getting Started</div>
-      <h1>Installation &amp; Setup</h1>
-      <p>Everything you need to install ANVYL, connect your accounts, and run your first prompt — in under five minutes.</p>
+      <div class="section-label">Reference</div>
+      <h1>Installation</h1>
+      <p>Full installation reference for ANVYL — system requirements, platform-specific instructions, virtual environments, updating, and uninstalling.</p>
     </div>
 
     <!-- ── Requirements ── -->
     <div class="docs-section" id="requirements">
       <div class="section-label">Prerequisites</div>
       <h2>System Requirements</h2>
-      <p>ANVYL is a Python terminal application. Before installing, make sure your machine meets the following requirements.</p>
 
-      <h3>Operating System</h3>
-      <p>ANVYL runs on Windows, macOS, and Linux. It is tested primarily on Windows 11 and macOS Ventura and later. Most Linux distributions with Python 3.13+ available in their package manager will work fine.</p>
+      <h3>Supported platforms</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Platform</th><th>Minimum version</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Windows</td><td class="td-dim">Windows 10 (build 19041+)</td><td style="color:var(--accent);">Fully supported</td></tr>
+          <tr><td>macOS</td><td class="td-dim">macOS Ventura (13.0+)</td><td style="color:var(--accent);">Fully supported</td></tr>
+          <tr><td>Linux (Ubuntu/Debian)</td><td class="td-dim">Ubuntu 22.04+</td><td style="color:var(--accent);">Fully supported</td></tr>
+          <tr><td>Linux (other distros)</td><td class="td-dim">Python 3.13 available</td><td class="td-dim">Community supported</td></tr>
+        </tbody>
+      </table>
 
-      <h3>Python Version</h3>
-      <p>Python 3.13 or newer is required. Older versions of Python will not work because ANVYL uses type annotation syntax and standard library features introduced in 3.13. You can check your current Python version by running:</p>
+      <h3>Python</h3>
+      <p>Python 3.13 or newer is required. Check your current version:</p>
       <div class="code-block">python --version
-<span class="comment"># or on some systems:</span>
+<span class="comment"># or</span>
 python3 --version</div>
-      <p>If you see anything lower than 3.13, follow the installation steps below to upgrade.</p>
+      <p>If you see anything below 3.13, follow the platform-specific installation steps below before installing ANVYL.</p>
 
-      <h3>pip</h3>
-      <p><code style="color:var(--accent);">pip</code> is the Python package installer and comes bundled with Python 3.13. If for any reason it is missing, you can reinstall it with:</p>
-      <div class="code-block">python -m ensurepip --upgrade</div>
+      <h3>Disk space</h3>
+      <p>ANVYL and all its dependencies require approximately 150–250 MB of disk space depending on your platform and whether some dependencies are already installed.</p>
 
-      <h3>Internet connection</h3>
-      <p>An internet connection is required during installation (to download the package from PyPI) and at runtime (to reach the AI provider APIs). ANVYL itself does not host any servers — it connects directly from your machine to the providers you configure.</p>
-
+      <h3>Terminal</h3>
+      <p>ANVYL uses the <a href="https://github.com/Textualize/textual" target="_blank">Textual</a> terminal UI framework. It works best in modern terminals that support 24-bit color and unicode:</p>
+      <ul>
+        <li><strong style="color:#fff;">Windows:</strong> Windows Terminal (recommended), PowerShell 7, or cmd.exe</li>
+        <li><strong style="color:#fff;">macOS:</strong> Terminal.app or iTerm2</li>
+        <li><strong style="color:#fff;">Linux:</strong> Any modern terminal emulator (GNOME Terminal, Kitty, Alacritty, etc.)</li>
+      </ul>
       <div class="docs-tip">
-        <strong>Tip:</strong> On Windows, always open PowerShell or Command Prompt as a regular user (not Administrator) when installing Python packages. Running as Administrator can cause PATH issues that prevent <code style="color:var(--accent);">anvyl</code> from being recognized as a command.
+        <strong>Windows Terminal</strong> is available free from the Microsoft Store and provides the best experience on Windows. The built-in cmd.exe works but has limited color support.
       </div>
     </div>
 
-    <!-- ── Installation ── -->
+    <!-- ── Platform install ── -->
     <div class="docs-section" id="install">
-      <div class="section-label">Setup</div>
-      <h2>Installing ANVYL</h2>
-      <p>ANVYL is distributed as a standard Python package on PyPI. The entire installation is handled by <code style="color:var(--accent);">pip</code> — no compiling, no build tools, no configuration files needed.</p>
+      <div class="section-label">Installation</div>
+      <h2>Platform-Specific Installation</h2>
 
+      <h3>Windows</h3>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h3>Install Python 3.13+</h3>
-            <p>Download the latest Python installer from <a href="https://python.org" target="_blank">python.org</a>. Run the installer and on the first screen, check <strong style="color:#fff;">"Add Python to PATH"</strong> before clicking Install. This is the most common mistake — skipping it means your terminal won't find Python or pip after installation.</p>
-            <p>On macOS, you can also use Homebrew:</p>
-            <div class="code-block">brew install python@3.13</div>
-            <p>On Ubuntu/Debian Linux:</p>
-            <div class="code-block">sudo apt update
-sudo apt install python3.13 python3-pip</div>
+            <h3>Download Python 3.13</h3>
+            <p>Go to <a href="https://python.org/downloads" target="_blank">python.org/downloads</a> and download the latest 3.13.x installer. Run the installer. On the first screen, <strong style="color:#fff;">check "Add Python to PATH"</strong> before clicking Install Now. Without this, <code style="color:var(--accent);">anvyl</code> won't be found after installation.</p>
           </div>
         </div>
-
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h3>Open a terminal</h3>
-            <p>On Windows, open <strong style="color:#fff;">PowerShell</strong> (search for it in the Start menu). On macOS, open <strong style="color:#fff;">Terminal</strong> (in Applications → Utilities). On Linux, use your system's terminal emulator.</p>
-            <p>Confirm Python is accessible by running <code style="color:var(--accent);">python --version</code>. You should see <code style="color:var(--accent);">Python 3.13.x</code> or higher. If you see an error, Python was not added to your PATH — re-run the installer and ensure the PATH checkbox is checked.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <h3>Install ANVYL via pip</h3>
-            <p>Run the following command in your terminal:</p>
+            <h3>Open PowerShell and install ANVYL</h3>
             <div class="code-block">pip install anvyl</div>
-            <p>pip will download ANVYL and all of its dependencies automatically. This typically takes 30–60 seconds depending on your connection speed. You will see a list of packages being installed — this is normal.</p>
-            <p>If pip is not found, try:</p>
+            <p>If you see a "pip not found" error, try:</p>
             <div class="code-block">python -m pip install anvyl</div>
           </div>
         </div>
-
         <div class="step">
-          <div class="step-num">4</div>
+          <div class="step-num">3</div>
           <div class="step-content">
-            <h3>Verify the installation</h3>
-            <p>After installation completes, run:</p>
+            <h3>Verify</h3>
             <div class="code-block">anvyl --version</div>
-            <p>You should see the current version number printed to your terminal. If you see a "command not found" error, your Python scripts directory is not on your PATH. On Windows, this is typically <code style="color:var(--accent);">C:\Users\YourName\AppData\Local\Programs\Python\Python313\Scripts</code>. Add it to your PATH environment variable and restart your terminal.</p>
+            <p>If this fails with "command not found", add Python's Scripts folder to your PATH. It is typically at <code style="color:var(--accent);">C:\Users\YourName\AppData\Local\Programs\Python\Python313\Scripts</code>.</p>
           </div>
         </div>
+      </div>
 
+      <h3>macOS</h3>
+      <div class="steps">
         <div class="step">
-          <div class="step-num">5</div>
+          <div class="step-num">1</div>
           <div class="step-content">
-            <h3>Launch ANVYL</h3>
-            <p>Run the command:</p>
-            <div class="code-block">anvyl</div>
-            <p>The first time you launch ANVYL, a setup screen will appear. It will walk you through adding your Groq API key and connecting your Google account. Both steps are explained in detail below.</p>
+            <h3>Install Python via Homebrew (recommended)</h3>
+            <div class="code-block"><span class="comment"># Install Homebrew if you don't have it</span>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+<span class="comment"># Install Python 3.13</span>
+brew install python@3.13</div>
+            <p>Or download the macOS installer from <a href="https://python.org/downloads" target="_blank">python.org</a> directly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Install ANVYL</h3>
+            <div class="code-block">pip3 install anvyl</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Verify</h3>
+            <div class="code-block">anvyl --version</div>
+            <p>If this fails, your Python bin path may not be on your shell's PATH. Add this to your <code style="color:var(--accent);">~/.zshrc</code>:</p>
+            <div class="code-block">export PATH="$(brew --prefix python@3.13)/bin:$PATH"</div>
           </div>
         </div>
       </div>
 
-      <div class="docs-tip">
-        <strong>Keeping ANVYL up to date:</strong> New versions are released regularly with bug fixes and new features. To upgrade at any time, run: <code style="color:var(--accent);">pip install --upgrade anvyl</code>
+      <h3>Linux (Ubuntu / Debian)</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Install Python 3.13</h3>
+            <div class="code-block">sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.13 python3.13-pip python3.13-venv</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Install ANVYL</h3>
+            <div class="code-block">pip3.13 install anvyl</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Verify</h3>
+            <div class="code-block">anvyl --version</div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <h3>Installing in a virtual environment (optional)</h3>
-      <p>If you prefer to keep ANVYL isolated from your global Python environment, you can install it inside a virtual environment:</p>
-      <div class="code-block"><span class="comment"># Create a virtual environment</span>
-python -m venv anvyl-env
+    <!-- ── Virtual Environments ── -->
+    <div class="docs-section" id="venv">
+      <div class="section-label">Advanced</div>
+      <h2>Virtual Environments</h2>
+      <p>Installing ANVYL in a virtual environment keeps it isolated from your global Python install. This is useful if you work on multiple Python projects with potentially conflicting dependencies.</p>
 
-<span class="comment"># Activate it (Windows PowerShell)</span>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Create a virtual environment</h3>
+            <div class="code-block">python -m venv anvyl-env</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Activate it</h3>
+            <div class="code-block"><span class="comment"># Windows PowerShell</span>
 anvyl-env\Scripts\Activate.ps1
 
-<span class="comment"># Activate it (macOS / Linux)</span>
-source anvyl-env/bin/activate
+<span class="comment"># Windows cmd.exe</span>
+anvyl-env\Scripts\activate.bat
 
-<span class="comment"># Install ANVYL inside the venv</span>
-pip install anvyl</div>
-      <p>When using a virtual environment, remember to activate it each time before running <code style="color:var(--accent);">anvyl</code>.</p>
-
-      <h3>Uninstalling</h3>
-      <p>To remove ANVYL from your system entirely:</p>
-      <div class="code-block">pip uninstall anvyl</div>
-      <p>Your API keys (stored at <code style="color:var(--accent);">~/.anvyl/byok.json</code>) and Google token (<code style="color:var(--accent);">~/.anvyl/google_token.json</code>) are not removed automatically. Delete the <code style="color:var(--accent);">~/.anvyl/</code> directory manually if you want a complete clean removal.</p>
-    </div>
-
-    <!-- ── First Launch ── -->
-    <div class="docs-section" id="first-launch">
-      <div class="section-label">Setup</div>
-      <h2>First Launch &amp; Setup Screen</h2>
-      <p>When you run <code style="color:var(--accent);">anvyl</code> for the first time, you will be greeted by the setup screen — a full-terminal UI that walks you through the initial configuration. You only need to complete this once.</p>
-
-      <h3>What the setup screen does</h3>
-      <ul>
-        <li>Asks for your <strong style="color:#fff;">Groq API key</strong> (the only required key)</li>
-        <li>Optionally accepts additional provider keys (Google AI, Mistral, NVIDIA, etc.)</li>
-        <li>Prompts you to sign in with your Google account to unlock Gmail, Drive, and Workspace features</li>
-        <li>Saves everything locally to <code style="color:var(--accent);">~/.anvyl/</code> on your machine</li>
-      </ul>
-
-      <h3>Getting your Groq API key</h3>
-      <p>Groq is the primary AI provider that powers ANVYL's main agent. It is free to use with generous rate limits.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <h3>Go to console.groq.com</h3>
-            <p>Visit <a href="https://console.groq.com/" target="_blank">console.groq.com</a> and create a free account. No credit card required.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <h3>Create an API key</h3>
-            <p>Once logged in, go to <strong style="color:#fff;">API Keys</strong> in the left sidebar and click <strong style="color:#fff;">Create API Key</strong>. Give it a name (e.g. "ANVYL") and copy the key — you will only see it once.</p>
+<span class="comment"># macOS / Linux</span>
+source anvyl-env/bin/activate</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h3>Paste it into the setup screen</h3>
-            <p>Back in ANVYL, paste the key into the Groq API Key field and press <strong style="color:#fff;">Continue</strong>. The key is saved to <code style="color:var(--accent);">~/.anvyl/byok.json</code> and encrypted at rest.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="docs-tip">
-        <strong>Already past setup?</strong> You can open the key editor at any time from inside ANVYL by typing <code style="color:var(--accent);">/keys</code>. See the <a href="api-keys.html">API Keys</a> page for full details on all supported providers.
-      </div>
-    </div>
-
-    <!-- ── Google Sign-In ── -->
-    <div class="docs-section" id="google">
-      <div class="section-label">Setup</div>
-      <h2>Google Sign-In</h2>
-      <p>ANVYL integrates with your Google account to read and write Gmail, Google Drive, Docs, Sheets, Slides, Forms, and Calendar — all from your terminal. Google sign-in is set up during the initial setup screen, but you can skip it and connect later.</p>
-
-      <h3>What Google access is used for</h3>
-      <ul>
-        <li><strong style="color:#fff;">Gmail</strong> — Read inbox, search emails, summarize threads, list senders</li>
-        <li><strong style="color:#fff;">Google Drive</strong> — List, read, and create files</li>
-        <li><strong style="color:#fff;">Google Docs</strong> — Create and write documents using <code style="color:var(--accent);">/docs</code></li>
-        <li><strong style="color:#fff;">Google Sheets</strong> — Create spreadsheets using <code style="color:var(--accent);">/sheets</code></li>
-        <li><strong style="color:#fff;">Google Slides</strong> — Create presentations using <code style="color:var(--accent);">/slides</code></li>
-        <li><strong style="color:#fff;">Google Forms</strong> — Create forms using <code style="color:var(--accent);">/forms</code></li>
-        <li><strong style="color:#fff;">Google Calendar</strong> — Add events using <code style="color:var(--accent);">/calendar</code></li>
-      </ul>
-
-      <h3>How authentication works</h3>
-      <p>ANVYL uses Google's standard OAuth 2.0 flow. When you click "Sign in with Google" in the setup screen, ANVYL opens a browser tab pointing to Google's official sign-in page. You sign in to your Google account normally and grant ANVYL the requested permissions.</p>
-      <p>After you approve, Google sends an OAuth token back to ANVYL. This token is saved to <code style="color:var(--accent);">~/.anvyl/google_token.json</code> on your machine. ANVYL never sees your Google password — it only receives the OAuth token.</p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <h3>Click "Sign in with Google" in the setup screen</h3>
-            <p>ANVYL will open your default browser automatically and navigate to Google's sign-in page.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <h3>Sign in and grant permissions</h3>
-            <p>Log in to your Google account and review the permissions ANVYL is requesting. These permissions cover Gmail read access, Drive access, and Workspace creation (Docs, Sheets, Slides, Forms, Calendar). Approve them to continue.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <h3>Token is saved automatically</h3>
-            <p>After approving, the browser will show a success message and you can close the tab. The OAuth token is saved to <code style="color:var(--accent);">~/.anvyl/google_token.json</code>. Future sessions authenticate silently — you will not be asked to sign in again unless the token expires.</p>
+            <h3>Install ANVYL inside the venv</h3>
+            <div class="code-block">pip install anvyl</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
           <div class="step-content">
-            <h3>Test the connection</h3>
-            <p>Inside ANVYL, type <code style="color:var(--accent);">/gmail</code> to list your recent inbox. If you see your emails, everything is working correctly.</p>
+            <h3>Activate before each use</h3>
+            <p>Each time you open a new terminal session, activate the virtual environment before running <code style="color:var(--accent);">anvyl</code>. When active, your prompt will show the environment name in parentheses: <code style="color:var(--accent);">(anvyl-env)</code>.</p>
           </div>
         </div>
       </div>
-
-      <h3>Re-authenticating and switching accounts</h3>
-      <p>If your token expires or you want to switch to a different Google account, use the <code style="color:var(--accent);">/sign-in</code> command inside ANVYL. This opens a fresh OAuth flow and overwrites the saved token with the new one.</p>
-      <div class="code-block"><span class="comment"># Re-authenticate or switch accounts</span>
-/sign-in
-
-<span class="comment"># Revoke access and remove the token</span>
-/sign-out</div>
-
-      <h3>Revoking access</h3>
-      <p>To completely remove ANVYL's access to your Google account, use <code style="color:var(--accent);">/sign-out</code> inside ANVYL, or go to <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a> and remove ANVYL from your connected apps. You can also delete the token file directly:</p>
-      <div class="code-block"><span class="comment"># Delete saved token manually</span>
-~/.anvyl/google_token.json  <span class="comment">(Mac/Linux)</span>
-C:\Users\you\.anvyl\google_token.json  <span class="comment">(Windows)</span></div>
-
-      <div class="docs-tip">
-        <strong>Privacy note:</strong> Your Google credentials are stored only on your machine. ANVYL never transmits your token to any server other than Google's OAuth endpoints. See the <a href="guidelines.html">Guidelines</a> page for a full breakdown of what leaves your device.
-      </div>
-
-      <h3>Troubleshooting Google Sign-In</h3>
-      <p><strong style="color:#fff;">Browser doesn't open automatically</strong> — Copy the URL printed in the terminal and paste it into your browser manually.</p>
-      <p><strong style="color:#fff;">"Access blocked" error from Google</strong> — ANVYL uses a development OAuth client. If you see an "unverified app" warning, click "Advanced" and then "Go to ANVYL (unsafe)" to proceed. This is a Google verification status for the app, not a security risk.</p>
-      <p><strong style="color:#fff;">Token expired</strong> — Google OAuth tokens expire periodically. Run <code style="color:var(--accent);">/sign-in</code> to get a fresh token.</p>
-      <p><strong style="color:#fff;">Wrong account signed in</strong> — Run <code style="color:var(--accent);">/sign-out</code> first, then <code style="color:var(--accent);">/sign-in</code> to switch accounts.</p>
     </div>
 
-    <!-- ── Your first prompt ── -->
-    <div class="docs-section" id="first-prompt">
-      <div class="section-label">Setup</div>
-      <h2>Running Your First Prompt</h2>
-      <p>Once installation and setup are complete, you're ready to use ANVYL. Here's how to get going quickly.</p>
+    <!-- ── Updating ── -->
+    <div class="docs-section" id="updating">
+      <div class="section-label">Maintenance</div>
+      <h2>Updating ANVYL</h2>
+      <p>ANVYL is updated regularly with bug fixes, new commands, and improved AI routing. To upgrade to the latest version:</p>
 
-      <h3>Interactive mode</h3>
-      <p>Just run <code style="color:var(--accent);">anvyl</code> with no arguments to open the interactive terminal UI. Type your prompt and press <code style="color:var(--accent);">Enter</code> to send it.</p>
-      <div class="code-block">anvyl</div>
+      <div class="code-block">pip install --upgrade anvyl</div>
 
-      <h3>Inline mode</h3>
-      <p>You can also pass a prompt directly on the command line, which is useful for scripting or quick one-off tasks:</p>
-      <div class="code-block"><span class="comment"># Run a task directly from your terminal</span>
-anvyl "summarize my last 5 emails"
-anvyl "create a Python script that renames all files in a folder"
-anvyl "search the web for the latest AI news"</div>
+      <p>To check what version you currently have and what the latest is:</p>
+      <div class="code-block"><span class="comment"># Check your installed version</span>
+anvyl --version
 
-      <h3>Slash commands</h3>
-      <p>Inside the interactive UI, type <code style="color:var(--accent);">/</code> to open the command palette. Use arrow keys to navigate suggestions and Tab to autocomplete. For a full list of available commands, see the <a href="commands.html">Commands</a> page.</p>
+<span class="comment"># Check what's available on PyPI</span>
+pip index versions anvyl</div>
+
+      <h3>Updating dependencies</h3>
+      <p>If a dependency update is needed (for example if a provider's Python client releases a security fix), you can force a full upgrade including all dependencies:</p>
+      <div class="code-block">pip install --upgrade --upgrade-strategy eager anvyl</div>
+
+      <h3>Checking for updates automatically</h3>
+      <p>ANVYL does not currently check for updates automatically on launch. We recommend checking periodically with <code style="color:var(--accent);">pip install --upgrade anvyl</code> or watching the <a href="https://github.com/anvylCLI/Anvyl" target="_blank">GitHub releases page</a> for new versions.</p>
 
       <div class="docs-tip">
-        <strong>Next step:</strong> Head to <a href="api-keys.html">API Keys</a> to add more providers and unlock the full range of ANVYL's capabilities — including Gemini sub-agents, image generation, and more.
+        <strong>After updating:</strong> Your API keys and Google token are stored separately in <code style="color:var(--accent);">~/.anvyl/</code> and are never touched by the update process. You won't need to reconfigure anything.
       </div>
+    </div>
+
+    <!-- ── Uninstalling ── -->
+    <div class="docs-section" id="uninstall">
+      <div class="section-label">Maintenance</div>
+      <h2>Uninstalling ANVYL</h2>
+      <p>To remove ANVYL from your Python environment:</p>
+      <div class="code-block">pip uninstall anvyl</div>
+
+      <p>This removes the ANVYL package but leaves your configuration files in place. To do a complete clean removal including your API keys, Google token, sessions, and outputs:</p>
+      <div class="code-block"><span class="comment"># Remove the ANVYL package</span>
+pip uninstall anvyl
+
+<span class="comment"># Remove all ANVYL data — macOS / Linux</span>
+rm -rf ~/.anvyl
+
+<span class="comment"># Remove all ANVYL data — Windows PowerShell</span>
+Remove-Item -Recurse -Force "$env:USERPROFILE\.anvyl"</div>
+
+      <div class="docs-warn">
+        <strong>This is permanent.</strong> Deleting <code>~/.anvyl/</code> removes your saved API keys and Google OAuth token. You will need to reconfigure everything from scratch if you reinstall ANVYL later.
+      </div>
+
+      <h3>Removing a virtual environment</h3>
+      <p>If you installed ANVYL in a virtual environment, simply delete the environment folder:</p>
+      <div class="code-block"><span class="comment"># Delete the virtual environment folder</span>
+rm -rf anvyl-env          <span class="comment">(macOS/Linux)</span>
+Remove-Item -Recurse -Force anvyl-env  <span class="comment">(Windows)</span></div>
+    </div>
+
+    <!-- ── Troubleshooting ── -->
+    <div class="docs-section" id="troubleshooting">
+      <div class="section-label">Help</div>
+      <h2>Troubleshooting Installation</h2>
+
+      <h3>"anvyl: command not found" after installing</h3>
+      <p>Python's scripts directory is not on your system PATH. Find the scripts directory:</p>
+      <div class="code-block"><span class="comment"># Find where pip installs scripts</span>
+python -m site --user-base</div>
+      <p>Add the <code style="color:var(--accent);">bin</code> (macOS/Linux) or <code style="color:var(--accent);">Scripts</code> (Windows) subdirectory of that path to your PATH environment variable, then restart your terminal.</p>
+
+      <h3>"pip: command not found"</h3>
+      <div class="code-block">python -m pip install anvyl</div>
+      <p>Using <code style="color:var(--accent);">python -m pip</code> bypasses PATH issues for pip itself.</p>
+
+      <h3>Permission errors on macOS/Linux</h3>
+      <p>Never use <code style="color:var(--accent);">sudo pip install</code>. It installs into the system Python, which can break system tools. Instead, install with the user flag:</p>
+      <div class="code-block">pip install --user anvyl</div>
+
+      <h3>SSL certificate errors</h3>
+      <p>This usually means your system certificates are out of date. On macOS, run the <code>Install Certificates.command</code> file in your Python installation folder. On Windows, ensure Windows Update is current.</p>
+
+      <h3>ImportError or ModuleNotFoundError at launch</h3>
+      <p>A dependency may have failed to install. Try reinstalling with:</p>
+      <div class="code-block">pip install --force-reinstall anvyl</div>
+
+      <h3>Still stuck?</h3>
+      <p>Open an issue or email us at <a href="mailto:anvyl.cli@gmail.com">anvyl.cli@gmail.com</a> with your platform, Python version, and the full error message.</p>
     </div>
 
     <!-- ── Page nav ── -->
     <div class="page-nav">
-      <span></span>
+      <a href="get-started.html">
+        <span class="nav-label">Previous</span>
+        <span class="nav-title">← Get Started</span>
+      </a>
       <a href="api-keys.html" class="next">
         <span class="nav-label">Next</span>
         <span class="nav-title">API Keys →</span>
@@ -312,7 +316,7 @@ anvyl "search the web for the latest AI news"</div>
     <canvas id="anvyl-logo-footer" width="160" height="44" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="docs.html">Docs</a>
+      <a href="get-started.html">Get Started</a>
       <a href="api-keys.html">API Keys</a>
       <a href="commands.html">Commands</a>
       <a href="guidelines.html">Guidelines</a>

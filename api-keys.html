@@ -15,11 +15,11 @@
     <a class="nav-logo" href="index.html"><canvas id="anvyl-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="docs.html">Docs</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
       <li><a href="api-keys.html" class="active">API Keys</a></li>
       <li><a href="commands.html">Commands</a></li>
       <li><a href="guidelines.html">Guidelines</a></li>
-      <li><a href="docs.html" class="nav-cta">Get Started →</a></li>
+      <li><a href="get-started.html" class="nav-cta">Get Started →</a></li>
     </ul>
   </nav>
 
@@ -226,6 +226,77 @@ MISTRAL_API_KEY=your_key_here</div>
 C:\Users\YourName\.anvyl\byok.json</div>
     </div>
 
+    <!-- ── Credit Usage Tips ── -->
+    <div class="docs-section" id="usage-tips">
+      <div class="section-label">Tips</div>
+      <h2>Managing Your Credit Usage</h2>
+      <p>Every AI provider counts usage in tokens. Understanding how tokens work helps you stay well within free tier limits and avoid unexpected rate limit errors.</p>
+
+      <h3>What is a token?</h3>
+      <p>A token is roughly 3/4 of a word. The sentence "pip install anvyl" is about 4 tokens. A full email summary prompt might be 500–2,000 tokens including the response. Tokens count for both your input (the prompt) and the output (the AI's response).</p>
+
+      <h3>Free tier limits by provider</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Provider</th><th>Free limit</th><th>Resets</th><th>Best used for</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Groq</td>
+            <td class="td-dim">12,000 TPM</td>
+            <td class="td-dim">Every minute</td>
+            <td class="td-dim">Main agent — all tasks</td>
+          </tr>
+          <tr>
+            <td>Google AI Studio (Gemini)</td>
+            <td class="td-dim">1,000,000 TPM</td>
+            <td class="td-dim">Every minute</td>
+            <td class="td-dim">Long-context, reasoning tasks</td>
+          </tr>
+          <tr>
+            <td>Mistral</td>
+            <td class="td-dim">~1B tokens/month</td>
+            <td class="td-dim">Monthly</td>
+            <td class="td-dim">Chat, writing, explanations</td>
+          </tr>
+          <tr>
+            <td>NVIDIA NIM</td>
+            <td class="td-dim">40 RPM</td>
+            <td class="td-dim">Per minute</td>
+            <td class="td-dim">Chat backup</td>
+          </tr>
+          <tr>
+            <td>OpenRouter</td>
+            <td class="td-dim">50 req/day</td>
+            <td class="td-dim">Daily</td>
+            <td class="td-dim">Fallback routing</td>
+          </tr>
+          <tr>
+            <td>HuggingFace</td>
+            <td class="td-dim">Varies by model</td>
+            <td class="td-dim">Monthly</td>
+            <td class="td-dim">Open-source model backup</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Tips for staying within free limits</h3>
+      <ul>
+        <li><strong style="color:#fff;">Be specific in prompts</strong> — A focused prompt generates a tighter response and uses fewer tokens than a vague one that produces a long, hedged answer.</li>
+        <li><strong style="color:#fff;">Avoid sending large files as prompts</strong> — If you need ANVYL to work with a large document, describe its structure rather than pasting the entire contents.</li>
+        <li><strong style="color:#fff;">Add a second provider</strong> — With both Groq and Gemini keys set, ANVYL can route heavy tasks to Gemini's 1M TPM free tier, keeping Groq headroom available.</li>
+        <li><strong style="color:#fff;">Check usage in the provider console</strong> — Groq shows your usage at <a href="https://console.groq.com/" target="_blank">console.groq.com</a>. Check it periodically if you use ANVYL heavily.</li>
+        <li><strong style="color:#fff;">Don't loop ANVYL in scripts</strong> — Running ANVYL in a loop (e.g. calling it 50 times in a bash script) can exhaust Groq's 12K TPM limit in seconds. Add delays if you automate ANVYL.</li>
+      </ul>
+
+      <h3>What not to include in prompts</h3>
+      <p>Since prompts are sent to AI providers, be careful about what you include:</p>
+      <div class="docs-danger">
+        <strong>Avoid including in any prompt:</strong> passwords, credit card numbers, social security numbers, private API keys, confidential business data, medical records, or personal information belonging to others. AI providers receive the full text of every prompt and may log or retain it per their own policies.
+      </div>
+      <p>See the <a href="guidelines.html#privacy">Privacy section</a> for a full breakdown of what each provider receives.</p>
+    </div>
+
     <!-- ── Troubleshooting ── -->
     <div class="docs-section" id="troubleshooting">
       <div class="section-label">Help</div>
@@ -246,9 +317,9 @@ C:\Users\YourName\.anvyl\byok.json</div>
 
     <!-- ── Page nav ── -->
     <div class="page-nav">
-      <a href="docs.html">
+      <a href="get-started.html">
         <span class="nav-label">Previous</span>
-        <span class="nav-title">← Docs</span>
+        <span class="nav-title">← Get Started</span>
       </a>
       <a href="commands.html" class="next">
         <span class="nav-label">Next</span>
@@ -264,7 +335,7 @@ C:\Users\YourName\.anvyl\byok.json</div>
     <canvas id="anvyl-logo-footer" width="160" height="44" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="docs.html">Docs</a>
+      <a href="get-started.html">Get Started</a>
       <a href="api-keys.html">API Keys</a>
       <a href="commands.html">Commands</a>
       <a href="guidelines.html">Guidelines</a>
