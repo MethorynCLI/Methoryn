@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ANVYL — Multi-Agent AI CLI</title>
+  <meta name="description" content="ANVYL is a terminal-based multi-agent AI assistant powered by Groq and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="page">
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="index.html"><canvas id="anvyl-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a href="docs.html#api-keys">API Keys</a></li>
+      <li><a href="docs.html#commands">Commands</a></li>
+      <li><a href="docs.html#install" class="nav-cta">Get Started →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span></span> v0.1.10 — Free to install
+      </div>
+
+      <h1>Your <em>AI agent</em><br/>lives in the terminal.</h1>
+
+      <p class="hero-sub">
+        ANVYL is a multi-agent CLI powered by Groq and Gemini. It writes files,
+        runs code, reads your Gmail, edits Google Docs, builds presentations,
+        and handles complex tasks — all from a single prompt.
+      </p>
+
+      <div class="hero-actions">
+        <a href="docs.html#install" class="btn btn-primary">Get Started →</a>
+        <a href="docs.html" class="btn btn-secondary">Read the Docs</a>
+      </div>
+
+      <div class="install-box">
+        <span class="prompt">$</span>
+        <span id="install-cmd">pip install anvyl</span>
+        <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
+      </div>
+
+      <!-- Terminal mockup -->
+      <div class="terminal" style="margin-top:3rem; max-width:640px;">
+        <div class="terminal-bar">
+          <div class="terminal-dot" style="background:#ff5f57;"></div>
+          <div class="terminal-dot" style="background:#febc2e;"></div>
+          <div class="terminal-dot" style="background:#28c840;"></div>
+          <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">ANVYL</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">◉</span> <span class="t-success">ANVYL ready.</span> <span class="t-dim">Type a prompt or type / for commands.</span></div>
+          <div class="t-dim">  ✓ Groq          ready  [main task agent]</div>
+          <div class="t-dim">  ✓ Gemini        ready  [sub-agents primary]</div>
+          <div class="t-dim">  ✓ Pollinations  ready  [image gen]</div>
+          <br/>
+          <div><span class="t-prompt">You:</span> <span class="t-cmd">write a summary of my last 10 emails and save it as a PDF</span></div>
+          <br/>
+          <div class="t-dim">  ▸ Fetching Gmail inbox…</div>
+          <div class="t-dim">  ▸ Summarising 10 messages…</div>
+          <div class="t-dim">  ▸ Writing email_summary.pdf…</div>
+          <div><span class="t-success">  ✓ Saved to Desktop/email_summary.pdf</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── What it does ── -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label">Capabilities</div>
+      <h2>One agent. Everything you need.</h2>
+      <p style="color:var(--text-dim); max-width:560px;">ANVYL routes tasks through specialised agents automatically — you just type what you want.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>Multi-Agent Execution</h3>
+          <p>Groq handles your primary task with full tool access. Gemini sub-agents run parallel research and generation in the background.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📁</div>
+          <h3>Files &amp; Code</h3>
+          <p>Read, write, move, and delete files. Write and run Python scripts. Execute shell commands. Export to .txt, .md, .html, .csv, .docx, or .pdf.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📧</div>
+          <h3>Gmail &amp; Google Drive</h3>
+          <p>Read, search, send, and delete emails. List, upload, and share Drive files — all directly from your terminal.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Google Workspace</h3>
+          <p>Create and edit Google Docs, Sheets, Slides presentations, Forms, and Calendar events with a single prompt.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖼️</div>
+          <h3>Image Generation</h3>
+          <p>Generate AI images via Pollinations.ai with <code style="color:var(--accent); font-size:0.85rem;">/image</code>. Saves to Desktop and works directly inside Slides presentations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Web &amp; Search</h3>
+          <p>Search the web with <code style="color:var(--accent); font-size:0.85rem;">/search</code> and fetch any URL with <code style="color:var(--accent); font-size:0.85rem;">/fetch</code> — no browser needed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>Session Memory</h3>
+          <p>Conversation context automatically saves on quit and reloads on next launch. Pick up exactly where you left off.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔑</div>
+          <h3>Bring Your Own Keys</h3>
+          <p>Set and manage API keys directly inside the app with <code style="color:var(--accent); font-size:0.85rem;">/keys</code>. No manual .env file editing required.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Slash Commands</h3>
+          <p>Type <code style="color:var(--accent); font-size:0.85rem;">/</code> to open the command palette with 25+ shortcuts for common tasks — no prompting needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── What you provide ── -->
+  <section id="requirements">
+    <div class="container">
+      <div class="section-label">What You Need</div>
+      <h2>Only one key is required.</h2>
+      <p style="color:var(--text-dim); max-width:580px;">All providers below have a free tier. Groq is the only mandatory one — everything else unlocks additional capabilities.</p>
+
+      <div class="keys-grid">
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">GROQ_API_KEY</span>
+            <span class="badge badge-required">Required</span>
+          </div>
+          <span class="key-desc">Main task agent — <a href="https://console.groq.com/" target="_blank">console.groq.com</a></span>
+          <span class="badge badge-free">Free tier available</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">GOOGLE_API_KEY</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Gemini sub-agents — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
+          <span class="badge badge-free">1M tokens/month free</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">Google OAuth</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Gmail, Drive, Docs, Sheets, Calendar — sign in with <code style="color:var(--accent); font-size:0.82rem;">/sign-in</code></span>
+          <span class="badge badge-free">Free</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">MISTRAL_API_KEY</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Chat primary — <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></span>
+          <span class="badge badge-free">~1B tokens/month free</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">Pollinations.ai</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Image generation via <code style="color:var(--accent); font-size:0.82rem;">/image</code></span>
+          <span class="badge badge-free">Completely free — no key needed</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">+ 4 more providers</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">NVIDIA NIM, OpenRouter, HuggingFace, Cloudflare — all optional backups</span>
+          <a href="docs.html#api-keys" style="font-size:0.82rem; color:var(--accent);">See full list →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── Platform ── -->
+  <section id="platform">
+    <div class="container">
+      <div class="section-label">Platform</div>
+      <h2>Windows &amp; macOS.</h2>
+      <p style="color:var(--text-dim); max-width:560px;">
+        Requires Python 3.13+. Works on Windows and macOS. The taskbar progress animation is Windows-only — everything else is fully cross-platform.
+      </p>
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
+          <span style="color:var(--accent);">✓</span> Windows 10 / 11
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
+          <span style="color:var(--accent);">✓</span> macOS 12+
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
+          <span style="color:var(--accent);">✓</span> Python 3.13+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── CTA ── -->
+  <section>
+    <div class="container">
+      <div class="cta-banner">
+        <div class="section-label">Get Started</div>
+        <h2>Install in one command.</h2>
+        <p>No build steps. No config files to edit. Run <code style="color:var(--accent);">anvyl</code> and the setup screen walks you through everything.</p>
+        <div style="display:flex; justify-content:center; margin-bottom:1.5rem;">
+          <div class="install-box">
+            <span class="prompt">$</span>
+            <span id="install-cmd-2">pip install anvyl</span>
+            <button class="copy-btn" onclick="copyInstall2(this)">Copy</button>
+          </div>
+        </div>
+        <a href="docs.html#install" class="btn btn-primary">Full Setup Guide →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <canvas id="anvyl-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <div class="footer-links">
+      <a href="docs.html">Docs</a>
+      <a href="docs.html#commands">Commands</a>
+      <a href="docs.html#api-keys">API Keys</a>
+      <a href="mailto:anvyl.cli@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">MIT © 2026 ANVYL</span>
+  </footer>
+
+  <script src="logo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initAnvylLogo('anvyl-logo-nav');
+      window.initAnvylLogo('anvyl-logo-footer');
+    });
+    function copyInstall(btn) {
+      navigator.clipboard.writeText('pip install anvyl').then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+    function copyInstall2(btn) {
+      navigator.clipboard.writeText('pip install anvyl').then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

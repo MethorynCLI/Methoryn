@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Docs — ANVYL</title>
+  <meta name="description" content="ANVYL documentation — installation, API keys, slash commands, keybindings, and guidelines."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="page">
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="index.html"><canvas id="anvyl-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="docs.html" class="active">Docs</a></li>
+      <li><a href="docs.html#api-keys">API Keys</a></li>
+      <li><a href="docs.html#commands">Commands</a></li>
+      <li><a href="docs.html#install" class="nav-cta">Get Started →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Docs Layout ── -->
+  <div class="docs-layout">
+
+    <!-- Sidebar -->
+    <aside class="docs-sidebar">
+      <nav id="sidebar-nav">
+        <span class="sidebar-section">Setup</span>
+        <a href="#install" class="active">Installation</a>
+        <a href="#google">Google Sign-In</a>
+
+        <span class="sidebar-section">Configuration</span>
+        <a href="#api-keys">API Keys</a>
+        <a href="#byok">Managing Keys</a>
+
+        <span class="sidebar-section">Usage</span>
+        <a href="#commands">Slash Commands</a>
+        <a href="#keybindings">Keybindings</a>
+        <a href="#prompts">Example Prompts</a>
+
+        <span class="sidebar-section">Guidelines</span>
+        <a href="#guidelines">Usage Guidelines</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#license">License</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <main class="docs-content">
+
+      <!-- ── Installation ── -->
+      <section id="install">
+        <div class="section-label">Setup</div>
+        <h2>Installation</h2>
+        <p>ANVYL installs as a standard Python package. Python 3.13 or newer is required.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Install Python 3.13+</h3>
+              <p>Download from <a href="https://python.org" target="_blank">python.org</a>. Make sure to check "Add Python to PATH" during installation on Windows.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Install ANVYL</h3>
+              <p>Open a terminal (PowerShell on Windows, Terminal on Mac) and run:</p>
+              <div class="code-block">pip install anvyl</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Launch ANVYL</h3>
+              <p>Run the <code style="color:var(--accent);">anvyl</code> command. The first time you launch it, a setup screen will appear to walk you through adding your API keys.</p>
+              <div class="code-block">anvyl</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Add your Groq API key</h3>
+              <p>Go to <a href="https://console.groq.com/" target="_blank">console.groq.com</a>, sign up for free, and copy your API key. Paste it into the setup screen and click Continue.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3>Start using ANVYL</h3>
+              <p>Type any prompt and press Enter. Or type <code style="color:var(--accent);">/</code> to open the command palette.</p>
+              <div class="code-block"><span class="comment"># Pass a prompt directly from your terminal</span>
+anvyl "summarize my last 5 emails"
+anvyl "create a Python script that renames all files in a folder"</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; padding:1rem 1.25rem; background:rgba(0,220,170,0.05); border:1px solid rgba(0,220,170,0.2); border-radius:var(--radius);">
+          <p style="margin:0; font-size:0.9rem; color:var(--text-dim);">
+            <span style="color:var(--accent);">ℹ</span>&nbsp;
+            To update ANVYL to the latest version at any time, run:
+            <code style="color:var(--accent); margin-left:0.5rem;">pip install --upgrade anvyl</code>
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Google Sign-In ── -->
+      <section id="google">
+        <div class="section-label">Setup</div>
+        <h2>Google Sign-In</h2>
+        <p>Google sign-in is required during the setup screen. It unlocks Gmail, Drive, Docs, Sheets, Slides, Forms, and Calendar. Your credentials are stored locally — ANVYL never sends them anywhere.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Click "Sign in with Google" in the setup screen</h3>
+              <p>ANVYL opens a browser tab automatically. Sign in with your Google account and grant the requested permissions.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Token saved automatically</h3>
+              <p>After signing in, the OAuth token is saved to <code style="color:var(--accent);">~/.anvyl/google_token.json</code> on your machine. Future sessions sign in silently.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Re-authenticate or sign out anytime</h3>
+              <p>Use <code style="color:var(--accent);">/sign-in</code> to switch accounts or refresh your token. Use <code style="color:var(--accent);">/sign-out</code> to revoke access.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── API Keys ── -->
+      <section id="api-keys">
+        <div class="section-label">Configuration</div>
+        <h2>API Keys</h2>
+        <p>Only the Groq key is required. All other providers are optional and unlock additional capabilities. Every provider listed below has a free tier.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Key Name</th>
+              <th>Provider</th>
+              <th>Used For</th>
+              <th>Free Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GROQ_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
+              <td><a href="https://console.groq.com/" target="_blank">Groq</a></td>
+              <td>Main task agent</td>
+              <td class="td-dim">12K TPM</td>
+            </tr>
+            <tr>
+              <td><code>GOOGLE_API_KEY</code></td>
+              <td><a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></td>
+              <td>Gemini sub-agents</td>
+              <td class="td-dim">1M TPM</td>
+            </tr>
+            <tr>
+              <td><code>MISTRAL_API_KEY</code></td>
+              <td><a href="https://console.mistral.ai/" target="_blank">Mistral</a></td>
+              <td>Chat primary</td>
+              <td class="td-dim">~1B tokens/month</td>
+            </tr>
+            <tr>
+              <td><code>NVDA_API_KEY</code></td>
+              <td><a href="https://build.nvidia.com/" target="_blank">NVIDIA NIM</a></td>
+              <td>Chat backup</td>
+              <td class="td-dim">40 RPM</td>
+            </tr>
+            <tr>
+              <td><code>OPENROUTER_API_KEY</code></td>
+              <td><a href="https://openrouter.ai/" target="_blank">OpenRouter</a></td>
+              <td>Sub-agent backup</td>
+              <td class="td-dim">50 req/day</td>
+            </tr>
+            <tr>
+              <td><code>Hugging_Face_API_KEY</code></td>
+              <td><a href="https://huggingface.co/settings/tokens" target="_blank">HuggingFace</a></td>
+              <td>Sub-agent backup</td>
+              <td class="td-dim">Free tier</td>
+            </tr>
+            <tr>
+              <td><code>CloudFlare_API_KEY</code></td>
+              <td><a href="https://developers.cloudflare.com/" target="_blank">Cloudflare</a></td>
+              <td>Sub-agent + deploy</td>
+              <td class="td-dim">Free tier</td>
+            </tr>
+            <tr>
+              <td><code>pollinations.ai_API_KEY</code></td>
+              <td><a href="https://pollinations.ai/" target="_blank">Pollinations.ai</a></td>
+              <td>Image generation</td>
+              <td class="td-dim">No key needed</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Managing Keys ── -->
+      <section id="byok">
+        <div class="section-label">Configuration</div>
+        <h2>Managing Keys</h2>
+        <p>Use the <code style="color:var(--accent);">/keys</code> slash command to open the key editor at any time — no file editing required. Keys are stored locally at <code style="color:var(--accent);">~/.anvyl/byok.json</code> and never leave your machine.</p>
+
+        <div class="code-block"><span class="comment"># Open the full key editor UI</span>
+/keys
+
+<span class="comment"># Keys are stored at:</span>
+~/.anvyl/byok.json  <span class="comment">(Mac/Linux)</span>
+C:\Users\you\.anvyl\byok.json  <span class="comment">(Windows)</span></div>
+
+        <p style="margin-top:1rem;">You can also set keys via environment variables or a <code style="color:var(--accent);">.env</code> file in the project root — but the in-app editor is the recommended approach.</p>
+      </section>
+
+      <!-- ── Slash Commands ── -->
+      <section id="commands">
+        <div class="section-label">Usage</div>
+        <h2>Slash Commands</h2>
+        <p>Type <code style="color:var(--accent);">/</code> in the prompt bar to open the command palette. Arrow keys navigate, Tab autocompletes, Enter executes.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What it does</th>
+              <th>Uses AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>/help</code></td><td>Show everything ANVYL can do</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/keys</code></td><td>Open the API key editor</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/sign-in</code></td><td>Connect your Google account</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/sign-out</code></td><td>Disconnect Google</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/drive</code></td><td>List Google Drive files</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/gmail</code></td><td>Show recent Gmail inbox</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/copy</code></td><td>Copy all output to clipboard</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/save</code></td><td>Save current session to disk</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/search</code></td><td>Search the web and print results</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/fetch</code></td><td>Fetch and read a URL</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/image</code></td><td>Generate an AI image (Pollinations)</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/docs</code></td><td>Create a Google Doc</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/sheets</code></td><td>Create a Google Sheet</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/slides</code></td><td>Create a Google Slides presentation</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/forms</code></td><td>Create a Google Form</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/calendar</code></td><td>Add a Google Calendar event</td><td class="td-dim">Yes</td></tr>
+            <tr><td><code>/desktop</code></td><td>Create a file or folder on your Desktop</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/run</code></td><td>Run a shell command</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/write</code></td><td>Write a file to disk</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/python</code></td><td>Write and optionally run a Python script</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/md</code></td><td>Write a Markdown file</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/txt</code></td><td>Write a plain text file</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/html</code></td><td>Write an HTML file</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/csv</code></td><td>Write a CSV file</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/word</code></td><td>Write a Word (.docx) document</td><td class="td-dim">No</td></tr>
+            <tr><td><code>/pdf</code></td><td>Write a PDF file</td><td class="td-dim">No</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Keybindings ── -->
+      <section id="keybindings">
+        <div class="section-label">Usage</div>
+        <h2>Keybindings</h2>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Key</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>Enter</code></td><td>Send prompt</td></tr>
+            <tr><td><code>Shift + Enter</code></td><td>Insert a new line (multi-line prompts)</td></tr>
+            <tr><td><code>/</code></td><td>Open slash command palette</td></tr>
+            <tr><td><code>↑ ↓</code></td><td>Navigate palette suggestions</td></tr>
+            <tr><td><code>Tab</code></td><td>Autocomplete selected slash command</td></tr>
+            <tr><td><code>Escape</code></td><td>Close palette</td></tr>
+            <tr><td><code>Ctrl + Y</code></td><td>Copy all output to clipboard</td></tr>
+            <tr><td><code>Ctrl + S</code></td><td>Save session to disk</td></tr>
+            <tr><td><code>Ctrl + C</code></td><td>Quit (with confirmation)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Example Prompts ── -->
+      <section id="prompts">
+        <div class="section-label">Usage</div>
+        <h2>Example Prompts</h2>
+        <p>ANVYL understands plain English. Here are examples of what you can ask:</p>
+
+        <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1.5rem;">
+          <div class="code-block">summarize my last 10 emails and save as a PDF</div>
+          <div class="code-block">create a Google Slides presentation about climate change with a dark theme</div>
+          <div class="code-block">write a Python script that monitors a folder and logs new files</div>
+          <div class="code-block">search the web for the latest AI news and write a summary to news.md</div>
+          <div class="code-block">generate an image of a futuristic city at night and add it to my slides</div>
+          <div class="code-block">create a Google Sheet with my monthly budget and format it nicely</div>
+          <div class="code-block">find all emails from last week about "invoice" and list the senders</div>
+          <div class="code-block">write a Word document cover letter for a software engineering role</div>
+        </div>
+      </section>
+
+      <!-- ── Guidelines ── -->
+      <section id="guidelines">
+        <div class="section-label">Guidelines</div>
+        <h2>Usage Guidelines</h2>
+
+        <h3 style="margin-top:1.5rem; color:var(--accent);">What ANVYL is for</h3>
+        <ul style="color:var(--text-dim); font-size:0.9rem; line-height:2; padding-left:1.25rem; margin-bottom:1.5rem;">
+          <li>Automating repetitive tasks — file management, document creation, email summaries</li>
+          <li>Writing and running code on your local machine</li>
+          <li>Interacting with your Google Workspace on your behalf</li>
+          <li>Research, web search, and content generation</li>
+          <li>Any task you'd normally do manually in a terminal or browser</li>
+        </ul>
+
+        <h3 style="color:var(--danger);">What ANVYL should not be used for</h3>
+        <ul style="color:var(--text-dim); font-size:0.9rem; line-height:2; padding-left:1.25rem; margin-bottom:1.5rem;">
+          <li>Accessing accounts, files, or systems you do not own or have permission to use</li>
+          <li>Sending unsolicited emails or automating spam</li>
+          <li>Generating malicious code, exploits, or harmful content</li>
+          <li>Any activity that violates the terms of service of the connected providers (Groq, Google, etc.)</li>
+        </ul>
+
+        <h3 style="color:var(--warn);">Be careful with</h3>
+        <ul style="color:var(--text-dim); font-size:0.9rem; line-height:2; padding-left:1.25rem;">
+          <li>Shell commands (<code style="color:var(--accent);">/run</code>) — ANVYL executes them directly on your machine</li>
+          <li>File writes (<code style="color:var(--accent);">/write</code>) — changes are immediate and may overwrite existing files</li>
+          <li>Gmail actions — sending or deleting emails is permanent</li>
+          <li>API key usage — each prompt consumes tokens from your provider accounts</li>
+        </ul>
+      </section>
+
+      <!-- ── Privacy ── -->
+      <section id="privacy">
+        <div class="section-label">Guidelines</div>
+        <h2>Privacy</h2>
+
+        <p>ANVYL runs entirely on your machine. Here is exactly what leaves your device:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>What</th><th>Sent to</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Your prompts and conversation history</td>
+              <td>Groq / Gemini / Mistral APIs</td>
+              <td>To generate AI responses</td>
+            </tr>
+            <tr>
+              <td>Google OAuth token</td>
+              <td>Google OAuth servers</td>
+              <td>To authenticate your Google account</td>
+            </tr>
+            <tr>
+              <td>Image generation prompts</td>
+              <td>Pollinations.ai</td>
+              <td>To generate images via <code>/image</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:1.5rem; color:var(--text-dim); font-size:0.9rem;">
+          ANVYL does not collect analytics, telemetry, or usage data. Your API keys are stored locally at <code style="color:var(--accent);">~/.anvyl/byok.json</code> and are never transmitted to anyone other than the provider they belong to.
+        </p>
+      </section>
+
+      <!-- ── License ── -->
+      <section id="license">
+        <div class="section-label">Guidelines</div>
+        <h2>License</h2>
+        <p>ANVYL is released under the <strong style="color:#fff;">MIT License</strong>.</p>
+        <p style="color:var(--text-dim); font-size:0.9rem;">
+          You are free to use, modify, and distribute this software for personal or commercial purposes,
+          provided the original copyright notice is included. The software is provided as-is with no warranty.
+        </p>
+        <p style="color:var(--text-dim); font-size:0.9rem;">
+          MIT © 2026 <a href="mailto:anvyl.cli@gmail.com">ANVYL</a>
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <canvas id="anvyl-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="mailto:anvyl.cli@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">MIT © 2026 ANVYL</span>
+  </footer>
+
+  <script src="logo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initAnvylLogo('anvyl-logo-nav');
+      window.initAnvylLogo('anvyl-logo-footer');
+    });
+    // Highlight active sidebar link on scroll
+    const sections = document.querySelectorAll('.docs-content section[id]');
+    const links = document.querySelectorAll('.docs-sidebar a[href^="#"]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.docs-sidebar a[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
