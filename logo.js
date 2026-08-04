@@ -15,8 +15,8 @@
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    // Physical size
-    const W = canvas.width  = 160;
+    // Physical size — wider to fit CORVUS (6 chars)
+    const W = canvas.width  = 190;
     const H = canvas.height = 44;
     const cx = W / 2;
     const cy = H / 2;
@@ -75,7 +75,7 @@
       ctx.fill();
       ctx.globalAlpha = 1;
 
-      // Bold "ANVYL" text on top
+      // Bold "CORVUS" text on top
       ctx.font = "bold 18px 'Courier New', monospace";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -85,7 +85,7 @@
       ctx.shadowColor = ACCENT;
       ctx.shadowBlur = 8;
       ctx.fillStyle = ACCENT;
-      ctx.fillText("CORVUS", cx + 6, cy + 1);
+      ctx.fillText("CORVUS", cx + 4, cy + 1);
       ctx.shadowBlur = 0;
 
       frame++;
