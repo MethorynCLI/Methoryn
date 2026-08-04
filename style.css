@@ -472,8 +472,8 @@ footer {
 
 /* ── Docs page specific ─────────────────────────────────────────────────── */
 .docs-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr;
+  display: flex;
+  flex-direction: row;
   gap: 3rem;
   max-width: 1100px;
   margin: 0 auto;
@@ -481,11 +481,13 @@ footer {
 }
 
 .docs-sidebar {
+  flex: 0 0 220px;
+  width: 220px;
   position: sticky;
   top: 80px;
-  align-self: start;
-  /* Prevent sidebar from stretching to fill grid cell height */
-  height: fit-content;
+  align-self: flex-start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .docs-sidebar nav { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -503,13 +505,13 @@ footer {
 .docs-sidebar a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(0,220,170,0.05); }
 .docs-sidebar .sidebar-section { color: var(--text-muted); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 1rem 0.75rem 0.25rem; }
 
-.docs-content { min-width: 0; }
+.docs-content { flex: 1 1 0; min-width: 0; }
 .docs-content section { padding: 0 0 3rem 0; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
 .docs-content section:last-child { border-bottom: none; }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .docs-layout { grid-template-columns: 1fr; }
+  .docs-layout { flex-direction: column; }
   .docs-sidebar { display: none; }
   .hero-actions { flex-direction: column; }
   nav { padding: 0 1rem; }
