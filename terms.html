@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service — Methoryn</title>
+  <meta name="description" content="Methoryn terms of service. The terms governing your use of the Methoryn CLI."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="page">
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="api-keys.html">API Keys</a></li>
+      <li><a href="commands.html">Commands</a></li>
+      <li><a href="guidelines.html">Guidelines</a></li>
+      <li><a href="get-started.html" class="nav-cta">Get Started →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Content ── -->
+  <section style="padding: 5rem 1.5rem 4rem;">
+    <div class="container" style="max-width: 760px;">
+
+      <div class="section-label">Legal</div>
+      <h1 style="margin-bottom: 0.5rem;">Terms of Service</h1>
+      <p style="color: var(--muted); margin-bottom: 3rem;">Last updated: August 5, 2026</p>
+
+      <div style="line-height: 1.85; color: var(--fg);">
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Acceptance</h2>
+        <p>By installing or using Methoryn, you agree to these Terms of Service. If you do not agree, do not use the software.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">What Methoryn Is</h2>
+        <p>Methoryn is an open-source, local-first command-line application. It is provided free of charge under the MIT License. It acts as a front-end to third-party AI APIs (Groq, Google Gemini) and Google services (Gmail, Drive, Docs, Sheets, Slides) using credentials you supply.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Your Responsibilities</h2>
+        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
+          <li>You are responsible for obtaining and managing your own API keys for Groq, Google, and any other services.</li>
+          <li>You are responsible for any costs incurred through those third-party services.</li>
+          <li>You must comply with the terms of service of each third-party provider you connect to through Methoryn.</li>
+          <li>You must not use Methoryn for any unlawful purpose or in a way that violates any applicable laws or regulations.</li>
+          <li>You must not use Methoryn to generate content that is harmful, abusive, or violates the policies of the underlying AI providers.</li>
+        </ul>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Google Services</h2>
+        <p>When you connect Methoryn to Google services via OAuth, you grant Methoryn permission to access those services on your behalf. You can revoke this permission at any time from your <a href="https://myaccount.google.com/permissions" style="color: var(--accent);">Google Account permissions page</a>. Your use of Google services through Methoryn is also subject to <a href="https://policies.google.com/terms" style="color: var(--accent);">Google's Terms of Service</a>.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">No Warranty</h2>
+        <p>Methoryn is provided <strong>"as is"</strong> without warranty of any kind, express or implied. We make no guarantees about accuracy, reliability, availability, or fitness for a particular purpose. AI-generated output may contain errors — always review before acting on it.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Methoryn and its contributors shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the software, including but not limited to data loss, accidental file modifications, or API charges incurred through third-party services.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Intellectual Property</h2>
+        <p>Methoryn is released under the <a href="https://opensource.org/licenses/MIT" style="color: var(--accent);">MIT License</a>. You are free to use, copy, modify, and distribute the software in accordance with that license. Any output you generate using Methoryn belongs to you.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Modifications to These Terms</h2>
+        <p>We may update these terms at any time. The updated version will be posted at this URL with a revised date. Continued use of Methoryn after changes constitutes acceptance of the updated terms.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Contact</h2>
+        <p>Questions about these terms? Email us at <a href="mailto:Methoryn.cli@gmail.com" style="color: var(--accent);">Methoryn.cli@gmail.com</a>.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <canvas id="Methoryn-logo-footer" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas>
+    <div class="footer-links">
+      <a href="get-started.html">Docs</a>
+      <a href="api-keys.html">API Keys</a>
+      <a href="commands.html">Commands</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:Methoryn.cli@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">MIT © 2026 Methoryn</span>
+  </footer>
+
+  <script src="logo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initMethorynLogo('Methoryn-logo-nav');
+      window.initMethorynLogo('Methoryn-logo-footer');
+    });
+  </script>
+
+</body>
+</html>

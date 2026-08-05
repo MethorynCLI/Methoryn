@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Methoryn</title>
+  <meta name="description" content="Methoryn privacy policy. How we handle your data when you use the Methoryn CLI."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="page">
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="api-keys.html">API Keys</a></li>
+      <li><a href="commands.html">Commands</a></li>
+      <li><a href="guidelines.html">Guidelines</a></li>
+      <li><a href="get-started.html" class="nav-cta">Get Started →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Content ── -->
+  <section style="padding: 5rem 1.5rem 4rem;">
+    <div class="container" style="max-width: 760px;">
+
+      <div class="section-label">Legal</div>
+      <h1 style="margin-bottom: 0.5rem;">Privacy Policy</h1>
+      <p style="color: var(--muted); margin-bottom: 3rem;">Last updated: August 5, 2026</p>
+
+      <div style="line-height: 1.85; color: var(--fg);">
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Overview</h2>
+        <p>Methoryn is a local-first command-line application. It runs on your machine and communicates directly with third-party AI and Google services using API keys that you provide. We do not operate servers, collect analytics, or store your data.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Data We Do Not Collect</h2>
+        <p>Methoryn does not collect, transmit, or store:</p>
+        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
+          <li>Your prompts or conversations</li>
+          <li>Your API keys</li>
+          <li>Files you read or write through the CLI</li>
+          <li>Your name, email address, or any personal identifiers</li>
+          <li>Usage statistics or telemetry of any kind</li>
+        </ul>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">API Keys</h2>
+        <p>API keys for Groq, Gemini, and other services are stored locally on your machine in a <code style="color: var(--accent);">.env</code> file or your system keystore. They are sent directly from your machine to the respective provider (Groq, Google) and are never transmitted to us.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Google OAuth and Google Services</h2>
+        <p>Methoryn uses Google OAuth 2.0 to access Google services on your behalf (Gmail, Google Drive, Docs, Sheets, Slides). When you sign in:</p>
+        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
+          <li>Your OAuth token is stored locally on your machine only.</li>
+          <li>Methoryn accesses your Google data solely to execute the actions you explicitly request in the CLI.</li>
+          <li>We do not read, store, or transmit your Google account data to any third party other than Google itself.</li>
+          <li>You can revoke access at any time from your <a href="https://myaccount.google.com/permissions" style="color: var(--accent);">Google Account permissions page</a>.</li>
+        </ul>
+        <p>Methoryn's use of Google user data complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" style="color: var(--accent);">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Third-Party Services</h2>
+        <p>When you send a prompt, your input is sent to the AI provider you have configured (Groq or Google Gemini). Your use of those services is governed by their own privacy policies:</p>
+        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
+          <li><a href="https://groq.com/privacy-policy/" style="color: var(--accent);">Groq Privacy Policy</a></li>
+          <li><a href="https://policies.google.com/privacy" style="color: var(--accent);">Google Privacy Policy</a></li>
+        </ul>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Local Storage</h2>
+        <p>Methoryn stores the following data locally on your machine only:</p>
+        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
+          <li>Your API keys (in <code style="color: var(--accent);">.env</code> or <code style="color: var(--accent);">byok.json</code>)</li>
+          <li>Your Google OAuth token</li>
+          <li>Session history files (optional, in the <code style="color: var(--accent);">sessions/</code> folder)</li>
+          <li>Any files you explicitly ask Methoryn to create or save</li>
+        </ul>
+        <p>None of this data leaves your machine except as part of API requests you initiate.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Children's Privacy</h2>
+        <p>Methoryn is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Changes to This Policy</h2>
+        <p>If this policy changes, the updated version will be posted at this URL with a revised date. Continued use of Methoryn after changes constitutes acceptance of the new policy.</p>
+
+        <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Contact</h2>
+        <p>Questions about this policy? Email us at <a href="mailto:Methoryn.cli@gmail.com" style="color: var(--accent);">Methoryn.cli@gmail.com</a>.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <canvas id="Methoryn-logo-footer" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas>
+    <div class="footer-links">
+      <a href="get-started.html">Docs</a>
+      <a href="api-keys.html">API Keys</a>
+      <a href="commands.html">Commands</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:Methoryn.cli@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">MIT © 2026 Methoryn</span>
+  </footer>
+
+  <script src="logo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initMethorynLogo('Methoryn-logo-nav');
+      window.initMethorynLogo('Methoryn-logo-footer');
+    });
+  </script>
+
+</body>
+</html>
