@@ -163,6 +163,141 @@
         </tbody>
       </table>
 
+    </div>
+
+    <!-- ── AI Tool Reference ── -->
+    <div class="docs-section" id="ai-tools">
+      <div class="section-label">Reference</div>
+      <h2>AI Tool Reference</h2>
+      <p>When you give Methoryn a task in plain English, the AI agent picks the right tools automatically. You never need to type these directly — they are listed here so you know exactly what Methoryn can do on your behalf.</p>
+
+      <h3>Google Docs</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>docs_create</code></td><td>Create a new Google Doc with a given title</td></tr>
+          <tr><td><code>docs_write</code></td><td>Write (insert at top) content into a Doc</td></tr>
+          <tr><td><code>docs_read</code></td><td>Read and return all text from a Doc</td></tr>
+          <tr><td><code>docs_append</code></td><td>Append new content to the end of an existing Doc</td></tr>
+          <tr><td><code>docs_rename</code></td><td>Rename a Doc</td></tr>
+          <tr><td><code>docs_share</code></td><td>Share a Doc with a user as reader, commenter, or writer</td></tr>
+          <tr><td><code>docs_get</code></td><td>Get metadata for a Doc: ID, title, owner, created/modified dates, URL</td></tr>
+          <tr><td><code>docs_delete</code></td><td>Permanently delete a Doc</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Google Slides</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>slides_create</code></td><td>Create a new presentation</td></tr>
+          <tr><td><code>slides_add_slide</code></td><td>Add a blank slide to a presentation</td></tr>
+          <tr><td><code>slides_add_text</code></td><td>Add a text box to a slide</td></tr>
+          <tr><td><code>slides_add_image</code></td><td>Add an image to a slide from a URL</td></tr>
+          <tr><td><code>slides_add_speaker_notes</code></td><td>Add speaker notes to a slide</td></tr>
+          <tr><td><code>slides_set_background</code></td><td>Set the background colour of a single slide</td></tr>
+          <tr><td><code>slides_theme</code></td><td>Apply a colour theme (dark, midnight, ocean, forest, sunset, slate, rose, gold, minimal, charcoal) to all slides</td></tr>
+          <tr><td><code>slides_delete_slide</code></td><td>Delete a single slide</td></tr>
+          <tr><td><code>slides_duplicate_slide</code></td><td>Duplicate a slide</td></tr>
+          <tr><td><code>slides_reorder_slide</code></td><td>Move a slide to a new position (0-based index)</td></tr>
+          <tr><td><code>slides_rename</code></td><td>Rename a presentation</td></tr>
+          <tr><td><code>slides_get</code></td><td>Get metadata: title, slide count, owner, URL</td></tr>
+          <tr><td><code>slides_share</code></td><td>Share a presentation with a user</td></tr>
+          <tr><td><code>slides_delete</code></td><td>Permanently delete a presentation</td></tr>
+          <tr><td><code>slides_batch_update</code></td><td>Send raw Slides API requests for advanced formatting</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Google Sheets</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>sheets_create</code></td><td>Create a new spreadsheet</td></tr>
+          <tr><td><code>sheets_read</code></td><td>Read a cell range (e.g. <code>Sheet1!A1:D10</code>)</td></tr>
+          <tr><td><code>sheets_write</code></td><td>Write CSV data to a range, overwriting existing values</td></tr>
+          <tr><td><code>sheets_append</code></td><td>Append rows after existing data in a range</td></tr>
+          <tr><td><code>sheets_clear</code></td><td>Clear all values from a range</td></tr>
+          <tr><td><code>sheets_add_sheet</code></td><td>Add a new tab to a spreadsheet</td></tr>
+          <tr><td><code>sheets_delete_sheet</code></td><td>Delete a tab by name or sheet ID</td></tr>
+          <tr><td><code>sheets_rename_sheet</code></td><td>Rename a tab</td></tr>
+          <tr><td><code>sheets_format</code></td><td>Apply bold or background colour to a range</td></tr>
+          <tr><td><code>sheets_rename</code></td><td>Rename the spreadsheet file</td></tr>
+          <tr><td><code>sheets_share</code></td><td>Share a spreadsheet with a user</td></tr>
+          <tr><td><code>sheets_get</code></td><td>Get metadata: title, tabs, owner, URL</td></tr>
+          <tr><td><code>sheets_delete</code></td><td>Permanently delete a spreadsheet</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Google Forms</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>forms_create</code></td><td>Create a new form</td></tr>
+          <tr><td><code>forms_get</code></td><td>Get form metadata and list of questions</td></tr>
+          <tr><td><code>forms_get_responses</code></td><td>Retrieve submitted responses</td></tr>
+          <tr><td><code>forms_set_description</code></td><td>Set the form description</td></tr>
+          <tr><td><code>forms_add_question</code></td><td>Add a question — types: text, paragraph, multiple_choice, checkbox, dropdown, linear_scale, date, time</td></tr>
+          <tr><td><code>forms_batch_update</code></td><td>Send raw Forms API requests for advanced edits</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Google Calendar</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>calendar_create</code></td><td>Create a new calendar event with title, start, and end time</td></tr>
+          <tr><td><code>calendar_list</code></td><td>List upcoming events from your primary calendar</td></tr>
+          <tr><td><code>calendar_list_calendars</code></td><td>List all calendars in your account</td></tr>
+          <tr><td><code>calendar_get_event</code></td><td>Get full details of a specific event</td></tr>
+          <tr><td><code>calendar_update_event</code></td><td>Update title, time, description, or location of an event</td></tr>
+          <tr><td><code>calendar_delete_event</code></td><td>Delete a calendar event</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Google Drive</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>drive_list</code></td><td>List recent files in your Drive</td></tr>
+          <tr><td><code>drive_search</code></td><td>Search Drive files using a query (e.g. <code>name contains 'report'</code>)</td></tr>
+          <tr><td><code>drive_get</code></td><td>Get metadata for a file: name, type, size, owner, URL</td></tr>
+          <tr><td><code>drive_upload</code></td><td>Upload a local file to Drive, optionally into a folder</td></tr>
+          <tr><td><code>drive_download</code></td><td>Download a Drive file to your local machine</td></tr>
+          <tr><td><code>drive_create_folder</code></td><td>Create a folder in Drive</td></tr>
+          <tr><td><code>drive_rename</code></td><td>Rename a Drive file or folder</td></tr>
+          <tr><td><code>drive_move</code></td><td>Move a file into a different folder</td></tr>
+          <tr><td><code>drive_share</code></td><td>Share a file with a user or make it public (use <code>anyone</code> as the email)</td></tr>
+          <tr><td><code>drive_delete</code></td><td>Permanently delete a Drive file</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Gmail</h3>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>gmail_list</code></td><td>List recent inbox messages with sender, subject, and ID</td></tr>
+          <tr><td><code>gmail_profile</code></td><td>Get your Gmail address and message/thread totals</td></tr>
+          <tr><td><code>gmail_read</code></td><td>Read the full content of a specific message</td></tr>
+          <tr><td><code>gmail_search</code></td><td>Search messages using Gmail query syntax (e.g. <code>from:boss@example.com is:unread</code>)</td></tr>
+          <tr><td><code>gmail_send</code></td><td>Send an email to any address</td></tr>
+          <tr><td><code>gmail_reply</code></td><td>Reply to an existing message in its thread</td></tr>
+          <tr><td><code>gmail_send_with_attachment</code></td><td>Send an email with a local file as an attachment</td></tr>
+          <tr><td><code>gmail_trash</code></td><td>Move a message to Trash (recoverable)</td></tr>
+          <tr><td><code>gmail_archive</code></td><td>Archive a message (removes it from inbox, keeps it searchable)</td></tr>
+          <tr><td><code>gmail_mark_read</code></td><td>Mark a message as read</td></tr>
+          <tr><td><code>gmail_mark_unread</code></td><td>Mark a message as unread</td></tr>
+          <tr><td><code>gmail_label</code></td><td>Add or remove a label on a message (creates the label if it doesn't exist)</td></tr>
+          <tr><td><code>gmail_delete</code></td><td>Permanently delete one or more messages by ID</td></tr>
+          <tr><td><code>gmail_delete_query</code></td><td>Permanently delete all messages matching a Gmail search query</td></tr>
+        </tbody>
+      </table>
+
+      <div class="docs-tip">
+        <strong>You never need to type these tool names.</strong> Just describe your task in plain English — Methoryn picks the right tools automatically and chains them together as needed. These are listed here for transparency, so you know exactly what the AI can do on your behalf.
+      </div>
+
+    <div class="docs-section" id="keybindings-anchor" style="display:none"></div>
+
       <h3>Web &amp; Research</h3>
       <table class="data-table">
         <thead>
@@ -328,10 +463,12 @@ Write a Python script that:
       <h3>Email &amp; Gmail</h3>
       <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem;">
         <div class="code-block">summarize my last 10 emails and save the summary as a PDF</div>
-        <div class="code-block">find all emails from last week about "invoice" and list the senders and amounts</div>
-        <div class="code-block">show me my most recent emails from Google</div>
-        <div class="code-block">how many unread emails do I have and who are they from?</div>
-        <div class="code-block">find emails about my flight booking and summarize the details</div>
+        <div class="code-block">search my Gmail for unread emails from last week and list the senders</div>
+        <div class="code-block">send an email to john@example.com with subject "Project Update" and a brief status message</div>
+        <div class="code-block">reply to the last email from my boss with a professional acknowledgement</div>
+        <div class="code-block">archive all emails from newsletter@promo.com</div>
+        <div class="code-block">mark all unread emails from support@service.com as read</div>
+        <div class="code-block">send the file report.pdf on my Desktop to alice@example.com with subject "Q3 Report"</div>
       </div>
 
       <h3>Document &amp; File Creation</h3>
@@ -345,11 +482,20 @@ Write a Python script that:
 
       <h3>Google Workspace</h3>
       <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem;">
-        <div class="code-block">create a Google Slides presentation about climate change with 8 slides and a dark theme</div>
+        <div class="code-block">create a Google Slides presentation about climate change with 8 slides and a midnight theme</div>
         <div class="code-block">create a Google Sheet with my monthly budget — income, fixed expenses, variable expenses, and savings</div>
         <div class="code-block">write a Google Doc with a 1000-word article about the history of the internet</div>
         <div class="code-block">create a Google Form for a customer satisfaction survey with 5 questions</div>
-        <div class="code-block">add a calendar event for my team standup every Monday at 9am starting next week</div>
+        <div class="code-block">add a calendar event for my team standup every Monday at 9am</div>
+        <div class="code-block">read my "Q3 Report" Google Doc and summarize it in bullet points</div>
+        <div class="code-block">append a "Next Steps" section to my project proposal Doc</div>
+        <div class="code-block">share my "Marketing Deck" presentation with partner@company.com as a viewer</div>
+        <div class="code-block">add a second sheet called "Summary" to my budget spreadsheet and bold the header row</div>
+        <div class="code-block">list my next 5 calendar events</div>
+        <div class="code-block">update my "Team Sync" calendar event to start at 10am instead of 9am</div>
+        <div class="code-block">search my Drive for files with "invoice" in the name and list them</div>
+        <div class="code-block">upload the file report.pdf from my Desktop to Google Drive</div>
+        <div class="code-block">get the responses from my customer feedback form</div>
       </div>
 
       <h3>Code &amp; Automation</h3>
