@@ -13,8 +13,11 @@
 
   <!-- ── Nav ── -->
   <nav>
-    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
-    <ul class="nav-links">
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" style="display:block; width:160px; height:44px;"></canvas></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="api-keys.html">API Keys</a></li>
       <li><a href="commands.html">Commands</a></li>
@@ -27,10 +30,10 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.32 — Free to install
+        <span></span> v0.1.33 — Free to install
       </div>
 
-      <h1>Your <em>AI agent</em><br/>lives in the terminal.</h1>
+      <h1>Your <em>AI agent</em> lives in the terminal.</h1>
 
       <h2 style="font-size:1rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Methoryn — Multi-Agent AI Assistant</h2>
 
@@ -203,21 +206,29 @@
   <section id="platform">
     <div class="container">
       <div class="section-label">Platform</div>
-      <h2>Windows &amp; macOS.</h2>
+      <h2>Windows, macOS &amp; Linux.</h2>
       <p style="color:var(--text-dim); max-width:560px;">
-        Requires Python 3.13+. Works on Windows and macOS. The taskbar progress animation is Windows-only — everything else is fully cross-platform.
+        Requires Python 3.13+. Works on Windows, macOS, and Linux. The taskbar progress animation is Windows-only — everything else is fully cross-platform.
       </p>
       <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem;">
         <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
           <span style="color:var(--accent);">✓</span> Windows 10 / 11
         </div>
         <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
-          <span style="color:var(--accent);">✓</span> macOS 12+
+          <span style="color:var(--accent);">✓</span> macOS 12+ (Intel &amp; Apple Silicon)
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
+          <span style="color:var(--accent);">✓</span> Linux (Ubuntu, Debian, Fedora, Arch)
         </div>
         <div style="display:flex; align-items:center; gap:0.5rem; color:var(--text-dim); font-size:0.9rem;">
           <span style="color:var(--accent);">✓</span> Python 3.13+
         </div>
       </div>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1.25rem;">
+        On macOS, install via <code style="color:var(--accent); font-size:0.82rem;">brew install python@3.13</code> then <code style="color:var(--accent); font-size:0.82rem;">pip install Methoryn</code>.
+        On Linux, use your system Python 3.13+ or <a href="https://github.com/astral-sh/uv" target="_blank">uv</a>.
+        The taskbar progress bar uses a Windows-only API and is silently skipped on other platforms.
+      </p>
     </div>
   </section>
 
@@ -244,7 +255,7 @@
 
   <!-- ── Footer ── -->
   <footer>
-    <canvas id="Methoryn-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <canvas id="Methoryn-logo-footer" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="get-started.html">Docs</a>
       <a href="api-keys.html">API Keys</a>
@@ -262,6 +273,24 @@
     document.addEventListener('DOMContentLoaded', function() {
       window.initMethorynLogo('Methoryn-logo-nav');
       window.initMethorynLogo('Methoryn-logo-footer');
+      // Mobile nav toggle
+      var toggle = document.getElementById('nav-toggle');
+      var links  = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function() {
+          var open = links.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+        });
+        // Close on link tap
+        links.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            links.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
     });
     function copyInstall(btn) {
       navigator.clipboard.writeText('pip install Methoryn').then(() => {

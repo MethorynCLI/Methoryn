@@ -12,8 +12,11 @@
 
   <!-- ── Nav ── -->
   <nav>
-    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas></a>
-    <ul class="nav-links">
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" data-Methoryn-logo style="display:block; width:160px; height:44px;"></canvas></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="api-keys.html">API Keys</a></li>
       <li><a href="commands.html">Commands</a></li>
@@ -71,7 +74,7 @@
 
   <!-- ── Footer ── -->
   <footer>
-    <canvas id="Methoryn-logo-footer" data-Methoryn-logo width="160" height="44" style="display:block;"></canvas>
+    <canvas id="Methoryn-logo-footer" data-Methoryn-logo style="display:block;"></canvas>
     <div class="footer-links">
       <a href="get-started.html">Docs</a>
       <a href="api-keys.html">API Keys</a>
@@ -89,6 +92,22 @@
     document.addEventListener('DOMContentLoaded', function() {
       window.initMethorynLogo('Methoryn-logo-nav');
       window.initMethorynLogo('Methoryn-logo-footer');
+      var toggle = document.getElementById('nav-toggle');
+      var links  = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function() {
+          var open = links.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+        });
+        links.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            links.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
     });
   </script>
 
