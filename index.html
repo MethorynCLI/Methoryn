@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CORVUS — Multi-Agent AI CLI</title>
-  <meta name="description" content="CORVUS is a terminal-based multi-agent AI assistant powered by Groq and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
+  <title>Methoryn — Multi-Agent AI CLI</title>
+  <meta name="description" content="Methoryn is a terminal-based multi-agent AI assistant powered by Groq and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -12,7 +12,7 @@
 
   <!-- ── Nav ── -->
   <nav>
-    <a class="nav-logo" href="index.html"><canvas id="corvus-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="api-keys.html">API Keys</a></li>
@@ -26,13 +26,13 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.24 — Free to install
+        <span></span> v0.1.26 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em><br/>lives in the terminal.</h1>
 
       <p class="hero-sub">
-        CORVUS is a multi-agent CLI powered by Groq and Gemini. It writes files,
+        Methoryn is a multi-agent CLI powered by Groq and Gemini. It writes files,
         runs code, reads your Gmail, edits Google Docs, builds presentations,
         and handles complex tasks — all from a single prompt.
       </p>
@@ -44,7 +44,7 @@
 
       <div class="install-box">
         <span class="prompt">$</span>
-        <span id="install-cmd">pip install corvus-cli</span>
+        <span id="install-cmd">pip install Methoryn-cli</span>
         <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
       </div>
 
@@ -54,10 +54,10 @@
           <div class="terminal-dot" style="background:#ff5f57;"></div>
           <div class="terminal-dot" style="background:#febc2e;"></div>
           <div class="terminal-dot" style="background:#28c840;"></div>
-          <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">CORVUS</span>
+          <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">Methoryn</span>
         </div>
         <div class="terminal-body">
-          <div><span class="t-prompt">◉</span> <span class="t-success">CORVUS ready.</span> <span class="t-dim">Type a prompt or type / for commands.</span></div>
+          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">Type a prompt or type / for commands.</span></div>
           <div class="t-dim">  ✓ Groq          ready  [main task agent]</div>
           <div class="t-dim">  ✓ Gemini        ready  [sub-agents primary]</div>
           <div class="t-dim">  ✓ Pollinations  ready  [image gen]</div>
@@ -80,7 +80,7 @@
     <div class="container">
       <div class="section-label">Capabilities</div>
       <h2>One agent. Everything you need.</h2>
-      <p style="color:var(--text-dim); max-width:560px;">CORVUS routes tasks through specialised agents automatically — you just type what you want.</p>
+      <p style="color:var(--text-dim); max-width:560px;">Methoryn routes tasks through specialised agents automatically — you just type what you want.</p>
 
       <div class="features-grid">
         <div class="feature-card">
@@ -226,11 +226,11 @@
       <div class="cta-banner">
         <div class="section-label">Get Started</div>
         <h2>Install in one command.</h2>
-        <p>No build steps. No config files to edit. Run <code style="color:var(--accent);">CORVUS</code> and the setup screen walks you through everything.</p>
+        <p>No build steps. No config files to edit. Run <code style="color:var(--accent);">Methoryn</code> and the setup screen walks you through everything.</p>
         <div style="display:flex; justify-content:center; margin-bottom:1.5rem;">
           <div class="install-box">
             <span class="prompt">$</span>
-            <span id="install-cmd-2">pip install corvus-cli</span>
+            <span id="install-cmd-2">pip install Methoryn-cli</span>
             <button class="copy-btn" onclick="copyInstall2(this)">Copy</button>
           </div>
         </div>
@@ -241,32 +241,32 @@
 
   <!-- ── Footer ── -->
   <footer>
-    <canvas id="corvus-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <canvas id="Methoryn-logo-footer" width="160" height="44" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="get-started.html">Docs</a>
       <a href="api-keys.html">API Keys</a>
       <a href="commands.html">Commands</a>
       <a href="guidelines.html">Guidelines</a>
-      <a href="mailto:CORVUS.cli@gmail.com">Contact</a>
+      <a href="mailto:Methoryn.cli@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">MIT © 2026 CORVUS</span>
+    <span class="footer-copy">MIT © 2026 Methoryn</span>
   </footer>
 
   <script src="logo.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      window.initCorvusLogo('corvus-logo-nav');
-      window.initCorvusLogo('corvus-logo-footer');
+      window.initMethorynLogo('Methoryn-logo-nav');
+      window.initMethorynLogo('Methoryn-logo-footer');
     });
     function copyInstall(btn) {
-      navigator.clipboard.writeText('pip install corvus-cli').then(() => {
+      navigator.clipboard.writeText('pip install Methoryn-cli').then(() => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
         setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
     function copyInstall2(btn) {
-      navigator.clipboard.writeText('pip install corvus-cli').then(() => {
+      navigator.clipboard.writeText('pip install Methoryn-cli').then(() => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
         setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);

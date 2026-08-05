@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Installation — CORVUS</title>
-  <meta name="description" content="Detailed CORVUS installation reference — system requirements, virtual environments, updating, and uninstalling."/>
+  <title>Installation — Methoryn</title>
+  <meta name="description" content="Detailed Methoryn installation reference — system requirements, virtual environments, updating, and uninstalling."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -12,7 +12,7 @@
 
   <!-- ── Nav ── -->
   <nav>
-    <a class="nav-logo" href="index.html"><canvas id="corvus-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="api-keys.html">API Keys</a></li>
@@ -29,7 +29,7 @@
     <div class="docs-hero">
       <div class="section-label">Reference</div>
       <h1>Installation</h1>
-      <p>Full installation reference for CORVUS — system requirements, platform-specific instructions, virtual environments, updating, and uninstalling.</p>
+      <p>Full installation reference for Methoryn — system requirements, platform-specific instructions, virtual environments, updating, and uninstalling.</p>
     </div>
 
     <!-- ── Requirements ── -->
@@ -55,13 +55,13 @@
       <div class="code-block">python --version
 <span class="comment"># or</span>
 python3 --version</div>
-      <p>If you see anything below 3.13, follow the platform-specific installation steps below before installing CORVUS.</p>
+      <p>If you see anything below 3.13, follow the platform-specific installation steps below before installing Methoryn.</p>
 
       <h3>Disk space</h3>
-      <p>CORVUS and all its dependencies require approximately 150–250 MB of disk space depending on your platform and whether some dependencies are already installed.</p>
+      <p>Methoryn and all its dependencies require approximately 150–250 MB of disk space depending on your platform and whether some dependencies are already installed.</p>
 
       <h3>Terminal</h3>
-      <p>CORVUS uses the <a href="https://github.com/Textualize/textual" target="_blank">Textual</a> terminal UI framework. It works best in modern terminals that support 24-bit color and unicode:</p>
+      <p>Methoryn uses the <a href="https://github.com/Textualize/textual" target="_blank">Textual</a> terminal UI framework. It works best in modern terminals that support 24-bit color and unicode:</p>
       <ul>
         <li><strong style="color:#fff;">Windows:</strong> Windows Terminal (recommended), PowerShell 7, or cmd.exe</li>
         <li><strong style="color:#fff;">macOS:</strong> Terminal.app or iTerm2</li>
@@ -83,23 +83,23 @@ python3 --version</div>
           <div class="step-num">1</div>
           <div class="step-content">
             <h3>Download Python 3.13</h3>
-            <p>Go to <a href="https://python.org/downloads" target="_blank">python.org/downloads</a> and download the latest 3.13.x installer. Run the installer. On the first screen, <strong style="color:#fff;">check "Add Python to PATH"</strong> before clicking Install Now. Without this, <code style="color:var(--accent);">CORVUS</code> won't be found after installation.</p>
+            <p>Go to <a href="https://python.org/downloads" target="_blank">python.org/downloads</a> and download the latest 3.13.x installer. Run the installer. On the first screen, <strong style="color:#fff;">check "Add Python to PATH"</strong> before clicking Install Now. Without this, <code style="color:var(--accent);">Methoryn</code> won't be found after installation.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h3>Open PowerShell and install CORVUS</h3>
-            <div class="code-block">pip install corvus-cli</div>
+            <h3>Open PowerShell and install Methoryn</h3>
+            <div class="code-block">pip install Methoryn-cli</div>
             <p>If you see a "pip not found" error, try:</p>
-            <div class="code-block">python -m pip install corvus-cli</div>
+            <div class="code-block">python -m pip install Methoryn-cli</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Verify</h3>
-            <div class="code-block">CORVUS --version</div>
+            <div class="code-block">Methoryn --version</div>
             <p>If this fails with "command not found", add Python's Scripts folder to your PATH. It is typically at <code style="color:var(--accent);">C:\Users\YourName\AppData\Local\Programs\Python\Python313\Scripts</code>.</p>
           </div>
         </div>
@@ -122,15 +122,15 @@ brew install python@3.13</div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h3>Install CORVUS</h3>
-            <div class="code-block">pip3 install CORVUS</div>
+            <h3>Install Methoryn</h3>
+            <div class="code-block">pip3 install Methoryn</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Verify</h3>
-            <div class="code-block">CORVUS --version</div>
+            <div class="code-block">Methoryn --version</div>
             <p>If this fails, your Python bin path may not be on your shell's PATH. Add this to your <code style="color:var(--accent);">~/.zshrc</code>:</p>
             <div class="code-block">export PATH="$(brew --prefix python@3.13)/bin:$PATH"</div>
           </div>
@@ -151,15 +151,15 @@ sudo apt install python3.13 python3.13-pip python3.13-venv</div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h3>Install CORVUS</h3>
-            <div class="code-block">pip3.13 install CORVUS</div>
+            <h3>Install Methoryn</h3>
+            <div class="code-block">pip3.13 install Methoryn</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Verify</h3>
-            <div class="code-block">CORVUS --version</div>
+            <div class="code-block">Methoryn --version</div>
           </div>
         </div>
       </div>
@@ -169,14 +169,14 @@ sudo apt install python3.13 python3.13-pip python3.13-venv</div>
     <div class="docs-section" id="venv">
       <div class="section-label">Advanced</div>
       <h2>Virtual Environments</h2>
-      <p>Installing CORVUS in a virtual environment keeps it isolated from your global Python install. This is useful if you work on multiple Python projects with potentially conflicting dependencies.</p>
+      <p>Installing Methoryn in a virtual environment keeps it isolated from your global Python install. This is useful if you work on multiple Python projects with potentially conflicting dependencies.</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
             <h3>Create a virtual environment</h3>
-            <div class="code-block">python -m venv CORVUS-env</div>
+            <div class="code-block">python -m venv Methoryn-env</div>
           </div>
         </div>
         <div class="step">
@@ -184,27 +184,27 @@ sudo apt install python3.13 python3.13-pip python3.13-venv</div>
           <div class="step-content">
             <h3>Activate it</h3>
             <div class="code-block"><span class="comment"># Windows PowerShell</span>
-CORVUS-env\Scripts\Activate.ps1
+Methoryn-env\Scripts\Activate.ps1
 
 <span class="comment"># Windows cmd.exe</span>
-CORVUS-env\Scripts\activate.bat
+Methoryn-env\Scripts\activate.bat
 
 <span class="comment"># macOS / Linux</span>
-source CORVUS-env/bin/activate</div>
+source Methoryn-env/bin/activate</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h3>Install CORVUS inside the venv</h3>
-            <div class="code-block">pip install corvus-cli</div>
+            <h3>Install Methoryn inside the venv</h3>
+            <div class="code-block">pip install Methoryn-cli</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
           <div class="step-content">
             <h3>Activate before each use</h3>
-            <p>Each time you open a new terminal session, activate the virtual environment before running <code style="color:var(--accent);">CORVUS</code>. When active, your prompt will show the environment name in parentheses: <code style="color:var(--accent);">(CORVUS-env)</code>.</p>
+            <p>Each time you open a new terminal session, activate the virtual environment before running <code style="color:var(--accent);">Methoryn</code>. When active, your prompt will show the environment name in parentheses: <code style="color:var(--accent);">(Methoryn-env)</code>.</p>
           </div>
         </div>
       </div>
@@ -213,56 +213,56 @@ source CORVUS-env/bin/activate</div>
     <!-- ── Updating ── -->
     <div class="docs-section" id="updating">
       <div class="section-label">Maintenance</div>
-      <h2>Updating CORVUS</h2>
-      <p>CORVUS is updated regularly with bug fixes, new commands, and improved AI routing. To upgrade to the latest version:</p>
+      <h2>Updating Methoryn</h2>
+      <p>Methoryn is updated regularly with bug fixes, new commands, and improved AI routing. To upgrade to the latest version:</p>
 
-      <div class="code-block">pip install --upgrade CORVUS</div>
+      <div class="code-block">pip install --upgrade Methoryn</div>
 
       <p>To check what version you currently have and what the latest is:</p>
       <div class="code-block"><span class="comment"># Check your installed version</span>
-CORVUS --version
+Methoryn --version
 
 <span class="comment"># Check what's available on PyPI</span>
-pip index versions CORVUS</div>
+pip index versions Methoryn</div>
 
       <h3>Updating dependencies</h3>
       <p>If a dependency update is needed (for example if a provider's Python client releases a security fix), you can force a full upgrade including all dependencies:</p>
-      <div class="code-block">pip install --upgrade --upgrade-strategy eager CORVUS</div>
+      <div class="code-block">pip install --upgrade --upgrade-strategy eager Methoryn</div>
 
       <h3>Checking for updates automatically</h3>
-      <p>CORVUS does not currently check for updates automatically on launch. We recommend checking periodically with <code style="color:var(--accent);">pip install --upgrade CORVUS</code> or watching the <a href="https://github.com/CORVUSCLI/CORVUS" target="_blank">GitHub releases page</a> for new versions.</p>
+      <p>Methoryn does not currently check for updates automatically on launch. We recommend checking periodically with <code style="color:var(--accent);">pip install --upgrade Methoryn</code> or watching the <a href="https://github.com/MethorynCLI/Methoryn" target="_blank">GitHub releases page</a> for new versions.</p>
 
       <div class="docs-tip">
-        <strong>After updating:</strong> Your API keys and Google token are stored separately in <code style="color:var(--accent);">~/.CORVUS/</code> and are never touched by the update process. You won't need to reconfigure anything.
+        <strong>After updating:</strong> Your API keys and Google token are stored separately in <code style="color:var(--accent);">~/.Methoryn/</code> and are never touched by the update process. You won't need to reconfigure anything.
       </div>
     </div>
 
     <!-- ── Uninstalling ── -->
     <div class="docs-section" id="uninstall">
       <div class="section-label">Maintenance</div>
-      <h2>Uninstalling CORVUS</h2>
-      <p>To remove CORVUS from your Python environment:</p>
-      <div class="code-block">pip uninstall CORVUS</div>
+      <h2>Uninstalling Methoryn</h2>
+      <p>To remove Methoryn from your Python environment:</p>
+      <div class="code-block">pip uninstall Methoryn</div>
 
-      <p>This removes the CORVUS package but leaves your configuration files in place. To do a complete clean removal including your API keys, Google token, sessions, and outputs:</p>
-      <div class="code-block"><span class="comment"># Remove the CORVUS package</span>
-pip uninstall CORVUS
+      <p>This removes the Methoryn package but leaves your configuration files in place. To do a complete clean removal including your API keys, Google token, sessions, and outputs:</p>
+      <div class="code-block"><span class="comment"># Remove the Methoryn package</span>
+pip uninstall Methoryn
 
-<span class="comment"># Remove all CORVUS data — macOS / Linux</span>
-rm -rf ~/.CORVUS
+<span class="comment"># Remove all Methoryn data — macOS / Linux</span>
+rm -rf ~/.Methoryn
 
-<span class="comment"># Remove all CORVUS data — Windows PowerShell</span>
-Remove-Item -Recurse -Force "$env:USERPROFILE\.CORVUS"</div>
+<span class="comment"># Remove all Methoryn data — Windows PowerShell</span>
+Remove-Item -Recurse -Force "$env:USERPROFILE\.Methoryn"</div>
 
       <div class="docs-warn">
-        <strong>This is permanent.</strong> Deleting <code>~/.CORVUS/</code> removes your saved API keys and Google OAuth token. You will need to reconfigure everything from scratch if you reinstall CORVUS later.
+        <strong>This is permanent.</strong> Deleting <code>~/.Methoryn/</code> removes your saved API keys and Google OAuth token. You will need to reconfigure everything from scratch if you reinstall Methoryn later.
       </div>
 
       <h3>Removing a virtual environment</h3>
-      <p>If you installed CORVUS in a virtual environment, simply delete the environment folder:</p>
+      <p>If you installed Methoryn in a virtual environment, simply delete the environment folder:</p>
       <div class="code-block"><span class="comment"># Delete the virtual environment folder</span>
-rm -rf CORVUS-env          <span class="comment">(macOS/Linux)</span>
-Remove-Item -Recurse -Force CORVUS-env  <span class="comment">(Windows)</span></div>
+rm -rf Methoryn-env          <span class="comment">(macOS/Linux)</span>
+Remove-Item -Recurse -Force Methoryn-env  <span class="comment">(Windows)</span></div>
     </div>
 
     <!-- ── Troubleshooting ── -->
@@ -270,29 +270,29 @@ Remove-Item -Recurse -Force CORVUS-env  <span class="comment">(Windows)</span></
       <div class="section-label">Help</div>
       <h2>Troubleshooting Installation</h2>
 
-      <h3>"CORVUS: command not found" after installing</h3>
+      <h3>"Methoryn: command not found" after installing</h3>
       <p>Python's scripts directory is not on your system PATH. Find the scripts directory:</p>
       <div class="code-block"><span class="comment"># Find where pip installs scripts</span>
 python -m site --user-base</div>
       <p>Add the <code style="color:var(--accent);">bin</code> (macOS/Linux) or <code style="color:var(--accent);">Scripts</code> (Windows) subdirectory of that path to your PATH environment variable, then restart your terminal.</p>
 
       <h3>"pip: command not found"</h3>
-      <div class="code-block">python -m pip install corvus-cli</div>
+      <div class="code-block">python -m pip install Methoryn-cli</div>
       <p>Using <code style="color:var(--accent);">python -m pip</code> bypasses PATH issues for pip itself.</p>
 
       <h3>Permission errors on macOS/Linux</h3>
       <p>Never use <code style="color:var(--accent);">sudo pip install</code>. It installs into the system Python, which can break system tools. Instead, install with the user flag:</p>
-      <div class="code-block">pip install --user CORVUS</div>
+      <div class="code-block">pip install --user Methoryn</div>
 
       <h3>SSL certificate errors</h3>
       <p>This usually means your system certificates are out of date. On macOS, run the <code>Install Certificates.command</code> file in your Python installation folder. On Windows, ensure Windows Update is current.</p>
 
       <h3>ImportError or ModuleNotFoundError at launch</h3>
       <p>A dependency may have failed to install. Try reinstalling with:</p>
-      <div class="code-block">pip install --force-reinstall CORVUS</div>
+      <div class="code-block">pip install --force-reinstall Methoryn</div>
 
       <h3>Still stuck?</h3>
-      <p>Open an issue or email us at <a href="mailto:CORVUS.cli@gmail.com">CORVUS.cli@gmail.com</a> with your platform, Python version, and the full error message.</p>
+      <p>Open an issue or email us at <a href="mailto:Methoryn.cli@gmail.com">Methoryn.cli@gmail.com</a> with your platform, Python version, and the full error message.</p>
     </div>
 
     <!-- ── Page nav ── -->
@@ -312,23 +312,23 @@ python -m site --user-base</div>
 
   <!-- ── Footer ── -->
   <footer>
-    <canvas id="corvus-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <canvas id="Methoryn-logo-footer" width="160" height="44" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="get-started.html">Docs</a>
       <a href="api-keys.html">API Keys</a>
       <a href="commands.html">Commands</a>
       <a href="guidelines.html">Guidelines</a>
-      <a href="mailto:CORVUS.cli@gmail.com">Contact</a>
+      <a href="mailto:Methoryn.cli@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">MIT © 2026 CORVUS</span>
+    <span class="footer-copy">MIT © 2026 Methoryn</span>
   </footer>
 
   <script src="logo.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      window.initCorvusLogo('corvus-logo-nav');
-      window.initCorvusLogo('corvus-logo-footer');
+      window.initMethorynLogo('Methoryn-logo-nav');
+      window.initMethorynLogo('Methoryn-logo-footer');
     });
   </script>
 </body>

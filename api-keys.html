@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>API Keys — CORVUS</title>
-  <meta name="description" content="Configure API keys for CORVUS — Groq, Gemini, Mistral, NVIDIA, OpenRouter, HuggingFace, Cloudflare, and more."/>
+  <title>API Keys — Methoryn</title>
+  <meta name="description" content="Configure API keys for Methoryn — Groq, Gemini, Mistral, NVIDIA, OpenRouter, HuggingFace, Cloudflare, and more."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -12,7 +12,7 @@
 
   <!-- ── Nav ── -->
   <nav>
-    <a class="nav-logo" href="index.html"><canvas id="corvus-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
+    <a class="nav-logo" href="index.html"><canvas id="Methoryn-logo-nav" width="160" height="44" style="display:block;"></canvas></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="api-keys.html" class="active">API Keys</a></li>
@@ -29,29 +29,29 @@
     <div class="docs-hero">
       <div class="section-label">Configuration</div>
       <h1>API Keys</h1>
-      <p>CORVUS connects to multiple AI providers. Only one key is required to get started — everything else is optional and unlocks additional capabilities.</p>
+      <p>Methoryn connects to multiple AI providers. Only one key is required to get started — everything else is optional and unlocks additional capabilities.</p>
     </div>
 
     <!-- ── Overview ── -->
     <div class="docs-section" id="overview">
       <div class="section-label">Overview</div>
-      <h2>How Keys Work in CORVUS</h2>
-      <p>CORVUS is a multi-agent system. Different tasks are routed to different AI providers depending on what produces the best result. The main task agent runs on Groq. Sub-agents and specialized tasks can use Gemini, Mistral, NVIDIA NIM, OpenRouter, and HuggingFace as fallbacks or primaries depending on availability.</p>
+      <h2>How Keys Work in Methoryn</h2>
+      <p>Methoryn is a multi-agent system. Different tasks are routed to different AI providers depending on what produces the best result. The main task agent runs on Groq. Sub-agents and specialized tasks can use Gemini, Mistral, NVIDIA NIM, OpenRouter, and HuggingFace as fallbacks or primaries depending on availability.</p>
 
       <h3>The key hierarchy</h3>
-      <p>CORVUS checks for API keys in this order:</p>
+      <p>Methoryn checks for API keys in this order:</p>
       <ol>
-        <li>Keys saved in the in-app key editor (<code style="color:var(--accent);">~/.CORVUS/byok.json</code>)</li>
+        <li>Keys saved in the in-app key editor (<code style="color:var(--accent);">~/.Methoryn/byok.json</code>)</li>
         <li>Environment variables set in your shell session</li>
-        <li>A <code style="color:var(--accent);">.env</code> file in the directory where you run <code style="color:var(--accent);">CORVUS</code></li>
+        <li>A <code style="color:var(--accent);">.env</code> file in the directory where you run <code style="color:var(--accent);">Methoryn</code></li>
       </ol>
       <p>The in-app editor (recommended) takes priority over everything else. This means you can override a key for a single session by setting an environment variable, without permanently changing your saved configuration.</p>
 
       <h3>Where keys are stored</h3>
-      <p>Keys saved through the in-app editor are written to <code style="color:var(--accent);">~/.CORVUS/byok.json</code> on your machine. This file is local only — it is never transmitted to CORVUS servers or any third party. The only time a key leaves your machine is when CORVUS makes a direct API call to the provider that key belongs to.</p>
+      <p>Keys saved through the in-app editor are written to <code style="color:var(--accent);">~/.Methoryn/byok.json</code> on your machine. This file is local only — it is never transmitted to Methoryn servers or any third party. The only time a key leaves your machine is when Methoryn makes a direct API call to the provider that key belongs to.</p>
 
       <div class="docs-tip">
-        <strong>Free tiers only:</strong> Every provider listed on this page offers a free tier with no credit card required. You can run CORVUS at full capability without spending anything.
+        <strong>Free tiers only:</strong> Every provider listed on this page offers a free tier with no credit card required. You can run Methoryn at full capability without spending anything.
       </div>
     </div>
 
@@ -59,7 +59,7 @@
     <div class="docs-section" id="required">
       <div class="section-label">Required</div>
       <h2>Groq API Key</h2>
-      <p>The Groq API key is the only key CORVUS requires. It powers the main task agent — the one that receives your prompts, reasons through them, and decides what actions to take. Without it, CORVUS cannot run.</p>
+      <p>The Groq API key is the only key Methoryn requires. It powers the main task agent — the one that receives your prompts, reasons through them, and decides what actions to take. Without it, Methoryn cannot run.</p>
 
       <h3>Getting your Groq key</h3>
       <div class="steps">
@@ -74,14 +74,14 @@
           <div class="step-num">2</div>
           <div class="step-content">
             <h3>Create an API key</h3>
-            <p>In the Groq Console, click <strong style="color:#fff;">API Keys</strong> in the left sidebar, then <strong style="color:#fff;">Create API Key</strong>. Name it anything (e.g. "CORVUS") and click Create. Copy the key immediately — Groq only shows it once.</p>
+            <p>In the Groq Console, click <strong style="color:#fff;">API Keys</strong> in the left sidebar, then <strong style="color:#fff;">Create API Key</strong>. Name it anything (e.g. "Methoryn") and click Create. Copy the key immediately — Groq only shows it once.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h3>Add it to CORVUS</h3>
-            <p>If you are in the setup screen, paste it into the Groq API Key field. If CORVUS is already running, type <code style="color:var(--accent);">/keys</code> to open the key editor, find the GROQ_API_KEY field, and paste your key there.</p>
+            <h3>Add it to Methoryn</h3>
+            <p>If you are in the setup screen, paste it into the Groq API Key field. If Methoryn is already running, type <code style="color:var(--accent);">/keys</code> to open the key editor, find the GROQ_API_KEY field, and paste your key there.</p>
           </div>
         </div>
       </div>
@@ -93,14 +93,14 @@
         <li>No daily or monthly hard cap on the free tier</li>
         <li>Access to Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B, and more</li>
       </ul>
-      <p>For most personal use cases, the free tier is more than sufficient. If you hit rate limits during heavy use, CORVUS will automatically throttle requests and retry.</p>
+      <p>For most personal use cases, the free tier is more than sufficient. If you hit rate limits during heavy use, Methoryn will automatically throttle requests and retry.</p>
     </div>
 
     <!-- ── Optional Keys ── -->
     <div class="docs-section" id="optional">
       <div class="section-label">Optional</div>
       <h2>Optional Provider Keys</h2>
-      <p>The following keys are all optional. Adding them expands what CORVUS can do — enabling additional sub-agents, better fallback handling, and specialized capabilities like image generation.</p>
+      <p>The following keys are all optional. Adding them expands what Methoryn can do — enabling additional sub-agents, better fallback handling, and specialized capabilities like image generation.</p>
 
       <table class="data-table">
         <thead>
@@ -164,14 +164,14 @@
       </table>
 
       <h3>Google AI Studio (Gemini)</h3>
-      <p>The Google API key from AI Studio is separate from your Google account sign-in. The Google Sign-In (OAuth) connects CORVUS to your Gmail, Drive, and Workspace. The Google AI Studio key connects CORVUS to the Gemini model API for AI inference. You need both if you want both Google Workspace integration and Gemini-powered sub-agents.</p>
+      <p>The Google API key from AI Studio is separate from your Google account sign-in. The Google Sign-In (OAuth) connects Methoryn to your Gmail, Drive, and Workspace. The Google AI Studio key connects Methoryn to the Gemini model API for AI inference. You need both if you want both Google Workspace integration and Gemini-powered sub-agents.</p>
       <p>To get a Google AI Studio key, go to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>, sign in with your Google account, and click <strong style="color:#fff;">Create API key</strong>. The free tier gives you 1 million tokens per minute — effectively unlimited for personal use.</p>
 
       <h3>Mistral</h3>
-      <p>Mistral provides some of the best open-weight models available. CORVUS uses Mistral for its chat agent — conversational tasks, explanations, and writing. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
+      <p>Mistral provides some of the best open-weight models available. Methoryn uses Mistral for its chat agent — conversational tasks, explanations, and writing. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
 
       <h3>OpenRouter</h3>
-      <p>OpenRouter is a unified API that routes requests to dozens of AI providers and models. CORVUS uses it as a fallback when other sub-agents are unavailable or rate-limited. With one OpenRouter key, you get access to GPT-4o, Claude, Gemini, Llama, and many others. Free tier gives 50 requests per day. Sign up at <a href="https://openrouter.ai/" target="_blank">openrouter.ai</a>.</p>
+      <p>OpenRouter is a unified API that routes requests to dozens of AI providers and models. Methoryn uses it as a fallback when other sub-agents are unavailable or rate-limited. With one OpenRouter key, you get access to GPT-4o, Claude, Gemini, Llama, and many others. Free tier gives 50 requests per day. Sign up at <a href="https://openrouter.ai/" target="_blank">openrouter.ai</a>.</p>
 
       <h3>Pollinations.ai</h3>
       <p>Image generation via <code style="color:var(--accent);">/image</code> uses Pollinations.ai and does not require an API key at all. It is free and open by default. The <code>pollinations.ai_API_KEY</code> field exists for future use if Pollinations introduces authenticated tiers.</p>
@@ -181,12 +181,12 @@
     <div class="docs-section" id="managing">
       <div class="section-label">Configuration</div>
       <h2>Managing Your Keys</h2>
-      <p>CORVUS gives you three ways to manage API keys. The in-app editor is the recommended method for most users.</p>
+      <p>Methoryn gives you three ways to manage API keys. The in-app editor is the recommended method for most users.</p>
 
       <h3>Method 1: In-app key editor (recommended)</h3>
-      <p>Type <code style="color:var(--accent);">/keys</code> from anywhere inside CORVUS to open the full key editor UI. It shows all supported providers, their current status (set / not set), and lets you add, edit, or remove keys without touching any files.</p>
+      <p>Type <code style="color:var(--accent);">/keys</code> from anywhere inside Methoryn to open the full key editor UI. It shows all supported providers, their current status (set / not set), and lets you add, edit, or remove keys without touching any files.</p>
       <div class="code-block">/keys</div>
-      <p>Changes made in the key editor take effect immediately — no restart required. Keys are written to <code style="color:var(--accent);">~/.CORVUS/byok.json</code>.</p>
+      <p>Changes made in the key editor take effect immediately — no restart required. Keys are written to <code style="color:var(--accent);">~/.Methoryn/byok.json</code>.</p>
 
       <h3>Method 2: Environment variables</h3>
       <p>You can set keys as environment variables in your shell. This is useful for CI/CD pipelines or if you prefer not to store keys in a file.</p>
@@ -196,12 +196,12 @@ $env:GROQ_API_KEY = "gsk_your_key_here"
 <span class="comment"># macOS / Linux (bash/zsh)</span>
 export GROQ_API_KEY="gsk_your_key_here"
 
-<span class="comment"># Then launch CORVUS in the same session</span>
-CORVUS</div>
+<span class="comment"># Then launch Methoryn in the same session</span>
+Methoryn</div>
       <p>Environment variables are session-scoped — they disappear when you close your terminal. To make them permanent, add the export line to your shell profile (<code style="color:var(--accent);">~/.zshrc</code>, <code style="color:var(--accent);">~/.bashrc</code>, or Windows system environment variables).</p>
 
       <h3>Method 3: .env file</h3>
-      <p>Create a file named <code style="color:var(--accent);">.env</code> in the directory where you run <code style="color:var(--accent);">CORVUS</code>. CORVUS will load it automatically on startup.</p>
+      <p>Create a file named <code style="color:var(--accent);">.env</code> in the directory where you run <code style="color:var(--accent);">Methoryn</code>. Methoryn will load it automatically on startup.</p>
       <div class="code-block"><span class="comment"># .env file — one key per line</span>
 GROQ_API_KEY=gsk_your_key_here
 GOOGLE_API_KEY=AIzaSy_your_key_here
@@ -212,17 +212,17 @@ MISTRAL_API_KEY=your_key_here</div>
       </div>
 
       <h3>Checking key status</h3>
-      <p>Inside CORVUS, run <code style="color:var(--accent);">/keys</code> to see which keys are currently configured. The editor shows a green indicator next to each key that is set and a grey indicator for keys that are missing.</p>
+      <p>Inside Methoryn, run <code style="color:var(--accent);">/keys</code> to see which keys are currently configured. The editor shows a green indicator next to each key that is set and a grey indicator for keys that are missing.</p>
 
       <h3>Removing a key</h3>
-      <p>Open <code style="color:var(--accent);">/keys</code>, navigate to the key you want to remove, clear the field, and save. Alternatively, edit <code style="color:var(--accent);">~/.CORVUS/byok.json</code> directly in any text editor and delete the relevant line.</p>
+      <p>Open <code style="color:var(--accent);">/keys</code>, navigate to the key you want to remove, clear the field, and save. Alternatively, edit <code style="color:var(--accent);">~/.Methoryn/byok.json</code> directly in any text editor and delete the relevant line.</p>
 
       <h3>Key file location</h3>
       <div class="code-block"><span class="comment"># macOS / Linux</span>
-~/.CORVUS/byok.json
+~/.Methoryn/byok.json
 
 <span class="comment"># Windows</span>
-C:\Users\YourName\.CORVUS\byok.json</div>
+C:\Users\YourName\.Methoryn\byok.json</div>
     </div>
 
     <!-- ── Credit Usage Tips ── -->
@@ -232,7 +232,7 @@ C:\Users\YourName\.CORVUS\byok.json</div>
       <p>Every AI provider counts usage in tokens. Understanding how tokens work helps you stay well within free tier limits and avoid unexpected rate limit errors.</p>
 
       <h3>What is a token?</h3>
-      <p>A token is roughly 3/4 of a word. The sentence "pip install corvus-cli" is about 4 tokens. A full email summary prompt might be 500–2,000 tokens including the response. Tokens count for both your input (the prompt) and the output (the AI's response).</p>
+      <p>A token is roughly 3/4 of a word. The sentence "pip install Methoryn-cli" is about 4 tokens. A full email summary prompt might be 500–2,000 tokens including the response. Tokens count for both your input (the prompt) and the output (the AI's response).</p>
 
       <h3>Free tier limits by provider</h3>
       <table class="data-table">
@@ -282,10 +282,10 @@ C:\Users\YourName\.CORVUS\byok.json</div>
       <h3>Tips for staying within free limits</h3>
       <ul>
         <li><strong style="color:#fff;">Be specific in prompts</strong> — A focused prompt generates a tighter response and uses fewer tokens than a vague one that produces a long, hedged answer.</li>
-        <li><strong style="color:#fff;">Avoid sending large files as prompts</strong> — If you need CORVUS to work with a large document, describe its structure rather than pasting the entire contents.</li>
-        <li><strong style="color:#fff;">Add a second provider</strong> — With both Groq and Gemini keys set, CORVUS can route heavy tasks to Gemini's 1M TPM free tier, keeping Groq headroom available.</li>
-        <li><strong style="color:#fff;">Check usage in the provider console</strong> — Groq shows your usage at <a href="https://console.groq.com/" target="_blank">console.groq.com</a>. Check it periodically if you use CORVUS heavily.</li>
-        <li><strong style="color:#fff;">Don't loop CORVUS in scripts</strong> — Running CORVUS in a loop (e.g. calling it 50 times in a bash script) can exhaust Groq's 12K TPM limit in seconds. Add delays if you automate CORVUS.</li>
+        <li><strong style="color:#fff;">Avoid sending large files as prompts</strong> — If you need Methoryn to work with a large document, describe its structure rather than pasting the entire contents.</li>
+        <li><strong style="color:#fff;">Add a second provider</strong> — With both Groq and Gemini keys set, Methoryn can route heavy tasks to Gemini's 1M TPM free tier, keeping Groq headroom available.</li>
+        <li><strong style="color:#fff;">Check usage in the provider console</strong> — Groq shows your usage at <a href="https://console.groq.com/" target="_blank">console.groq.com</a>. Check it periodically if you use Methoryn heavily.</li>
+        <li><strong style="color:#fff;">Don't loop Methoryn in scripts</strong> — Running Methoryn in a loop (e.g. calling it 50 times in a bash script) can exhaust Groq's 12K TPM limit in seconds. Add delays if you automate Methoryn.</li>
       </ul>
 
       <h3>What not to include in prompts</h3>
@@ -305,13 +305,13 @@ C:\Users\YourName\.CORVUS\byok.json</div>
       <p>Double-check that you copied the full key without any leading or trailing spaces. API keys from most providers start with a specific prefix (Groq keys start with <code style="color:var(--accent);">gsk_</code>, Google AI Studio keys start with <code style="color:var(--accent);">AIzaSy</code>). If the key looks correct, try regenerating it in the provider's console — a freshly generated key eliminates the possibility of a partially expired or revoked key.</p>
 
       <h3>"Rate limit exceeded" error</h3>
-      <p>You have hit the free tier's request limit for that provider. CORVUS will automatically retry with a short delay. If you consistently hit rate limits, consider adding a second provider key as a fallback. For example, adding a Mistral key alongside your Groq key gives CORVUS an alternative to fall back on during Groq rate limit windows.</p>
+      <p>You have hit the free tier's request limit for that provider. Methoryn will automatically retry with a short delay. If you consistently hit rate limits, consider adding a second provider key as a fallback. For example, adding a Mistral key alongside your Groq key gives Methoryn an alternative to fall back on during Groq rate limit windows.</p>
 
       <h3>Keys not being picked up from .env</h3>
-      <p>Make sure the <code style="color:var(--accent);">.env</code> file is in the same directory you run <code style="color:var(--accent);">CORVUS</code> from, not your home directory or a subdirectory. The file must be named exactly <code style="color:var(--accent);">.env</code> (with the leading dot). Also confirm there are no spaces around the <code>=</code> sign in the file.</p>
+      <p>Make sure the <code style="color:var(--accent);">.env</code> file is in the same directory you run <code style="color:var(--accent);">Methoryn</code> from, not your home directory or a subdirectory. The file must be named exactly <code style="color:var(--accent);">.env</code> (with the leading dot). Also confirm there are no spaces around the <code>=</code> sign in the file.</p>
 
-      <h3>Key works in browser but not in CORVUS</h3>
-      <p>Some providers (like Groq) show a preview of the key in their console that is truncated. Make sure you clicked "Copy" to get the full key, not selected the truncated text manually. Also check that CORVUS's <code style="color:var(--accent);">byok.json</code> contains the complete key — open it in a text editor to verify.</p>
+      <h3>Key works in browser but not in Methoryn</h3>
+      <p>Some providers (like Groq) show a preview of the key in their console that is truncated. Make sure you clicked "Copy" to get the full key, not selected the truncated text manually. Also check that Methoryn's <code style="color:var(--accent);">byok.json</code> contains the complete key — open it in a text editor to verify.</p>
     </div>
 
     <!-- ── Page nav ── -->
@@ -331,23 +331,23 @@ C:\Users\YourName\.CORVUS\byok.json</div>
 
   <!-- ── Footer ── -->
   <footer>
-    <canvas id="corvus-logo-footer" width="160" height="44" style="display:block;"></canvas>
+    <canvas id="Methoryn-logo-footer" width="160" height="44" style="display:block;"></canvas>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="get-started.html">Docs</a>
       <a href="api-keys.html">API Keys</a>
       <a href="commands.html">Commands</a>
       <a href="guidelines.html">Guidelines</a>
-      <a href="mailto:CORVUS.cli@gmail.com">Contact</a>
+      <a href="mailto:Methoryn.cli@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">MIT © 2026 CORVUS</span>
+    <span class="footer-copy">MIT © 2026 Methoryn</span>
   </footer>
 
   <script src="logo.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      window.initCorvusLogo('corvus-logo-nav');
-      window.initCorvusLogo('corvus-logo-footer');
+      window.initMethorynLogo('Methoryn-logo-nav');
+      window.initMethorynLogo('Methoryn-logo-footer');
     });
   </script>
 </body>

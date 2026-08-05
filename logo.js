@@ -1,7 +1,7 @@
 /**
- * logo.js — CORVUS animated canvas logo
- * Renders a swirl of random characters orbiting behind bold "CORVUS" text.
- * Drop a <canvas id="corvus-logo"> anywhere, then call initLogo(canvasId).
+ * logo.js — Methoryn animated canvas logo
+ * Renders a swirl of random characters orbiting behind bold "Methoryn" text.
+ * Drop a <canvas id="Methoryn-logo"> anywhere, then call initLogo(canvasId).
  */
 
 (function () {
@@ -15,7 +15,7 @@
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    // Physical size — wider to fit CORVUS (6 chars)
+    // Physical size — wider to fit Methoryn (6 chars)
     const W = canvas.width  = 160;
     const H = canvas.height = 44;
     const cx = W / 2;
@@ -78,7 +78,7 @@
       ctx.fill();
       ctx.restore();
 
-      // Bold "CORVUS" text — fully reset state before drawing
+      // Bold "Methoryn" text — fully reset state before drawing
       ctx.save();
       ctx.globalAlpha = 1;
       ctx.fillStyle = ACCENT;
@@ -87,7 +87,7 @@
       ctx.textBaseline = "middle";
       ctx.shadowColor = ACCENT;
       ctx.shadowBlur = 8;
-      ctx.fillText("CORVUS", cx + 4, cy + 1);
+      ctx.fillText("Methoryn", cx + 4, cy + 1);
       ctx.restore();
 
       frame++;
@@ -97,13 +97,13 @@
     draw();
   }
 
-  // Auto-init any canvas with data-corvus-logo attribute
+  // Auto-init any canvas with data-Methoryn-logo attribute
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("canvas[data-corvus-logo]").forEach(c => {
+    document.querySelectorAll("canvas[data-Methoryn-logo]").forEach(c => {
       initLogo(c.id);
     });
   });
 
-  window.initCorvusLogo = initLogo;
+  window.initMethorynLogo = initLogo;
 })();
 
