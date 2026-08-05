@@ -212,7 +212,7 @@ p { color: var(--text); margin-bottom: 1rem; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 2rem;
+  padding: 4rem 2rem 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -589,7 +589,7 @@ footer canvas {
 /* ── Docs pages (full-width, no sidebar) ────────────────────────────────── */
 .docs-page {
   width: 100%;
-  padding: 5rem 2rem 4rem;
+  padding: 2.5rem 2rem 4rem;
 }
 
 .docs-body {
