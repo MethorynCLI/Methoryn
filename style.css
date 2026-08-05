@@ -62,45 +62,15 @@ nav {
   /* Canvas bitmap is always 160×44; CSS scales the display */
 }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
+/* nav-links and nav-cta are now defined in the hamburger section below */
 
-.nav-links a {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active { color: var(--accent); }
-
-.nav-cta {
-  background: var(--accent);
-  color: #000 !important;
-  padding: 0.4rem 1.1rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.nav-cta:hover {
-  background: #fff;
-  color: #000 !important;
-  transform: translateY(-1px);
-}
-
-/* ── Hamburger toggle (mobile only) ─────────────────────────────────────── */
+/* ── Hamburger toggle — always visible ──────────────────────────────────── */
 .nav-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;
-  height: 18px;
+  width: 26px;
+  height: 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -121,9 +91,94 @@ nav {
 .nav-toggle:hover span { background: var(--accent); }
 
 /* Animate to ✕ when open */
-.nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* Nav links — hidden by default, revealed by hamburger on ALL screen sizes */
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  min-width: 220px;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  background: rgba(8,8,8,0.98);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links li { width: 100%; }
+
+.nav-links a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s, background 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.nav-links li:last-child a { border-bottom: none; }
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent); background: rgba(0,220,170,0.05); }
+
+.nav-links .nav-cta {
+  margin: 0.5rem 1rem;
+  display: block;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-bottom: none !important;
+}
+
+.nav-links .nav-cta:hover { background: #fff; }
+
+.nav-links .nav-download {
+  margin: 0 1rem 0;
+  display: block;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: none !important;
+  background: none;
+}
+
+.nav-download {
+  background: transparent;
+  color: var(--accent) !important;
+  border: 1px solid var(--accent);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.82rem;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.nav-download:hover {
+  background: var(--accent);
+  color: #000 !important;
+}
 
 /* ── Page wrapper ───────────────────────────────────────────────────────── */
 .page { padding-top: 60px; }
@@ -245,6 +300,18 @@ p { color: var(--text); margin-bottom: 1rem; }
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-2px);
+}
+
+.btn-download {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+.btn-download:hover {
+  background: var(--accent);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,220,170,0.2);
 }
 
 /* ── Install box ────────────────────────────────────────────────────────── */
@@ -615,71 +682,16 @@ footer canvas {
 .page-nav .next { text-align: right; }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  /* Nav — hamburger layout */
-  nav {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 0 1rem;
-    position: fixed;
-  }
-
-  .nav-logo {
-    height: 56px;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Shrink logo canvas to fit mobile nav — CSS overrides canvas intrinsic size */
+@media (max-width: 900px) {
+  /* Shrink logo canvas on tablet/mobile */
   .nav-logo canvas {
     width: 120px !important;
     height: 33px !important;
     min-width: 0 !important;
   }
 
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.97);
-    border-top: 1px solid var(--border);
-    padding: 0.5rem 0 1rem;
-    order: 3; /* sits below logo + toggle row */
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a {
-    display: block;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .nav-links li:last-child a {
-    border-bottom: none;
-  }
-
-  .nav-cta {
-    margin: 0.5rem 1.25rem 0;
-    display: inline-block;
-    text-align: center;
-    padding: 0.6rem 1rem;
-  }
-
-  /* Page offset for taller mobile nav */
-  .page { padding-top: 56px; }
+  /* Page offset */
+  .page { padding-top: 60px; }
 
   /* Hero */
   .hero {
