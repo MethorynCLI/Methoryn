@@ -85,6 +85,48 @@
         <strong>Python 3.13+ is required.</strong> Methoryn uses libraries that depend on Python 3.13 features. Older versions will not work. The steps below show exactly how to get there on every platform — it takes about 2 minutes.
       </div>
 
+      <div class="docs-tip" style="margin-top:1rem;">
+        <strong>Recommended:</strong> Use <code style="color:var(--accent);">uv</code> for the most reliable installation. It downloads Python 3.13 automatically and creates an isolated environment, avoiding all the common version conflicts and PATH issues.
+      </div>
+
+      <!-- ── Recommended: uv method ── -->
+      <h3 style="margin-top:2rem;">🎯 Recommended: uv (All Platforms)</h3>
+      <p style="color:var(--text-dim); font-size:0.9rem;">This method works identically on Windows, macOS, and Linux. It automatically downloads Python 3.13 and avoids all the platform-specific version issues.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Install uv</h3>
+            <p><strong style="color:#fff;">Windows (PowerShell):</strong></p>
+            <div class="code-block">powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</div>
+            <p><strong style="color:#fff;">macOS / Linux:</strong></p>
+            <div class="code-block">curl -LsSf https://astral.sh/uv/install.sh | sh</div>
+            <p>Restart your terminal after installation.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Install Methoryn</h3>
+            <div class="code-block">uv tool install methoryn --python 3.13</div>
+            <p>This downloads Python 3.13 automatically and installs Methoryn in an isolated environment.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Launch</h3>
+            <div class="code-block">Methoryn</div>
+            <p>Note the capital M. Both <code style="color:var(--accent);">Methoryn</code> and <code style="color:var(--accent);">methoryn</code> work in v0.1.40+.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Alternative: Platform-specific methods ── -->
+      <h3 style="margin-top:2.5rem; color:var(--text-muted);">Alternative: Platform-Specific Methods</h3>
+      <p style="color:var(--text-dim); font-size:0.9rem;">If you prefer to manage Python yourself or already have Python 3.13+ installed, use these platform-specific approaches:</p>
+
       <!-- ── Windows ── -->
       <h3 style="margin-top:2rem;">🪟 Windows</h3>
 
@@ -262,6 +304,81 @@ Methoryn</div>
       <div class="docs-tip" style="margin-top:1.5rem;">
         <strong>Already installed?</strong> To update: <code style="color:var(--accent);">pip install --upgrade Methoryn</code> (or <code style="color:var(--accent);">pip3.13 install --upgrade Methoryn</code> on macOS/Linux)
       </div>
+    </div>
+
+    <!-- ── Installation troubleshooting ── -->
+    <div class="docs-section" id="troubleshooting">
+      <div class="section-label">Troubleshooting</div>
+      <h2>Installation Troubleshooting</h2>
+      <p>If you hit issues during installation, here are the most common problems and their fixes:</p>
+
+      <h3>❌ "Command not found: methoryn"</h3>
+      <p><strong>Cause:</strong> The command is <code style="color:var(--accent);">Methoryn</code> (capital M), not <code style="color:var(--accent);">methoryn</code>.</p>
+      <p><strong>Fix:</strong> Type <code style="color:var(--accent);">Methoryn</code> instead. As of version 0.1.40+, both <code style="color:var(--accent);">Methoryn</code> and <code style="color:var(--accent);">methoryn</code> work.</p>
+
+      <h3>❌ "No matching distribution found for Methoryn"</h3>
+      <p><strong>Cause:</strong> Your Python version is older than 3.13. Methoryn requires Python 3.13+ and pip shows this confusing error instead of saying "wrong Python version."</p>
+      <p><strong>Fix:</strong> Check your Python version with <code style="color:var(--accent);">python --version</code>. If it's 3.12 or older, follow the Python 3.13 installation steps above for your platform.</p>
+
+      <h3>❌ "Methoryn --help" hangs or shows weird characters</h3>
+      <p><strong>Cause:</strong> In versions before 0.1.40, Methoryn launches the full TUI immediately — there's no traditional <code style="color:var(--accent);">--help</code> text output.</p>
+      <p><strong>Fix:</strong> This is normal behavior. To verify Methoryn is installed correctly, use:</p>
+      <div class="code-block"># Check if installed
+pip list | grep -i methoryn
+
+# Or with uv
+uv tool list</div>
+
+      <h3>❌ macOS: "Methoryn cannot be opened because the developer cannot be verified"</h3>
+      <p><strong>Cause:</strong> macOS Gatekeeper blocks unsigned terminal applications on first run.</p>
+      <p><strong>Fix:</strong> Go to <strong style="color:#fff;">System Settings → Privacy & Security</strong> and click <strong style="color:#fff;">"Allow Anyway"</strong> next to the blocked app. This is a one-time step.</p>
+
+      <h3>❌ Windows: Multiple Python versions, wrong one used</h3>
+      <p><strong>Cause:</strong> You have multiple Python installations and <code style="color:var(--accent);">pip</code> is using an older version.</p>
+      <p><strong>Fix:</strong> Use Python Launcher to target 3.13 specifically:</p>
+      <div class="code-block"># Check what Python versions you have
+py --list
+
+# Install with Python 3.13 specifically
+py -3.13 -m pip install Methoryn
+
+# Run with Python 3.13
+py -3.13 -m Methoryn</div>
+
+      <h3>❌ Linux: PATH issues, command not found after successful install</h3>
+      <p><strong>Cause:</strong> pip installed Methoryn to <code style="color:var(--accent);">~/.local/bin</code> but that directory isn't in your PATH.</p>
+      <p><strong>Fix:</strong> Add <code style="color:var(--accent);">~/.local/bin</code> to your PATH:</p>
+      <div class="code-block"># Add to your shell config (.bashrc, .zshrc, etc.)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Then try again
+Methoryn</div>
+
+      <h3>❌ "pip: command not found" (macOS/Linux)</h3>
+      <p><strong>Cause:</strong> pip isn't installed for Python 3.13, or you're using the wrong pip.</p>
+      <p><strong>Fix:</strong> Use the Python module syntax:</p>
+      <div class="code-block">python3.13 -m pip install Methoryn</div>
+
+      <h3>❌ Installation succeeds but API key setup fails</h3>
+      <p><strong>Cause:</strong> Network issues, wrong API key format, or provider API changes.</p>
+      <p><strong>Fix:</strong> Check that your Groq API key starts with <code style="color:var(--accent);">gsk_</code> and test it manually:</p>
+      <div class="code-block">curl -X POST "https://api.groq.com/openai/v1/chat/completions" \
+  -H "Authorization: Bearer YOUR_GROQ_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"hello"}],"model":"llama3-8b-8192"}'</div>
+
+      <h3>Alternative Installation Method (uv)</h3>
+      <p>If standard pip installation fails, try <code style="color:var(--accent);">uv</code> — it downloads its own Python 3.13 and creates isolated environments:</p>
+      <div class="code-block"># Install uv (one-time setup)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install Methoryn with private Python 3.13
+uv tool install methoryn --python 3.13
+
+# Run
+Methoryn</div>
+      <p>This method bypasses all Python version and PATH issues. It's what worked on the macOS test machine in the bug report.</p>
     </div>
 
     <!-- ── What to expect ── -->
