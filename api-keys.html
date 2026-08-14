@@ -100,18 +100,18 @@
       <p>For most personal use cases, the free tier is more than sufficient. If you hit rate limits during heavy use, Methoryn will automatically throttle requests and retry.</p>
     </div>
 
-    <!-- ── Optional Keys ── -->
-    <div class="docs-section" id="optional">
-      <div class="section-label">Optional</div>
-      <h2>Optional Provider Keys</h2>
-      <p>The following keys are all optional. Adding them expands what Methoryn can do — enabling additional sub-agents, better fallback handling, and specialized capabilities like image generation.</p>
+    <!-- ── Provider Keys ── -->
+    <div class="docs-section" id="providers">
+      <div class="section-label">Providers</div>
+      <h2>Provider Keys by Architecture Layer</h2>
+      <p>Methoryn runs a five-layer architecture. Layers 1–4 are required — each gates a whole agent layer. Layer 5 is optional and degrades gracefully when absent.</p>
 
       <table class="data-table">
         <thead>
           <tr>
             <th>Key Name</th>
             <th>Provider</th>
-            <th>What it unlocks</th>
+            <th>Layer</th>
             <th>Free Tier</th>
           </tr>
         </thead>
@@ -119,50 +119,32 @@
           <tr>
             <td><code>GROQ_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
             <td><a href="https://console.groq.com/" target="_blank">Groq</a></td>
-            <td>Main task agent — required for all functionality</td>
+            <td>Layer 1 — Conversation &amp; orchestration</td>
             <td class="td-dim">12K TPM</td>
           </tr>
           <tr>
-            <td><code>GOOGLE_API_KEY</code></td>
+            <td><code>CLOUDFLARE_API_KEY</code> + <code>CLOUDFLARE_ACCOUNT_ID</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
+            <td><a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare</a></td>
+            <td>Layer 2 — Library management</td>
+            <td class="td-dim">Free tier</td>
+          </tr>
+          <tr>
+            <td><code>GOOGLE_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
             <td><a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></td>
-            <td>Gemini sub-agents for reasoning-heavy tasks and long-context analysis</td>
+            <td>Layer 3 — Multimodal &amp; research</td>
             <td class="td-dim">1M TPM</td>
           </tr>
           <tr>
-            <td><code>MISTRAL_API_KEY</code></td>
+            <td><code>MISTRAL_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
             <td><a href="https://console.mistral.ai/" target="_blank">Mistral</a></td>
-            <td>Primary chat agent — fast, capable, runs on Mistral Large and Nemo</td>
+            <td>Layer 4 — Coding agent</td>
             <td class="td-dim">~1B tokens/month</td>
           </tr>
           <tr>
             <td><code>NVDA_API_KEY</code></td>
             <td><a href="https://build.nvidia.com/" target="_blank">NVIDIA NIM</a></td>
-            <td>Chat backup — access to Llama models hosted on NVIDIA infrastructure</td>
+            <td>Layer 5 — Quality control &amp; review (optional)</td>
             <td class="td-dim">40 RPM</td>
-          </tr>
-          <tr>
-            <td><code>OPENROUTER_API_KEY</code></td>
-            <td><a href="https://openrouter.ai/" target="_blank">OpenRouter</a></td>
-            <td>Sub-agent backup — routes to dozens of models when primary providers are unavailable</td>
-            <td class="td-dim">50 req/day</td>
-          </tr>
-          <tr>
-            <td><code>Hugging_Face_API_KEY</code></td>
-            <td><a href="https://huggingface.co/settings/tokens" target="_blank">HuggingFace</a></td>
-            <td>Sub-agent backup — access to open-source models on HuggingFace Inference API</td>
-            <td class="td-dim">Free tier</td>
-          </tr>
-          <tr>
-            <td><code>CloudFlare_API_KEY</code></td>
-            <td><a href="https://developers.cloudflare.com/" target="_blank">Cloudflare AI</a></td>
-            <td>Sub-agent + deployment tasks — Workers AI models, edge inference</td>
-            <td class="td-dim">Free tier</td>
-          </tr>
-          <tr>
-            <td><code>pollinations.ai_API_KEY</code></td>
-            <td><a href="https://pollinations.ai/" target="_blank">Pollinations.ai</a></td>
-            <td>AI image generation via <code>/image</code> — no key actually required, free by default</td>
-            <td class="td-dim">No key needed</td>
           </tr>
         </tbody>
       </table>
@@ -172,13 +154,7 @@
       <p>To get a Google AI Studio key, go to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>, sign in with your Google account, and click <strong style="color:#fff;">Create API key</strong>. The free tier gives you 1 million tokens per minute — effectively unlimited for personal use.</p>
 
       <h3>Mistral</h3>
-      <p>Mistral provides some of the best open-weight models available. Methoryn uses Mistral for its chat agent — conversational tasks, explanations, and writing. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
-
-      <h3>OpenRouter</h3>
-      <p>OpenRouter is a unified API that routes requests to dozens of AI providers and models. Methoryn uses it as a fallback when other sub-agents are unavailable or rate-limited. With one OpenRouter key, you get access to GPT-4o, Claude, Gemini, Llama, and many others. Free tier gives 50 requests per day. Sign up at <a href="https://openrouter.ai/" target="_blank">openrouter.ai</a>.</p>
-
-      <h3>Pollinations.ai</h3>
-      <p>Image generation via <code style="color:var(--accent);">/image</code> uses Pollinations.ai and does not require an API key at all. It is free and open by default. The <code>pollinations.ai_API_KEY</code> field exists for future use if Pollinations introduces authenticated tiers.</p>
+      <p>Mistral provides some of the best open-weight models available. Methoryn uses Mistral as its Layer 4 Coding Agent — writing, testing, and debugging code through an agentic loop over the Coding Library. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
     </div>
 
     <!-- ── Managing Keys ── -->
