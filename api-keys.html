@@ -127,9 +127,7 @@
             <td><a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare</a></td>
             <td>Layer 2 — Library management</td>
             <td class="td-dim">Free tier</td>
-          </tr>
-          <tr>
-            <td><code>GOOGLE_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
+          </tr> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
             <td><a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></td>
             <td>Layer 3 — Multimodal &amp; research</td>
             <td class="td-dim">1M TPM</td>
@@ -155,18 +153,24 @@
 
       <h3>Mistral</h3>
       <p>Mistral provides some of the best open-weight models available. Methoryn uses Mistral as its Layer 4 Coding Agent — writing, testing, and debugging code through an agentic loop over the Coding Library. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
+
+      <h3>Cloudflare Workers AI</h3>
+      <p>Methoryn uses Cloudflare Workers AI as its Layer 2 Library Manager — it routes task plans to the right library scripts and executes them. You need two values: an <strong style="color:#fff;">API Token</strong> and your <strong style="color:#fff;">Account ID</strong>.</p>
+      <p><strong style="color:#fff;">Creating the token:</strong> Go to <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com → Profile → API Tokens → Create Token</a>. Under <strong style="color:#fff;">Permissions</strong>, add exactly one permission:</p>
+      <div class="code-block" style="color:#e8c44e;">Workers AI  →  Edit</div>
+      <p>Set <strong style="color:#fff;">Account Resources</strong> to your specific account. No Zone permissions, no R2, no KV — just <code style="color:var(--accent);">Workers AI: Edit</code>. The Edit level (not Read) is required because running inference is treated as a write operation by Cloudflare.</p>
+      <p><strong style="color:#fff;">Finding your Account ID:</strong> It appears in the right-hand sidebar of any page at <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>. It's a 32-character hex string.</p>
     </div>
 
-    <!-- ── Managing Keys ── -->
     <div class="docs-section" id="managing">
       <div class="section-label">Configuration</div>
       <h2>Managing Your Keys</h2>
       <p>Methoryn gives you three ways to manage API keys. The in-app editor is the recommended method for most users.</p>
 
-      <h3>Method 1: In-app key editor (recommended)</h3>
-      <p>Type <code style="color:var(--accent);">/keys</code> from anywhere inside Methoryn to open the full key editor UI. It shows all supported providers, their current status (set / not set), and lets you add, edit, or remove keys without touching any files.</p>
-      <div class="code-block">/keys</div>
-      <p>Changes made in the key editor take effect immediately — no restart required. Keys are written to <code style="color:var(--accent);">~/.Methoryn/byok.json</code>.</p>
+      <h3>Method 1: In-app account &amp; key editor (recommended)</h3>
+      <p>Type <code style="color:var(--accent);">/account</code> from anywhere inside Methoryn to open the account manager — it handles both API keys and Google accounts (add / remove / switch). Changes take effect immediately with no restart.</p>
+      <div class="code-block">/account</div>
+      <p>Keys are stored locally at <code style="color:var(--accent);">~/.Methoryn/byok.json</code>.</p>
 
       <h3>Method 2: Environment variables</h3>
       <p>You can set keys as environment variables in your shell. This is useful for CI/CD pipelines or if you prefer not to store keys in a file.</p>

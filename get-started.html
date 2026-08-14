@@ -284,6 +284,18 @@ Methoryn</div>
           </div>
         </div>
         <div class="step">
+          <div class="step-num">A2</div>
+          <div class="step-content">
+            <h3>Create a Cloudflare Workers AI token</h3>
+            <p>Go to <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com → Profile → API Tokens → Create Token</a>. Under <strong style="color:#fff;">Permissions</strong>, add:</p>
+            <div class="code-block" style="color:#e8c44e;">Workers AI  →  Edit</div>
+            <p>Set <strong style="color:#fff;">Account Resources</strong> to your specific account, then save. You also need your <strong style="color:#fff;">Account ID</strong> — it's the 32-character hex string in the right sidebar of any Cloudflare dashboard page.</p>
+            <div class="docs-tip" style="margin-top:0.75rem; border-color:#e8c44e;">
+              <strong>Important:</strong> The permission must be <strong style="color:#fff;">Workers AI: Edit</strong> — not Read. Running inference is a write operation. Using Read will cause 401 errors when Methoryn tries to call the AI model.
+            </div>
+          </div>
+        </div>
+        <div class="step">
           <div class="step-num">B</div>
           <div class="step-content">
             <h3>Complete setup on first launch</h3>
