@@ -31,7 +31,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.44 — Free to install
+        <span></span> v0.1.45 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em> lives in the terminal.</h1>
@@ -66,16 +66,19 @@
           <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">Methoryn</span>
         </div>
         <div class="terminal-body">
-          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">Type a prompt or type / for commands.</span></div>
-          <div class="t-dim">  ✓ Groq          ready  [main task agent]</div>
-          <div class="t-dim">  ✓ Gemini        ready  [reserved agent]</div>
-          <div class="t-dim">  ✓ Pollinations  ready  [image gen]</div>
+          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">5-layer agent stack online.</span></div>
+          <div class="t-dim">  ✓ L1 Groq        ready  [orchestration]</div>
+          <div class="t-dim">  ✓ L2 Cloudflare  ready  [library manager]</div>
+          <div class="t-dim">  ✓ L3 Gemini      ready  [multimodal &amp; research]</div>
+          <div class="t-dim">  ✓ L4 Mistral     ready  [coding agent]</div>
+          <div class="t-dim">  ✓ L5 NVIDIA      ready  [quality control]</div>
           <br/>
           <div><span class="t-prompt">You:</span> <span class="t-cmd">write a summary of my last 10 emails and save it as a PDF</span></div>
           <br/>
-          <div class="t-dim">  ▸ Fetching Gmail inbox…</div>
-          <div class="t-dim">  ▸ Summarising 10 messages…</div>
-          <div class="t-dim">  ▸ Writing email_summary.pdf…</div>
+          <div class="t-dim">  ▸ L1 Groq: planning…</div>
+          <div class="t-dim">  ▸ L2 Cloudflare: fetching Gmail, summarising 10 messages…</div>
+          <div class="t-dim">  ▸ L4 Mistral: writing email_summary.pdf…</div>
+          <div class="t-dim">  ▸ L5 NVIDIA: reviewing output…</div>
           <div><span class="t-success">  ✓ Saved to Desktop/email_summary.pdf</span></div>
         </div>
       </div>
@@ -88,14 +91,14 @@
   <section id="features">
     <div class="container">
       <div class="section-label">Capabilities</div>
-      <h2>One agent. Everything you need.</h2>
+      <h2>Five agents. One prompt.</h2>
       <p style="color:var(--text-dim); max-width:560px;">Methoryn routes tasks through specialised agents automatically — you just type what you want.</p>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🤖</div>
           <h3>Multi-Agent Execution</h3>
-          <p>Groq handles your primary task with full tool access. Gemini sub-agents run parallel research and generation in the background.</p>
+          <p>Five specialised agents work as one system: Groq plans and orchestrates, Cloudflare runs the tools and libraries, Gemini handles research and images, Mistral writes and debugs code, and NVIDIA double-checks the result.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📁</div>
@@ -115,7 +118,7 @@
         <div class="feature-card">
           <div class="feature-icon">🖼️</div>
           <h3>Image Generation</h3>
-          <p>Generate AI images via Pollinations.ai with <code style="color:var(--accent); font-size:0.85rem;">/image</code>. Saves to Desktop and works directly inside Slides presentations.</p>
+          <p>Generate AI images with Gemini (<code style="color:var(--accent); font-size:0.85rem;">/image</code>). Saves to Desktop and works directly inside Slides presentations.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
@@ -156,7 +159,15 @@
             <span class="key-name">GROQ_API_KEY</span>
             <span class="badge badge-required">Required</span>
           </div>
-          <span class="key-desc">Main task agent — <a href="https://console.groq.com/" target="_blank">console.groq.com</a></span>
+          <span class="key-desc">Layer 1 — conversation &amp; orchestration — <a href="https://console.groq.com/" target="_blank">console.groq.com</a></span>
+          <span class="badge badge-free">Free tier available</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">CLOUDFLARE_API_KEY</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Layer 2 — library &amp; task-plan execution (needs <code style="color:var(--accent); font-size:0.82rem;">CLOUDFLARE_ACCOUNT_ID</code>) — <a href="https://developers.cloudflare.com/" target="_blank">developers.cloudflare.com</a></span>
           <span class="badge badge-free">Free tier available</span>
         </div>
         <div class="key-card">
@@ -164,8 +175,24 @@
             <span class="key-name">GOOGLE_API_KEY</span>
             <span class="badge badge-optional">Optional</span>
           </div>
-          <span class="key-desc">Gemini reserved agent (image fallback, sub-tasks) — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
+          <span class="key-desc">Layer 3 — Gemini multimodal &amp; research — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
           <span class="badge badge-free">1M tokens/month free</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">MISTRAL_API_KEY</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Layer 4 — coding agent — <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></span>
+          <span class="badge badge-free">~1B tokens/month free</span>
+        </div>
+        <div class="key-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="key-name">NVDA_API_KEY</span>
+            <span class="badge badge-optional">Optional</span>
+          </div>
+          <span class="key-desc">Layer 5 — NVIDIA quality control &amp; review — <a href="https://build.nvidia.com/" target="_blank">build.nvidia.com</a></span>
+          <span class="badge badge-free">Free tier available</span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
@@ -174,30 +201,6 @@
           </div>
           <span class="key-desc">Gmail, Drive, Docs, Sheets, Calendar — sign in with <code style="color:var(--accent); font-size:0.82rem;">/sign-in</code></span>
           <span class="badge badge-free">Free</span>
-        </div>
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">MISTRAL_API_KEY</span>
-            <span class="badge badge-optional">Optional</span>
-          </div>
-          <span class="key-desc">Chat primary — <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></span>
-          <span class="badge badge-free">~1B tokens/month free</span>
-        </div>
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">Pollinations.ai</span>
-            <span class="badge badge-optional">Optional</span>
-          </div>
-          <span class="key-desc">Image generation via <code style="color:var(--accent); font-size:0.82rem;">/image</code></span>
-          <span class="badge badge-free">Completely free — no key needed</span>
-        </div>
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">+ 4 more providers</span>
-            <span class="badge badge-optional">Optional</span>
-          </div>
-          <span class="key-desc">NVIDIA NIM, OpenRouter, HuggingFace, Cloudflare — all optional backups</span>
-          <a href="api-keys.html" style="font-size:0.82rem; color:var(--accent);">See full list →</a>
         </div>
       </div>
     </div>

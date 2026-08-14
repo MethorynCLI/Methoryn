@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>API Keys — Methoryn</title>
-  <meta name="description" content="Configure API keys for Methoryn — Groq, Gemini, Mistral, NVIDIA, OpenRouter, HuggingFace, Cloudflare, and more."/>
+  <meta name="description" content="Configure API keys for Methoryn — Groq, Cloudflare, Gemini, Mistral, and NVIDIA. One key per agent layer."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -40,7 +40,7 @@
     <div class="docs-section" id="overview">
       <div class="section-label">Overview</div>
       <h2>How Keys Work in Methoryn</h2>
-      <p>Methoryn is a multi-agent system. Different tasks are routed to different AI providers depending on what produces the best result. The main task agent runs on Groq. Sub-agents and specialized tasks can use Gemini, Mistral, NVIDIA NIM, OpenRouter, and HuggingFace as fallbacks or primaries depending on availability.</p>
+      <p>Methoryn is a five-layer agent system. Each layer is powered by a dedicated provider and does one job well: Groq plans and orchestrates (L1), Cloudflare executes the libraries and task plans (L2), Gemini handles multimodal and research (L3), Mistral is the coding agent (L4), and NVIDIA reviews and verifies output (L5). Your prompt is routed through these layers automatically — you never have to pick a provider.</p>
 
       <h3>The key hierarchy</h3>
       <p>Methoryn checks for API keys in this order:</p>
@@ -63,7 +63,7 @@
     <div class="docs-section" id="required">
       <div class="section-label">Required</div>
       <h2>Groq API Key</h2>
-      <p>The Groq API key is the only key Methoryn requires. It powers the main task agent — the one that receives your prompts, reasons through them, and decides what actions to take. Without it, Methoryn cannot run.</p>
+      <p>The Groq API key is the only key Methoryn requires. It powers Layer 1 — the orchestration agent that receives your prompts, plans tasks, and coordinates the other layers. Without it, Methoryn cannot run.</p>
 
       <h3>Getting your Groq key</h3>
       <div class="steps">
@@ -150,7 +150,7 @@
       </table>
 
       <h3>Google AI Studio (Gemini)</h3>
-      <p>The Google API key from AI Studio is separate from your Google account sign-in. The Google Sign-In (OAuth) connects Methoryn to your Gmail, Drive, and Workspace. The Google AI Studio key connects Methoryn to the Gemini model API for AI inference. You need both if you want both Google Workspace integration and Gemini-powered sub-agents.</p>
+      <p>The Google API key from AI Studio is separate from your Google account sign-in. The Google Sign-In (OAuth) connects Methoryn to your Gmail, Drive, and Workspace. The Google AI Studio key connects Methoryn to the Gemini model API (Layer 3 — multimodal &amp; research, image generation). You need both if you want both Google Workspace integration and Gemini capabilities.</p>
       <p>To get a Google AI Studio key, go to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>, sign in with your Google account, and click <strong style="color:#fff;">Create API key</strong>. The free tier gives you 1 million tokens per minute — effectively unlimited for personal use.</p>
 
       <h3>Mistral</h3>
@@ -224,37 +224,31 @@ C:\Users\YourName\.Methoryn\byok.json</div>
             <td>Groq</td>
             <td class="td-dim">12,000 TPM</td>
             <td class="td-dim">Every minute</td>
-            <td class="td-dim">Main agent — all tasks</td>
+            <td class="td-dim">L1 — orchestration &amp; planning</td>
+          </tr>
+          <tr>
+            <td>Cloudflare (GLM)</td>
+            <td class="td-dim">10,000 TPM</td>
+            <td class="td-dim">Every minute</td>
+            <td class="td-dim">L2 — library &amp; task-plan execution</td>
           </tr>
           <tr>
             <td>Google AI Studio (Gemini)</td>
             <td class="td-dim">1,000,000 TPM</td>
             <td class="td-dim">Every minute</td>
-            <td class="td-dim">Long-context, reasoning tasks</td>
+            <td class="td-dim">L3 — multimodal, research, images</td>
           </tr>
           <tr>
             <td>Mistral</td>
             <td class="td-dim">~1B tokens/month</td>
             <td class="td-dim">Monthly</td>
-            <td class="td-dim">Chat, writing, explanations</td>
+            <td class="td-dim">L4 — coding agent</td>
           </tr>
           <tr>
             <td>NVIDIA NIM</td>
             <td class="td-dim">40 RPM</td>
             <td class="td-dim">Per minute</td>
-            <td class="td-dim">Chat backup</td>
-          </tr>
-          <tr>
-            <td>OpenRouter</td>
-            <td class="td-dim">50 req/day</td>
-            <td class="td-dim">Daily</td>
-            <td class="td-dim">Fallback routing</td>
-          </tr>
-          <tr>
-            <td>HuggingFace</td>
-            <td class="td-dim">Varies by model</td>
-            <td class="td-dim">Monthly</td>
-            <td class="td-dim">Open-source model backup</td>
+            <td class="td-dim">L5 — quality control &amp; review</td>
           </tr>
         </tbody>
       </table>
