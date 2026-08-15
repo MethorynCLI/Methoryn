@@ -31,7 +31,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.48 — Free to install
+        <span></span> v0.1.49 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em> lives in the terminal.</h1>
@@ -133,12 +133,12 @@
         <div class="feature-card">
           <div class="feature-icon">🔑</div>
           <h3>Bring Your Own Keys</h3>
-          <p>Set and manage API keys directly inside the app with <code style="color:var(--accent); font-size:0.85rem;">/keys</code>. No manual .env file editing required.</p>
+          <p>Set and manage API keys directly inside the app with <code style="color:var(--accent); font-size:0.85rem;">/account</code>. No manual .env file editing required.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h3>Slash Commands</h3>
-          <p>Type <code style="color:var(--accent); font-size:0.85rem;">/</code> to open the command palette with 25+ shortcuts for common tasks — no prompting needed.</p>
+          <p>Type <code style="color:var(--accent); font-size:0.85rem;">/</code> to open the command palette with 24 slash commands for common tasks — no prompting needed.</p>
         </div>
       </div>
     </div>
@@ -150,8 +150,8 @@
   <section id="requirements">
     <div class="container">
       <div class="section-label">What You Need</div>
-      <h2>Only one key is required.</h2>
-      <p style="color:var(--text-dim); max-width:580px;">All providers below have a free tier. Groq is the only mandatory one — everything else unlocks additional capabilities.</p>
+      <h2>Four keys. All with free tiers.</h2>
+      <p style="color:var(--text-dim); max-width:580px;">Layers 1–4 (Groq, Cloudflare, Gemini, Mistral) are required to run — each offers a generous free tier. NVIDIA adds quality control and is optional.</p>
 
       <div class="keys-grid">
         <div class="key-card">
@@ -165,7 +165,7 @@
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span class="key-name">CLOUDFLARE_API_KEY</span>
-            <span class="badge badge-optional">Optional</span>
+            <span class="badge badge-required">Required</span>
           </div>
           <span class="key-desc">Layer 2 — library &amp; task-plan execution (needs <code style="color:var(--accent); font-size:0.82rem;">CLOUDFLARE_ACCOUNT_ID</code>) — <a href="https://developers.cloudflare.com/" target="_blank">developers.cloudflare.com</a></span>
           <span class="badge badge-free">Free tier available</span>
@@ -173,7 +173,7 @@
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span class="key-name">GOOGLE_API_KEY</span>
-            <span class="badge badge-optional">Optional</span>
+            <span class="badge badge-required">Required</span>
           </div>
           <span class="key-desc">Layer 3 — Gemini multimodal &amp; research — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
           <span class="badge badge-free">1M tokens/month free</span>
@@ -181,7 +181,7 @@
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span class="key-name">MISTRAL_API_KEY</span>
-            <span class="badge badge-optional">Optional</span>
+            <span class="badge badge-required">Required</span>
           </div>
           <span class="key-desc">Layer 4 — coding agent — <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></span>
           <span class="badge badge-free">~1B tokens/month free</span>
@@ -199,7 +199,7 @@
             <span class="key-name">Google OAuth</span>
             <span class="badge badge-optional">Optional</span>
           </div>
-          <span class="key-desc">Gmail, Drive, Docs, Sheets, Calendar — sign in with <code style="color:var(--accent); font-size:0.82rem;">/sign-in</code></span>
+          <span class="key-desc">Gmail, Drive, Docs, Sheets, Calendar — sign in with <code style="color:var(--accent); font-size:0.82rem;">/account</code></span>
           <span class="badge badge-free">Free</span>
         </div>
       </div>

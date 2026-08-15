@@ -116,7 +116,7 @@
             <td>Google OAuth token (not your password)</td>
             <td>Google OAuth servers</td>
             <td>To authenticate your Google account and access Gmail, Drive, etc.</td>
-            <td class="td-dim">Yes — run /sign-out</td>
+            <td class="td-dim">Yes — open /account and remove the account</td>
           </tr>
           <tr>
             <td>Image generation prompts</td>
@@ -142,8 +142,8 @@
       <h3>What stays on your machine</h3>
       <ul>
         <li>Your API keys — stored in <code style="color:var(--accent);">~/.Methoryn/byok.json</code>, never transmitted to anyone except the provider the key belongs to</li>
-        <li>Your Google OAuth token — stored in <code style="color:var(--accent);">~/.Methoryn/google_token.json</code>, only sent to Google's OAuth endpoint during authentication</li>
-        <li>Session files — saved locally in the <code style="color:var(--accent);">sessions/</code> folder when you use <code style="color:var(--accent);">/save</code></li>
+        <li>Your Google OAuth tokens — stored per account in <code style="color:var(--accent);">~/.Methoryn/tokens/</code> with your account list in <code style="color:var(--accent);">~/.Methoryn/accounts.json</code>, only sent to Google's OAuth endpoint during authentication</li>
+        <li>Session files — saved locally in the <code style="color:var(--accent);">sessions/</code> folder via <code style="color:var(--accent);">/save</code> and automatically on quit</li>
         <li>Generated files — all output from <code style="color:var(--accent);">/write</code>, <code style="color:var(--accent);">/python</code>, <code style="color:var(--accent);">/pdf</code>, etc. is saved to your local machine only</li>
         <li>Your file system — Methoryn only reads or writes files when you explicitly ask it to</li>
       </ul>
@@ -158,7 +158,7 @@
       </ul>
 
       <h3>Third-party provider privacy policies</h3>
-      <p>When your prompts are sent to AI providers, they are subject to those providers' own privacy policies. Methoryn has no control over how Groq, Google, Mistral, or others handle the data you send them. Review their policies if this is a concern:</p>
+      <p>When your prompts are sent to AI providers, they are subject to those providers' own privacy policies. Methoryn has no control over how Groq, Google, Mistral, NVIDIA, Cloudflare, or others handle the data you send them. Review their policies if this is a concern:</p>
       <ul>
         <li><a href="https://groq.com/privacy-policy/" target="_blank">Groq Privacy Policy</a></li>
         <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
@@ -190,12 +190,12 @@
           <tr>
             <td><code>~/.Methoryn/byok.json</code></td>
             <td>Your API keys for all configured providers</td>
-            <td class="td-dim">Delete the file, or clear keys via /keys</td>
+            <td class="td-dim">Delete the file, or clear keys via /account</td>
           </tr>
           <tr>
-            <td><code>~/.Methoryn/google_token.json</code></td>
-            <td>Your Google OAuth token (not your password)</td>
-            <td class="td-dim">Run /sign-out, or delete the file manually</td>
+            <td><code>~/.Methoryn/accounts.json</code> + <code>tokens/</code></td>
+            <td>Your Google account list and per-account OAuth tokens (not your password)</td>
+            <td class="td-dim">Remove accounts via /account, or delete the files manually</td>
           </tr>
           <tr>
             <td><code>sessions/</code></td>
@@ -261,14 +261,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</div>
 
       <h3>Third-party licenses</h3>
-      <p>Methoryn depends on several open-source libraries. The full list of dependencies and their respective licenses can be found in the <code style="color:var(--accent);">requirements.txt</code> file distributed with the package. Key dependencies include:</p>
+      <p>Methoryn depends on several open-source libraries. The full list of dependencies and their respective licenses can be found in the <code style="color:var(--accent);">pyproject.toml</code> file distributed with the package. Key dependencies include:</p>
       <ul>
         <li><a href="https://github.com/Textualize/textual" target="_blank">Textual</a> — MIT License — terminal UI framework</li>
         <li><a href="https://github.com/groq/groq-python" target="_blank">groq</a> — Apache 2.0 — Groq Python client</li>
-        <li><a href="https://github.com/google/generative-ai-python" target="_blank">google-generativeai</a> — Apache 2.0 — Gemini Python client</li>
+        <li><a href="https://github.com/googleapis/python-genai" target="_blank">google-genai</a> — Apache 2.0 — Gemini Python client</li>
         <li><a href="https://github.com/google/google-auth-library-python" target="_blank">google-auth</a> — Apache 2.0 — Google OAuth library</li>
         <li><a href="https://github.com/python-docx/python-docx" target="_blank">python-docx</a> — MIT License — Word document generation</li>
-        <li><a href="https://github.com/reingart/pyfpdf" target="_blank">reportlab</a> — BSD License — PDF generation</li>
+        <li><a href="https://github.com/py-pdf/fpdf2" target="_blank">fpdf2</a> — MIT License — PDF generation</li>
       </ul>
 
       <h3>Contact</h3>

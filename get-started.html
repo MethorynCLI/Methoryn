@@ -54,7 +54,7 @@
     <div class="docs-section" id="what-is-Methoryn">
       <div class="section-label">Overview</div>
       <h2>What is Methoryn?</h2>
-      <p>Methoryn is a terminal application that connects multiple AI providers — Groq, Gemini, Mistral, and others — into a single, unified assistant. You type a plain English prompt, and Methoryn figures out what to do: write code, manage files, summarize emails, create Google Docs, generate images, search the web, and more.</p>
+      <p>Methoryn is a terminal application that connects multiple AI providers — Groq, Cloudflare, Gemini, Mistral, and NVIDIA — into a single, unified assistant. You type a plain English prompt, and Methoryn figures out what to do: write code, manage files, summarize emails, create Google Docs, generate images, search the web, and more.</p>
 
       <p>It runs entirely on your machine. There are no Methoryn servers, no accounts to create, and no data leaving your device except the prompts you send to AI providers directly.</p>
 
@@ -299,7 +299,7 @@ Methoryn</div>
           <div class="step-num">B</div>
           <div class="step-content">
             <h3>Complete setup on first launch</h3>
-            <p>Run <code style="color:var(--accent);">Methoryn</code> — the first launch opens a setup screen. Paste your Groq API key and press Continue. Optionally sign in with Google to unlock Gmail and Workspace features.</p>
+            <p>Run <code style="color:var(--accent);">Methoryn</code> — the first launch opens a setup screen. Enter the required keys — Groq, Cloudflare (API token + Account ID), Gemini, and Mistral — and press Continue; NVIDIA is optional. Optionally sign in with Google to unlock Gmail and Workspace features.</p>
           </div>
         </div>
         <div class="step">
@@ -422,7 +422,6 @@ Methoryn</div>
       <ul>
         <li><strong style="color:#fff;">Can do:</strong> Anything described on this site — files, code, web, Google Workspace, images</li>
         <li><strong style="color:#fff;">Can't do:</strong> Access files, accounts, or services you haven't connected</li>
-        <li><strong style="color:#fff;">Can't do:</strong> Remember previous sessions (unless you load a saved session with <code style="color:var(--accent);">/save</code>)</li>
         <li><strong style="color:#fff;">Can't do:</strong> Make payments, purchases, or interact with services that require authentication beyond what you've set up</li>
       </ul>
     </div>

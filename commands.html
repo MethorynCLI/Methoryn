@@ -83,8 +83,8 @@
             <td class="td-dim">No</td>
           </tr>
           <tr>
-            <td><code>/keys</code></td>
-            <td>Open the API key editor — add, edit, or remove keys for any provider without leaving Methoryn</td>
+            <td><code>/account</code></td>
+            <td>Open the account manager — edit API keys for any provider and manage Google accounts (add, switch, remove) without leaving Methoryn</td>
             <td class="td-dim">No</td>
           </tr>
           <tr>
@@ -101,21 +101,12 @@
       </table>
 
       <h3>Google Account</h3>
+      <p>Google sign-in, switching accounts, and removal are all handled by <code style="color:var(--accent);">/account</code> (see System &amp; Settings above).</p>
       <table class="data-table">
         <thead>
           <tr><th>Command</th><th>What it does</th><th>Uses AI</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td><code>/sign-in</code></td>
-            <td>Connect your Google account or re-authenticate if your token has expired. Opens OAuth flow in your browser</td>
-            <td class="td-dim">No</td>
-          </tr>
-          <tr>
-            <td><code>/sign-out</code></td>
-            <td>Revoke Methoryn's access to your Google account and delete the saved OAuth token</td>
-            <td class="td-dim">No</td>
-          </tr>
           <tr>
             <td><code>/drive</code></td>
             <td>List your most recent Google Drive files — shows file name, type, and last modified date</td>
@@ -129,7 +120,7 @@
         </tbody>
       </table>
 
-      <h3>Google Workspace (AI-powered creation)</h3>
+      <h3>Google Workspace</h3>
       <table class="data-table">
         <thead>
           <tr><th>Command</th><th>What it does</th><th>Uses AI</th></tr>
@@ -137,28 +128,28 @@
         <tbody>
           <tr>
             <td><code>/docs</code></td>
-            <td>Create a Google Doc. Describe what you want — Methoryn writes the content and creates the document in your Drive</td>
-            <td class="td-dim">Yes</td>
+            <td>Create a new Google Doc in your Drive — provide the name when prompted</td>
+            <td class="td-dim">No</td>
           </tr>
           <tr>
             <td><code>/sheets</code></td>
-            <td>Create a Google Sheet. Describe the structure and data — Methoryn generates and populates the spreadsheet</td>
-            <td class="td-dim">Yes</td>
+            <td>Create a new Google Sheet in your Drive — provide the name when prompted</td>
+            <td class="td-dim">No</td>
           </tr>
           <tr>
             <td><code>/slides</code></td>
-            <td>Create a Google Slides presentation. Describe the topic, style, and number of slides — Methoryn builds the full deck</td>
-            <td class="td-dim">Yes</td>
+            <td>Create a new Google Slides presentation — provide the name when prompted</td>
+            <td class="td-dim">No</td>
           </tr>
           <tr>
             <td><code>/forms</code></td>
-            <td>Create a Google Form. Describe the form's purpose and questions — Methoryn creates it and returns the edit link</td>
-            <td class="td-dim">Yes</td>
+            <td>Create a new Google Form — provide the name when prompted</td>
+            <td class="td-dim">No</td>
           </tr>
           <tr>
             <td><code>/calendar</code></td>
-            <td>Add an event to your Google Calendar. Include the event name, date, time, and any details in your prompt</td>
-            <td class="td-dim">Yes</td>
+            <td>Add an event to your Google Calendar. Provide the event title, date, and time when prompted</td>
+            <td class="td-dim">No</td>
           </tr>
         </tbody>
       </table>
@@ -296,8 +287,6 @@
         <strong>You never need to type these tool names.</strong> Just describe your task in plain English — Methoryn picks the right tools automatically and chains them together as needed. These are listed here for transparency, so you know exactly what the AI can do on your behalf.
       </div>
 
-    <div class="docs-section" id="keybindings-anchor" style="display:none"></div>
-
       <h3>Web &amp; Research</h3>
       <table class="data-table">
         <thead>
@@ -316,7 +305,7 @@
           </tr>
           <tr>
             <td><code>/image</code></td>
-            <td>Generate an AI image using Gemini. Describe what you want — the image is saved to your output folder</td>
+            <td>Generate an AI image using Gemini. Describe what you want — the image is saved to your Desktop</td>
             <td class="td-dim">Yes</td>
           </tr>
         </tbody>
@@ -375,7 +364,7 @@
           </tr>
           <tr>
             <td><code>/pdf</code></td>
-            <td>Write a PDF file. Provide the filename and content. Requires reportlab</td>
+            <td>Write a PDF file. Provide the filename and content. Requires fpdf2</td>
             <td class="td-dim">No</td>
           </tr>
         </tbody>

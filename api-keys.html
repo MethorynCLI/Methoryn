@@ -33,7 +33,7 @@
     <div class="docs-hero">
       <div class="section-label">Configuration</div>
       <h1>API Keys</h1>
-      <p>Methoryn connects to multiple AI providers. Only one key is required to get started — everything else is optional and unlocks additional capabilities.</p>
+      <p>Methoryn connects to multiple AI providers. Four keys are required to get started — Layers 1–4 (Groq, Cloudflare, Gemini, Mistral) — and NVIDIA is optional. Every provider offers a free tier.</p>
     </div>
 
     <!-- ── Overview ── -->
@@ -85,7 +85,7 @@
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Add it to Methoryn</h3>
-            <p>If you are in the setup screen, paste it into the Groq API Key field. If Methoryn is already running, type <code style="color:var(--accent);">/keys</code> to open the key editor, find the GROQ_API_KEY field, and paste your key there.</p>
+            <p>If you are in the setup screen, paste it into the Groq API Key field. If Methoryn is already running, type <code style="color:var(--accent);">/account</code> to open the account manager, find the GROQ_API_KEY field, and paste your key there.</p>
           </div>
         </div>
       </div>
@@ -127,7 +127,9 @@
             <td><a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare</a></td>
             <td>Layer 2 — Library management</td>
             <td class="td-dim">Free tier</td>
-          </tr> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
+          </tr>
+          <tr>
+            <td><code>GOOGLE_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
             <td><a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></td>
             <td>Layer 3 — Multimodal &amp; research</td>
             <td class="td-dim">1M TPM</td>
@@ -196,10 +198,10 @@ MISTRAL_API_KEY=your_key_here</div>
       </div>
 
       <h3>Checking key status</h3>
-      <p>Inside Methoryn, run <code style="color:var(--accent);">/keys</code> to see which keys are currently configured. The editor shows a green indicator next to each key that is set and a grey indicator for keys that are missing.</p>
+      <p>Inside Methoryn, run <code style="color:var(--accent);">/account</code> to open the account manager and see which keys are currently configured. Required fields are marked with ★.</p>
 
       <h3>Removing a key</h3>
-      <p>Open <code style="color:var(--accent);">/keys</code>, navigate to the key you want to remove, clear the field, and save. Alternatively, edit <code style="color:var(--accent);">~/.Methoryn/byok.json</code> directly in any text editor and delete the relevant line.</p>
+      <p>Open <code style="color:var(--accent);">/account</code>, navigate to the key you want to remove, clear the field, and save. Alternatively, edit <code style="color:var(--accent);">~/.Methoryn/byok.json</code> directly in any text editor and delete the relevant line.</p>
 
       <h3>Key file location</h3>
       <div class="code-block"><span class="comment"># macOS / Linux</span>
