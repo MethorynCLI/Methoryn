@@ -54,7 +54,7 @@
     <div class="docs-section" id="what-is-Methoryn">
       <div class="section-label">Overview</div>
       <h2>What is Methoryn?</h2>
-      <p>Methoryn is a terminal application that connects multiple AI providers — Groq, Cloudflare, Gemini, Mistral, and NVIDIA — into a single, unified assistant. You type a plain English prompt, and Methoryn figures out what to do: write code, manage files, summarize emails, create Google Docs, generate images, search the web, and more.</p>
+      <p>Methoryn is a terminal application that connects multiple AI providers — Ollama (local) and Gemini (cloud) — into a single, unified assistant. You type a plain English prompt, and Methoryn figures out what to do: write code, manage files, summarize emails, create Google Docs, generate images, search the web, and more.</p>
 
       <p>It runs entirely on your machine. There are no Methoryn servers, no accounts to create, and no data leaving your device except the prompts you send to AI providers directly.</p>
 
@@ -276,22 +276,13 @@ Methoryn</div>
         <div class="step">
           <div class="step-num">A</div>
           <div class="step-content">
-            <h3>Get a free Groq API key</h3>
-            <p>Go to <a href="https://console.groq.com/" target="_blank">console.groq.com</a>, create a free account (no credit card), and generate an API key.</p>
+            <h3>Install Ollama</h3>
+            <p>Go to <a href="https://ollama.com/download" target="_blank">ollama.com/download</a> and install Ollama for your platform. It runs Llama 3.2 and Qwen 2.5 Coder locally on your machine — no API key needed.</p>
+            <p>After installing, pull the required models:</p>
+            <div class="code-block">ollama pull llama3.2
+ollama pull qwen2.5-coder</div>
             <div class="docs-tip" style="margin-top:0.75rem;">
-              <strong>Free tier:</strong> Groq gives you 12,000 tokens per minute at no cost. A typical Methoryn prompt uses 200–800 tokens. You won't hit limits in normal use.
-            </div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">A2</div>
-          <div class="step-content">
-            <h3>Create a Cloudflare Workers AI token</h3>
-            <p>Go to <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com → Profile → API Tokens → Create Token</a>. Under <strong style="color:#fff;">Permissions</strong>, add:</p>
-            <div class="code-block" style="color:#e8c44e;">Workers AI  →  Edit</div>
-            <p>Set <strong style="color:#fff;">Account Resources</strong> to your specific account, then save. You also need your <strong style="color:#fff;">Account ID</strong> — it's the 32-character hex string in the right sidebar of any Cloudflare dashboard page.</p>
-            <div class="docs-tip" style="margin-top:0.75rem; border-color:#e8c44e;">
-              <strong>Important:</strong> The permission must be <strong style="color:#fff;">Workers AI: Edit</strong> — not Read. Running inference is a write operation. Using Read will cause 401 errors when Methoryn tries to call the AI model.
+              <strong>100% local:</strong> Ollama runs entirely on your machine. Your prompts never leave your device for these two agents.
             </div>
           </div>
         </div>
@@ -299,7 +290,7 @@ Methoryn</div>
           <div class="step-num">B</div>
           <div class="step-content">
             <h3>Complete setup on first launch</h3>
-            <p>Run <code style="color:var(--accent);">Methoryn</code> — the first launch opens a setup screen. Enter the required keys — Groq, Cloudflare (API token + Account ID), Gemini, and Mistral — and press Continue; NVIDIA is optional. Optionally sign in with Google to unlock Gmail and Workspace features.</p>
+            <p>Run <code style="color:var(--accent);">Methoryn</code> — the first launch opens a setup screen. Enter your Google API key (Gemini) for the Architect agent and sign in with Google to unlock Gmail and Workspace features. The Converse and Project agents use Ollama locally — no keys needed.</p>
           </div>
         </div>
         <div class="step">
@@ -374,11 +365,10 @@ Methoryn</div>
 
       <h3>❌ Installation succeeds but API key setup fails</h3>
       <p><strong>Cause:</strong> Network issues, wrong API key format, or provider API changes.</p>
-      <p><strong>Fix:</strong> Check that your Groq API key starts with <code style="color:var(--accent);">gsk_</code> and test it manually:</p>
-      <div class="code-block">curl -X POST "https://api.groq.com/openai/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_GROQ_KEY" \
+      <p><strong>Fix:</strong> Check that your Google API key is valid for <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> and test it manually:</p>
+      <div class="code-block">curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_GOOGLE_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"hello"}],"model":"llama3-8b-8192"}'</div>
+  -d '{"contents":[{"parts":[{"text":"hello"}]}]}'</div>
 
       <h3>Alternative Installation Method (uv)</h3>
       <p>If standard pip installation fails, try <code style="color:var(--accent);">uv</code> — it downloads its own Python 3.13 and creates isolated environments:</p>
@@ -405,7 +395,7 @@ Methoryn</div>
       <p>Every prompt uses tokens from your AI provider accounts. Here's a rough guide to how much a typical prompt costs:</p>
       <table class="data-table">
         <thead>
-          <tr><th>Task type</th><th>Approx. tokens</th><th>Groq free tier impact</th></tr>
+          <tr><th>Task type</th><th>Approx. tokens</th><th>Impact on free tier</th></tr>
         </thead>
         <tbody>
           <tr><td>Simple question or lookup</td><td class="td-dim">100–300</td><td class="td-dim">Negligible</td></tr>
@@ -415,7 +405,7 @@ Methoryn</div>
           <tr><td>Complex multi-step task</td><td class="td-dim">3,000–8,000</td><td class="td-dim">Moderate</td></tr>
         </tbody>
       </table>
-      <p>Groq's free tier is 12,000 tokens per minute (TPM). This resets every minute, so even heavy use rarely hits the limit unless you are running rapid-fire automated prompts.</p>
+      <p><strong>Ollama (Converse &amp; Project agents):</strong> Runs locally on your machine — completely free, unlimited usage. <strong>Gemini (Architect agent):</strong> Free tier covers typical usage. Longer or more complex tasks may require a paid plan for heavy use.</p>
 
       <h3>What Methoryn can and can't do</h3>
       <p>Methoryn is very capable within its scope, but it has limits:</p>
@@ -430,7 +420,7 @@ Methoryn</div>
     <div class="docs-section" id="what-not-to-share">
       <div class="section-label">Important</div>
       <h2>What Not to Share with AI</h2>
-      <p>Because your prompts are sent to third-party AI providers (Groq, Gemini, Mistral, etc.), be mindful of what you include in them. The AI providers receive the full text of every prompt you type.</p>
+      <p>Because your prompts are sent to third-party AI providers (Gemini, etc.), be mindful of what you include in them. The AI providers receive the full text of every prompt you type.</p>
 
       <div class="docs-danger">
         <strong>Never include in a prompt:</strong>
@@ -446,7 +436,7 @@ Methoryn</div>
       </div>
 
       <h3>Why this matters</h3>
-      <p>Methoryn itself never stores your prompts. But the AI providers — Groq, Google, Mistral — receive them as part of generating responses. Each provider has its own data retention and training policies. Sensitive data in prompts could be logged, retained, or used to improve their models depending on the provider's current policy.</p>
+      <p>Methoryn itself never stores your prompts. But the AI providers — Google (Gemini) and your local Ollama instance — receive them as part of generating responses. Gemini has its own data retention and training policies. Ollama keeps everything local. Sensitive data sent to cloud providers could be logged, retained, or used to improve their models depending on the provider's current policy.</p>
       <p>For full details on what data leaves your machine and where it goes, see the <a href="guidelines.html#privacy">Privacy section</a>.</p>
 
       <h3>Safe ways to work with sensitive context</h3>
@@ -469,7 +459,7 @@ help me build a spreadsheet to track my monthly credit card spending by category
           <div class="feature-card">
             <div class="feature-icon">🔑</div>
             <h3>API Keys</h3>
-            <p>Add optional providers — Gemini, Mistral, NVIDIA — to unlock more capabilities and better fallback handling. All free.</p>
+            <p>Add your Google API key for the Architect agent and sign in with Google to unlock Gmail and Docs. Ollama handles the local agents automatically.</p>
           </div>
         </a>
         <a href="commands.html" style="text-decoration:none;">

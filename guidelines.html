@@ -61,7 +61,7 @@
         <li>Sending unsolicited emails, automated spam, or bulk messages without recipient consent</li>
         <li>Generating malicious code, exploits, ransomware, or other harmful software</li>
         <li>Scraping websites in violation of their terms of service</li>
-        <li>Any activity that violates the terms of service of Groq, Google, Mistral, or any other connected provider</li>
+        <li>Any activity that violates the terms of service of Google</li>
         <li>Generating content that is illegal in your jurisdiction</li>
         <li>Impersonating individuals or organizations</li>
       </ul>
@@ -108,7 +108,7 @@
         <tbody>
           <tr>
             <td>Your prompts and conversation history</td>
-            <td>Groq, Cloudflare, Gemini, Mistral, or NVIDIA — whichever agent layer handles your request</td>
+            <td>Converse, Project, or Architect — whichever agent handles your request</td>
             <td>To generate AI responses</td>
             <td class="td-dim">Only by not using Methoryn</td>
           </tr>
@@ -158,13 +158,9 @@
       </ul>
 
       <h3>Third-party provider privacy policies</h3>
-      <p>When your prompts are sent to AI providers, they are subject to those providers' own privacy policies. Methoryn has no control over how Groq, Google, Mistral, NVIDIA, Cloudflare, or others handle the data you send them. Review their policies if this is a concern:</p>
+      <p>Your prompts are processed locally by Ollama (Converse and Project agents) or sent to Google's Gemini API (Architect agent). Ollama runs entirely on your machine and does not send any data externally. Only the Architect agent sends prompts to Google. Methoryn has no control over how Google handles the data you send them. Review their policy if this is a concern:</p>
       <ul>
-        <li><a href="https://groq.com/privacy-policy/" target="_blank">Groq Privacy Policy</a></li>
         <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
-        <li><a href="https://mistral.ai/privacy/" target="_blank">Mistral Privacy Policy</a></li>
-        <li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">NVIDIA Privacy Policy</a></li>
-        <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy</a></li>
       </ul>
 
       <h3>Sensitive data in prompts</h3>
@@ -264,7 +260,6 @@ SOFTWARE.</div>
       <p>Methoryn depends on several open-source libraries. The full list of dependencies and their respective licenses can be found in the <code style="color:var(--accent);">pyproject.toml</code> file distributed with the package. Key dependencies include:</p>
       <ul>
         <li><a href="https://github.com/Textualize/textual" target="_blank">Textual</a> — MIT License — terminal UI framework</li>
-        <li><a href="https://github.com/groq/groq-python" target="_blank">groq</a> — Apache 2.0 — Groq Python client</li>
         <li><a href="https://github.com/googleapis/python-genai" target="_blank">google-genai</a> — Apache 2.0 — Gemini Python client</li>
         <li><a href="https://github.com/google/google-auth-library-python" target="_blank">google-auth</a> — Apache 2.0 — Google OAuth library</li>
         <li><a href="https://github.com/python-docx/python-docx" target="_blank">python-docx</a> — MIT License — Word document generation</li>

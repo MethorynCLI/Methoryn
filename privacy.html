@@ -50,7 +50,7 @@
         </ul>
 
         <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">API Keys</h2>
-        <p>API keys for Groq, Cloudflare, Gemini, Mistral, and NVIDIA are stored locally on your machine in <code style="color: var(--accent);">~/.Methoryn/byok.json</code>, or set as environment variables or in a <code style="color: var(--accent);">.env</code> file. They are sent directly from your machine to the respective provider and are never transmitted to us.</p>
+        <p>Methoryn uses local AI models via Ollama (no API keys needed for conversation and coding) and Gemini via API key for multimodal tasks. The Gemini API key is stored locally on your machine in <code style="color: var(--accent);">~/.Methoryn/byok.json</code>, or set as environment variables or in a <code style="color: var(--accent);">.env</code> file. Keys are sent directly from your machine to the provider and are never transmitted to us.</p>
 
         <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Google OAuth and Google Services</h2>
         <p>Methoryn uses Google OAuth 2.0 to access Google services on your behalf (Gmail, Google Drive, Docs, Sheets, Slides). When you sign in:</p>
@@ -63,13 +63,10 @@
         <p>Methoryn's use of Google user data complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" style="color: var(--accent);">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 
         <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Third-Party Services</h2>
-        <p>When you send a prompt, your input is sent to the AI provider handling it — Groq, Cloudflare, Gemini, Mistral, or NVIDIA. Your use of those services is governed by their own privacy policies:</p>
+        <p>Your prompts are handled as follows: Converse and Project process input locally via Ollama (no data leaves your machine). Architect sends prompts to Google AI Studio (Gemini). Your use of Google's services is governed by their own privacy policy:</p>
         <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--muted);">
-          <li><a href="https://groq.com/privacy-policy/" style="color: var(--accent);">Groq Privacy Policy</a></li>
           <li><a href="https://policies.google.com/privacy" style="color: var(--accent);">Google Privacy Policy</a></li>
-          <li><a href="https://mistral.ai/privacy/" style="color: var(--accent);">Mistral Privacy Policy</a></li>
-          <li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" style="color: var(--accent);">NVIDIA Privacy Policy</a></li>
-          <li><a href="https://www.cloudflare.com/privacypolicy/" style="color: var(--accent);">Cloudflare Privacy Policy</a></li>
+          <li><a href="https://ollama.com/" style="color: var(--accent);">Ollama</a> — runs locally, no data transmitted</li>
         </ul>
 
         <h2 style="color: var(--accent); font-size: 1.1rem; margin: 2rem 0 0.75rem;">Local Storage</h2>

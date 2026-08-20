@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Methoryn — Multi-Agent AI CLI</title>
-  <meta name="description" content="Methoryn is a terminal-based multi-agent AI assistant powered by Groq, Cloudflare, Gemini, Mistral, and NVIDIA. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
+  <meta name="description" content="Methoryn is a terminal-based multi-agent AI assistant powered by Ollama (local Llama 3.2 + Qwen 2.5 Coder) and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
   <meta name="google-site-verification" content="hRwFmgSEQUuL4GQGthrdGrZCPT9LJMTdBZfzqqaU3xQ" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
@@ -32,7 +32,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.56 — Free to install
+        <span></span> v0.1.57 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em> lives in the terminal.</h1>
@@ -40,8 +40,8 @@
       <h2 style="font-size:1rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Methoryn — Multi-Agent AI Assistant</h2>
 
       <p class="hero-sub">
-        Methoryn is a multi-agent CLI powered by Groq, Cloudflare, Gemini,
-        Mistral, and NVIDIA. It writes files,
+        Methoryn is a 3-agent AI system powered by Ollama (local Llama 3.2 + Qwen 2.5 Coder)
+        and Gemini. It writes files,
         runs code, reads your Gmail, edits Google Docs, builds presentations,
         and handles complex tasks — all from a single prompt.
       </p>
@@ -68,19 +68,16 @@
           <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">Methoryn</span>
         </div>
         <div class="terminal-body">
-          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">5-layer agent stack online.</span></div>
-          <div class="t-dim">  ✓ L1 Groq        ready  [orchestration]</div>
-          <div class="t-dim">  ✓ L2 Cloudflare  ready  [library manager]</div>
-          <div class="t-dim">  ✓ L3 Gemini      ready  [multimodal &amp; research]</div>
-          <div class="t-dim">  ✓ L4 Mistral     ready  [coding agent]</div>
-          <div class="t-dim">  ✓ L5 NVIDIA      ready  [quality control]</div>
+          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">3-agent system online.</span></div>
+          <div class="t-dim">  ✓ Converse    ready  [conversation &amp; planning]</div>
+          <div class="t-dim">  ✓ Project     ready  [execution &amp; code]</div>
+          <div class="t-dim">  ✓ Architect   ready  [research &amp; multimodal]</div>
           <br/>
           <div><span class="t-prompt">You:</span> <span class="t-cmd">write a summary of my last 10 emails and save it as a PDF</span></div>
           <br/>
-          <div class="t-dim">  ▸ L1 Groq: planning…</div>
-          <div class="t-dim">  ▸ L2 Cloudflare: fetching Gmail, summarising 10 messages…</div>
-          <div class="t-dim">  ▸ L4 Mistral: writing email_summary.pdf…</div>
-          <div class="t-dim">  ▸ L5 NVIDIA: reviewing output…</div>
+          <div class="t-dim">  ▸ Converse: planning…</div>
+          <div class="t-dim">  ▸ Project: fetching Gmail, summarising 10 messages…</div>
+          <div class="t-dim">  ▸ Architect: generating PDF…</div>
           <div><span class="t-success">  ✓ Saved to Desktop/email_summary.pdf</span></div>
         </div>
       </div>
@@ -93,14 +90,14 @@
   <section id="features">
     <div class="container">
       <div class="section-label">Capabilities</div>
-      <h2>Five agents. One prompt.</h2>
+      <h2>Three agents. One prompt.</h2>
       <p style="color:var(--text-dim); max-width:560px;">Methoryn routes tasks through specialised agents automatically — you just type what you want.</p>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🤖</div>
           <h3>Multi-Agent Execution</h3>
-          <p>Five specialised agents work as one system: Groq plans and orchestrates, Cloudflare runs the tools and libraries, Gemini handles research and images, Mistral writes and debugs code, and NVIDIA double-checks the result.</p>
+          <p>Three specialised agents work as one system: Converse plans and orchestrates locally with Ollama, Project executes tasks and writes code with Qwen, and Architect handles research and images with Gemini.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📁</div>
@@ -168,12 +165,12 @@
         <div class="feature-card">
           <div class="feature-icon">🔑</div>
           <h3>Bring Your Own Key</h3>
-          <p>Same BYOK model as the CLI. Add your Groq, Gemini, Mistral, or NVIDIA keys in Settings — stored only in your browser's localStorage.</p>
+          <p>Same BYOK model as the CLI. Add your Gemini key in Settings — stored only in your browser's localStorage. Converse and Project run locally via Ollama.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🤖</div>
           <h3>Same Agent Stack</h3>
-          <p>You chat with L1 Groq (orchestrator) — the Cloudflare, Gemini, Mistral, and NVIDIA layers stay configured behind it, exactly like the CLI.</p>
+          <p>You chat with Converse (orchestrator) — the Project and Architect layers stay configured behind it, exactly like the CLI.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📄</div>
@@ -200,49 +197,24 @@
   <section id="requirements">
     <div class="container">
       <div class="section-label">What You Need</div>
-      <h2>Four keys. All with free tiers.</h2>
-      <p style="color:var(--text-dim); max-width:580px;">Layers 1–4 (Groq, Cloudflare, Gemini, Mistral) are required to run — each offers a generous free tier. NVIDIA adds quality control and is optional.</p>
+      <h2>One key. Free tier.</h2>
+      <p style="color:var(--text-dim); max-width:580px;">Methoryn runs locally with Ollama (no keys needed for Converse and Project). Only GOOGLE_API_KEY is needed for Architect (Gemini) — it has a free tier.</p>
 
       <div class="keys-grid">
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">GROQ_API_KEY</span>
-            <span class="badge badge-required">Required</span>
-          </div>
-          <span class="key-desc">Layer 1 — conversation &amp; orchestration — <a href="https://console.groq.com/" target="_blank">console.groq.com</a></span>
-          <span class="badge badge-free">Free tier available</span>
-        </div>
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">CLOUDFLARE_API_KEY</span>
-            <span class="badge badge-required">Required</span>
-          </div>
-          <span class="key-desc">Layer 2 — library &amp; task-plan execution (needs <code style="color:var(--accent); font-size:0.82rem;">CLOUDFLARE_ACCOUNT_ID</code>) — <a href="https://developers.cloudflare.com/" target="_blank">developers.cloudflare.com</a></span>
-          <span class="badge badge-free">Free tier available</span>
-        </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span class="key-name">GOOGLE_API_KEY</span>
             <span class="badge badge-required">Required</span>
           </div>
-          <span class="key-desc">Layer 3 — Gemini multimodal &amp; research — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
+          <span class="key-desc">Architect — Gemini multimodal &amp; research — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
           <span class="badge badge-free">1M tokens/month free</span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">MISTRAL_API_KEY</span>
-            <span class="badge badge-required">Required</span>
+            <span class="key-name">Ollama (local)</span>
+            <span class="badge badge-free" style="background:var(--accent); color:#000;">No key needed</span>
           </div>
-          <span class="key-desc">Layer 4 — coding agent — <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></span>
-          <span class="badge badge-free">~1B tokens/month free</span>
-        </div>
-        <div class="key-card">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">NVDA_API_KEY</span>
-            <span class="badge badge-optional">Optional</span>
-          </div>
-          <span class="key-desc">Layer 5 — NVIDIA quality control &amp; review — <a href="https://build.nvidia.com/" target="_blank">build.nvidia.com</a></span>
-          <span class="badge badge-free">Free tier available</span>
+          <span class="key-desc">Converse (Llama 3.2) + Project (Qwen 2.5 Coder) — runs on your machine via <a href="https://ollama.com/download" target="_blank">Ollama</a></span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">

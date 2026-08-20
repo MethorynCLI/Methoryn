@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>API Keys — Methoryn</title>
-  <meta name="description" content="Configure API keys for Methoryn — Groq, Cloudflare, Gemini, Mistral, and NVIDIA. One key per agent layer."/>
+  <meta name="description" content="Configure API keys for Methoryn — Ollama runs locally (no keys), only Google API key needed for Gemini."/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -33,135 +33,71 @@
     <div class="docs-hero">
       <div class="section-label">Configuration</div>
       <h1>API Keys</h1>
-      <p>Methoryn connects to multiple AI providers. Four keys are required to get started — Layers 1–4 (Groq, Cloudflare, Gemini, Mistral) — and NVIDIA is optional. Every provider offers a free tier.</p>
+      <p>Methoryn runs locally via Ollama (no keys needed) and uses Gemini via a single API key. Every provider offers a free tier.</p>
     </div>
 
     <!-- ── Overview ── -->
     <div class="docs-section" id="overview">
       <div class="section-label">Overview</div>
-      <h2>How Keys Work in Methoryn</h2>
-      <p>Methoryn is a five-layer agent system. Each layer is powered by a dedicated provider and does one job well: Groq plans and orchestrates (L1), Cloudflare executes the libraries and task plans (L2), Gemini handles multimodal and research (L3), Mistral is the coding agent (L4), and NVIDIA reviews and verifies output (L5). Your prompt is routed through these layers automatically — you never have to pick a provider.</p>
-
-      <h3>The key hierarchy</h3>
-      <p>Methoryn checks for API keys in this order:</p>
-      <ol>
-        <li>Keys saved in the in-app key editor (<code style="color:var(--accent);">~/.Methoryn/byok.json</code>)</li>
-        <li>Environment variables set in your shell session</li>
-        <li>A <code style="color:var(--accent);">.env</code> file in the directory where you run <code style="color:var(--accent);">Methoryn</code></li>
-      </ol>
-      <p>The in-app editor (recommended) takes priority over everything else. This means you can override a key for a single session by setting an environment variable, without permanently changing your saved configuration.</p>
+      <h2>How Keys Work</h2>
+      <p>Methoryn is a three-agent system. Converse and Project run locally through Ollama — no API keys required. Architect uses Google AI Studio (Gemini) and requires a single API key. Google Workspace integration (Gmail, Drive, Docs, Sheets, Slides) uses separate OAuth credentials managed via <code style="color:var(--accent);">/account</code>.</p>
 
       <h3>Where keys are stored</h3>
       <p>Keys saved through the in-app editor are written to <code style="color:var(--accent);">~/.Methoryn/byok.json</code> on your machine. This file is local only — it is never transmitted to Methoryn servers or any third party. The only time a key leaves your machine is when Methoryn makes a direct API call to the provider that key belongs to.</p>
-
-      <div class="docs-tip">
-        <strong>Free tiers only:</strong> Every provider listed on this page offers a free tier with no credit card required. You can run Methoryn at full capability without spending anything.
-      </div>
     </div>
 
     <!-- ── Required Keys ── -->
     <div class="docs-section" id="required">
       <div class="section-label">Required</div>
-      <h2>Groq API Key</h2>
-      <p>The Groq API key is the only key Methoryn requires. It powers Layer 1 — the orchestration agent that receives your prompts, plans tasks, and coordinates the other layers. Without it, Methoryn cannot run.</p>
+      <h2>Google API Key</h2>
+      <p>The Google API key powers Architect — the research and multimodal agent. It is the only key required to run Methoryn at full capability.</p>
 
-      <h3>Getting your Groq key</h3>
+      <h3>Getting your Google AI Studio key</h3>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h3>Create a free account at console.groq.com</h3>
-            <p>Go to <a href="https://console.groq.com/" target="_blank">console.groq.com</a> and sign up. No credit card required. Groq's free tier is generous — 12,000 tokens per minute on their fastest models.</p>
+            <h3>Go to Google AI Studio</h3>
+            <p>Navigate to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a> and sign in with your Google account. No credit card required.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
             <h3>Create an API key</h3>
-            <p>In the Groq Console, click <strong style="color:#fff;">API Keys</strong> in the left sidebar, then <strong style="color:#fff;">Create API Key</strong>. Name it anything (e.g. "Methoryn") and click Create. Copy the key immediately — Groq only shows it once.</p>
+            <p>Click <strong style="color:#fff;">Create API key</strong>. Name it anything (e.g. "Methoryn"). Copy the key — it starts with <code style="color:var(--accent);">AIzaSy</code>.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Add it to Methoryn</h3>
-            <p>If you are in the setup screen, paste it into the Groq API Key field. If Methoryn is already running, type <code style="color:var(--accent);">/account</code> to open the account manager, find the GROQ_API_KEY field, and paste your key there.</p>
+            <p>If you are in the setup screen, paste it into the Google API Key field. If Methoryn is already running, type <code style="color:var(--accent);">/account</code> to open the account manager, find the GOOGLE_API_KEY field, and paste your key there.</p>
           </div>
         </div>
       </div>
 
-      <h3>Groq rate limits (free tier)</h3>
-      <p>Groq's free tier provides:</p>
+      <h3>Gemini free tier</h3>
       <ul>
-        <li>12,000 tokens per minute (TPM)</li>
+        <li>1,000,000 tokens per minute (TPM)</li>
         <li>No daily or monthly hard cap on the free tier</li>
-        <li>Access to Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B, and more</li>
+        <li>Access to Gemini 3.6 Flash and other models</li>
       </ul>
-      <p>For most personal use cases, the free tier is more than sufficient. If you hit rate limits during heavy use, Methoryn will automatically throttle requests and retry.</p>
     </div>
 
-    <!-- ── Provider Keys ── -->
-    <div class="docs-section" id="providers">
-      <div class="section-label">Providers</div>
-      <h2>Provider Keys by Architecture Layer</h2>
-      <p>Methoryn runs a five-layer architecture. Layers 1–4 are required — each gates a whole agent layer. Layer 5 is optional and degrades gracefully when absent.</p>
+    <!-- ── Ollama Setup ── -->
+    <div class="docs-section" id="ollama">
+      <div class="section-label">Local AI</div>
+      <h2>Ollama Setup</h2>
+      <p>Converse (Llama 3.2 3B) and Project (Qwen 2.5 Coder 3B) run locally through Ollama — no API keys, no rate limits, fully private.</p>
 
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Key Name</th>
-            <th>Provider</th>
-            <th>Layer</th>
-            <th>Free Tier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>GROQ_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
-            <td><a href="https://console.groq.com/" target="_blank">Groq</a></td>
-            <td>Layer 1 — Conversation &amp; orchestration</td>
-            <td class="td-dim">12K TPM</td>
-          </tr>
-          <tr>
-            <td><code>CLOUDFLARE_API_KEY</code> + <code>CLOUDFLARE_ACCOUNT_ID</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
-            <td><a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare</a></td>
-            <td>Layer 2 — Library management</td>
-            <td class="td-dim">Free tier</td>
-          </tr>
-          <tr>
-            <td><code>GOOGLE_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
-            <td><a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></td>
-            <td>Layer 3 — Multimodal &amp; research</td>
-            <td class="td-dim">1M TPM</td>
-          </tr>
-          <tr>
-            <td><code>MISTRAL_API_KEY</code> <span class="badge badge-required" style="margin-left:0.4rem;">Required</span></td>
-            <td><a href="https://console.mistral.ai/" target="_blank">Mistral</a></td>
-            <td>Layer 4 — Coding agent</td>
-            <td class="td-dim">~1B tokens/month</td>
-          </tr>
-          <tr>
-            <td><code>NVDA_API_KEY</code></td>
-            <td><a href="https://build.nvidia.com/" target="_blank">NVIDIA NIM</a></td>
-            <td>Layer 5 — Quality control &amp; review (optional)</td>
-            <td class="td-dim">40 RPM</td>
-          </tr>
-        </tbody>
-      </table>
+      <h3>Installing Ollama</h3>
+      <p>Download from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>. Works on Windows, macOS, and Linux.</p>
 
-      <h3>Google AI Studio (Gemini)</h3>
-      <p>The Google API key from AI Studio is separate from your Google account sign-in. The Google Sign-In (OAuth) connects Methoryn to your Gmail, Drive, and Workspace. The Google AI Studio key connects Methoryn to the Gemini model API (Layer 3 — multimodal &amp; research, image generation). You need both if you want both Google Workspace integration and Gemini capabilities.</p>
-      <p>To get a Google AI Studio key, go to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>, sign in with your Google account, and click <strong style="color:#fff;">Create API key</strong>. The free tier gives you 1 million tokens per minute — effectively unlimited for personal use.</p>
-
-      <h3>Mistral</h3>
-      <p>Mistral provides some of the best open-weight models available. Methoryn uses Mistral as its Layer 4 Coding Agent — writing, testing, and debugging code through an agentic loop over the Coding Library. The free tier is very generous at approximately 1 billion tokens per month. Sign up at <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a>.</p>
-
-      <h3>Cloudflare Workers AI</h3>
-      <p>Methoryn uses Cloudflare Workers AI as its Layer 2 Library Manager — it routes task plans to the right library scripts and executes them. You need two values: an <strong style="color:#fff;">API Token</strong> and your <strong style="color:#fff;">Account ID</strong>.</p>
-      <p><strong style="color:#fff;">Creating the token:</strong> Go to <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com → Profile → API Tokens → Create Token</a>. Under <strong style="color:#fff;">Permissions</strong>, add exactly one permission:</p>
-      <div class="code-block" style="color:#e8c44e;">Workers AI  →  Edit</div>
-      <p>Set <strong style="color:#fff;">Account Resources</strong> to your specific account. No Zone permissions, no R2, no KV — just <code style="color:var(--accent);">Workers AI: Edit</code>. The Edit level (not Read) is required because running inference is treated as a write operation by Cloudflare.</p>
-      <p><strong style="color:#fff;">Finding your Account ID:</strong> It appears in the right-hand sidebar of any page at <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>. It's a 32-character hex string.</p>
+      <h3>Pulling the models</h3>
+      <div class="code-block">ollama pull llama3.2       <span class="comment"># Converse agent</span>
+ollama pull qwen2.5-coder  <span class="comment"># Project agent</span></div>
+      <p>Methoryn auto-downloads models during first launch if they are not already present, but pre-pulling them avoids a wait on first startup.</p>
     </div>
 
     <div class="docs-section" id="managing">
@@ -175,33 +111,27 @@
       <p>Keys are stored locally at <code style="color:var(--accent);">~/.Methoryn/byok.json</code>.</p>
 
       <h3>Method 2: Environment variables</h3>
-      <p>You can set keys as environment variables in your shell. This is useful for CI/CD pipelines or if you prefer not to store keys in a file.</p>
       <div class="code-block"><span class="comment"># Windows PowerShell</span>
-$env:GROQ_API_KEY = "gsk_your_key_here"
+$env:GOOGLE_API_KEY = "AIzaSy_your_key_here"
 
 <span class="comment"># macOS / Linux (bash/zsh)</span>
-export GROQ_API_KEY="gsk_your_key_here"
+export GOOGLE_API_KEY="AIzaSy_your_key_here"
 
 <span class="comment"># Then launch Methoryn in the same session</span>
 Methoryn</div>
-      <p>Environment variables are session-scoped — they disappear when you close your terminal. To make them permanent, add the export line to your shell profile (<code style="color:var(--accent);">~/.zshrc</code>, <code style="color:var(--accent);">~/.bashrc</code>, or Windows system environment variables).</p>
+      <p>Environment variables are session-scoped. To make them permanent, add the export line to your shell profile (<code style="color:var(--accent);">~/.zshrc</code>, <code style="color:var(--accent);">~/.bashrc</code>, or Windows system environment variables).</p>
 
       <h3>Method 3: .env file</h3>
-      <p>Create a file named <code style="color:var(--accent);">.env</code> in the directory where you run <code style="color:var(--accent);">Methoryn</code>. Methoryn will load it automatically on startup.</p>
+      <p>Create a file named <code style="color:var(--accent);">.env</code> in the directory where you run <code style="color:var(--accent);">Methoryn</code>.</p>
       <div class="code-block"><span class="comment"># .env file — one key per line</span>
-GROQ_API_KEY=gsk_your_key_here
-GOOGLE_API_KEY=AIzaSy_your_key_here
-MISTRAL_API_KEY=your_key_here</div>
+GOOGLE_API_KEY=AIzaSy_your_key_here</div>
 
       <div class="docs-warn">
-        <strong>Warning:</strong> Never commit your <code>.env</code> file or <code>byok.json</code> to a public git repository. Add both to your <code>.gitignore</code>. Your API keys will be immediately harvested by bots if exposed in a public repo.
+        <strong>Warning:</strong> Never commit your <code>.env</code> file or <code>byok.json</code> to a public git repository. Add both to your <code>.gitignore</code>.
       </div>
 
       <h3>Checking key status</h3>
-      <p>Inside Methoryn, run <code style="color:var(--accent);">/account</code> to open the account manager and see which keys are currently configured. Required fields are marked with ★.</p>
-
-      <h3>Removing a key</h3>
-      <p>Open <code style="color:var(--accent);">/account</code>, navigate to the key you want to remove, clear the field, and save. Alternatively, edit <code style="color:var(--accent);">~/.Methoryn/byok.json</code> directly in any text editor and delete the relevant line.</p>
+      <p>Inside Methoryn, run <code style="color:var(--accent);">/account</code> to see which keys are currently configured.</p>
 
       <h3>Key file location</h3>
       <div class="code-block"><span class="comment"># macOS / Linux</span>
@@ -215,83 +145,46 @@ C:\Users\YourName\.Methoryn\byok.json</div>
     <div class="docs-section" id="usage-tips">
       <div class="section-label">Tips</div>
       <h2>Managing Your Credit Usage</h2>
-      <p>Every AI provider counts usage in tokens. Understanding how tokens work helps you stay well within free tier limits and avoid unexpected rate limit errors.</p>
 
-      <h3>What is a token?</h3>
-      <p>A token is roughly 3/4 of a word. The sentence "pip install Methoryn" is about 4 tokens. A full email summary prompt might be 500–2,000 tokens including the response. Tokens count for both your input (the prompt) and the output (the AI's response).</p>
-
-      <h3>Free tier limits by provider</h3>
+      <h3>Free tier limits</h3>
       <table class="data-table">
         <thead>
-          <tr><th>Provider</th><th>Free limit</th><th>Resets</th><th>Best used for</th></tr>
+          <tr><th>Component</th><th>Limit</th><th>Resets</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>Groq</td>
-            <td class="td-dim">12,000 TPM</td>
-            <td class="td-dim">Every minute</td>
-            <td class="td-dim">L1 — orchestration &amp; planning</td>
+            <td>Ollama (Converse + Project)</td>
+            <td class="td-dim">Unlimited (local)</td>
+            <td class="td-dim">N/A</td>
           </tr>
           <tr>
-            <td>Cloudflare (GLM)</td>
-            <td class="td-dim">10,000 TPM</td>
-            <td class="td-dim">Every minute</td>
-            <td class="td-dim">L2 — library &amp; task-plan execution</td>
-          </tr>
-          <tr>
-            <td>Google AI Studio (Gemini)</td>
+            <td>Gemini (Architect)</td>
             <td class="td-dim">1,000,000 TPM</td>
             <td class="td-dim">Every minute</td>
-            <td class="td-dim">L3 — multimodal, research, images</td>
-          </tr>
-          <tr>
-            <td>Mistral</td>
-            <td class="td-dim">~1B tokens/month</td>
-            <td class="td-dim">Monthly</td>
-            <td class="td-dim">L4 — coding agent</td>
-          </tr>
-          <tr>
-            <td>NVIDIA NIM</td>
-            <td class="td-dim">40 RPM</td>
-            <td class="td-dim">Per minute</td>
-            <td class="td-dim">L5 — quality control &amp; review</td>
           </tr>
         </tbody>
       </table>
 
-      <h3>Tips for staying within free limits</h3>
-      <ul>
-        <li><strong style="color:#fff;">Be specific in prompts</strong> — A focused prompt generates a tighter response and uses fewer tokens than a vague one that produces a long, hedged answer.</li>
-        <li><strong style="color:#fff;">Avoid sending large files as prompts</strong> — If you need Methoryn to work with a large document, describe its structure rather than pasting the entire contents.</li>
-        <li><strong style="color:#fff;">Add a second provider</strong> — With both Groq and Gemini keys set, Methoryn can route heavy tasks to Gemini's 1M TPM free tier, keeping Groq headroom available.</li>
-        <li><strong style="color:#fff;">Check usage in the provider console</strong> — Groq shows your usage at <a href="https://console.groq.com/" target="_blank">console.groq.com</a>. Check it periodically if you use Methoryn heavily.</li>
-        <li><strong style="color:#fff;">Don't loop Methoryn in scripts</strong> — Running Methoryn in a loop (e.g. calling it 50 times in a bash script) can exhaust Groq's 12K TPM limit in seconds. Add delays if you automate Methoryn.</li>
-      </ul>
-
       <h3>What not to include in prompts</h3>
-      <p>Since prompts are sent to AI providers, be careful about what you include:</p>
+      <p>Since Gemini prompts are sent to Google's servers, be careful about what you include:</p>
       <div class="docs-danger">
-        <strong>Avoid including in any prompt:</strong> passwords, credit card numbers, social security numbers, private API keys, confidential business data, medical records, or personal information belonging to others. AI providers receive the full text of every prompt and may log or retain it per their own policies.
+        <strong>Avoid including:</strong> passwords, credit card numbers, social security numbers, private API keys, confidential business data, medical records, or personal information belonging to others.
       </div>
-      <p>See the <a href="guidelines.html#privacy">Privacy section</a> for a full breakdown of what each provider receives.</p>
     </div>
 
     <!-- ── Troubleshooting ── -->
     <div class="docs-section" id="troubleshooting">
       <div class="section-label">Help</div>
-      <h2>Troubleshooting API Keys</h2>
+      <h2>Troubleshooting</h2>
 
       <h3>"Invalid API key" error</h3>
-      <p>Double-check that you copied the full key without any leading or trailing spaces. API keys from most providers start with a specific prefix (Groq keys start with <code style="color:var(--accent);">gsk_</code>, Google AI Studio keys start with <code style="color:var(--accent);">AIzaSy</code>). If the key looks correct, try regenerating it in the provider's console — a freshly generated key eliminates the possibility of a partially expired or revoked key.</p>
+      <p>Double-check you copied the full key without spaces. Google AI Studio keys start with <code style="color:var(--accent);">AIzaSy</code>. Try regenerating in the console if the key looks correct.</p>
 
-      <h3>"Rate limit exceeded" error</h3>
-      <p>You have hit the free tier's request limit for that provider. Methoryn will automatically retry with a short delay. If you consistently hit rate limits, consider adding a second provider key as a fallback. For example, adding a Mistral key alongside your Groq key gives Methoryn an alternative to fall back on during Groq rate limit windows.</p>
+      <h3>Ollama not responding</h3>
+      <p>Make sure Ollama is running (<code style="color:var(--accent);">ollama serve</code>) and the models are pulled (<code style="color:var(--accent);">ollama pull llama3.2</code> and <code style="color:var(--accent);">ollama pull qwen2.5-coder</code>).</p>
 
       <h3>Keys not being picked up from .env</h3>
-      <p>Make sure the <code style="color:var(--accent);">.env</code> file is in the same directory you run <code style="color:var(--accent);">Methoryn</code> from, not your home directory or a subdirectory. The file must be named exactly <code style="color:var(--accent);">.env</code> (with the leading dot). Also confirm there are no spaces around the <code>=</code> sign in the file.</p>
-
-      <h3>Key works in browser but not in Methoryn</h3>
-      <p>Some providers (like Groq) show a preview of the key in their console that is truncated. Make sure you clicked "Copy" to get the full key, not selected the truncated text manually. Also check that Methoryn's <code style="color:var(--accent);">byok.json</code> contains the complete key — open it in a text editor to verify.</p>
+      <p>Make sure the <code style="color:var(--accent);">.env</code> file is in the same directory you run <code style="color:var(--accent);">Methoryn</code> from. The file must be named exactly <code style="color:var(--accent);">.env</code> with no spaces around the <code>=</code> sign.</p>
     </div>
 
     <!-- ── Page nav ── -->
@@ -350,11 +243,3 @@ C:\Users\YourName\.Methoryn\byok.json</div>
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
