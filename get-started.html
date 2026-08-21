@@ -56,7 +56,7 @@
       <h2>What is Methoryn?</h2>
       <p>Methoryn is a terminal application that connects multiple AI providers — Ollama (local) and Gemini (cloud) — into a single, unified assistant. You type a plain English prompt, and Methoryn figures out what to do: write code, manage files, summarize emails, create Google Docs, generate images, search the web, and more.</p>
 
-      <p>It runs entirely on your machine. There are no Methoryn servers, no accounts to create, and no data leaving your device except the prompts you send to AI providers directly.</p>
+      <p>It runs entirely on your machine. There are no Methoryn servers, no accounts to create, and no data leaving your device except the prompts you send to AI providers directly. Ollama is auto-installed on first launch — no manual setup required.</p>
 
       <h3>What makes it different</h3>
       <ul>
@@ -276,10 +276,13 @@ Methoryn</div>
         <div class="step">
           <div class="step-num">A</div>
           <div class="step-content">
-            <h3>Install Ollama</h3>
-            <p>Go to <a href="https://ollama.com/download" target="_blank">ollama.com/download</a> and install Ollama for your platform. It runs Qwen 2.5 Coder locally on your machine - no API key needed.</p>
-            <p>After installing, pull the required models:</p>
-            <div class="code-block">ollama pull qwen2.5-coder</div>
+            <h3>Launch &amp; Auto-Setup</h3>
+            <p>Run <code style="color:var(--accent);">Methoryn</code> — on first launch, it will automatically:</p>
+            <ul style="margin-top:0.5rem; padding-left:1.25rem; line-height:2;">
+              <li><strong style="color:#fff;">Install Ollama</strong> if not found (Windows: auto-install; macOS/Linux: guided)</li>
+              <li><strong style="color:#fff;">Download Qwen 2.5 Coder</strong> model (~2 GB, one-time download)</li>
+              <li><strong style="color:#fff;">Prompt for your Google API key</strong> (the only key you need)</li>
+            </ul>
             <div class="docs-tip" style="margin-top:0.75rem;">
               <strong>100% local:</strong> Ollama runs entirely on your machine. Your prompts never leave your device for the Methoryn Agent.
             </div>
@@ -288,8 +291,9 @@ Methoryn</div>
         <div class="step">
           <div class="step-num">B</div>
           <div class="step-content">
-            <h3>Complete setup on first launch</h3>
-            <p>Run <code style="color:var(--accent);">Methoryn</code> - the first launch opens a setup screen. Enter your Google API key (Gemini) for the Architect agent and sign in with Google to unlock Gmail and Workspace features. The Methoryn Agent uses Ollama locally - no keys needed.</p>
+            <h3>Enter Your API Key</h3>
+            <p>The setup screen asks for one key: <code style="color:var(--accent);">GOOGLE_API_KEY</code> — this powers Architect for image generation. Get one free at <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a>.</p>
+            <p>Optionally, sign in with Google to unlock Gmail, Drive, Docs, Sheets, and Calendar.</p>
           </div>
         </div>
         <div class="step">

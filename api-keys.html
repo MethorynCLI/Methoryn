@@ -40,7 +40,7 @@
     <div class="docs-section" id="overview">
       <div class="section-label">Overview</div>
       <h2>How Keys Work</h2>
-      <p>Methoryn is a two-agent system. The Methoryn Agent runs locally through Ollama - no API keys required. Architect uses Google AI Studio (Gemini) for image generation and requires a single API key. Google Workspace integration (Gmail, Drive, Docs, Sheets, Slides) uses separate OAuth credentials managed via <code style="color:var(--accent);">/account</code>.</p>
+      <p>Methoryn is a two-agent system. The Methoryn Agent runs locally through Ollama — <strong style="color:#fff;">no API keys required, Ollama is auto-installed</strong>. Architect uses Google AI Studio (Gemini) for image generation and requires a single API key. Google Workspace integration (Gmail, Drive, Docs, Sheets, Slides) uses separate OAuth credentials managed via <code style="color:var(--accent);">/account</code>.</p>
 
       <h3>Where keys are stored</h3>
       <p>Keys saved through the in-app editor are written to <code style="color:var(--accent);">~/.Methoryn/byok.json</code> on your machine. This file is local only — it is never transmitted to Methoryn servers or any third party. The only time a key leaves your machine is when Methoryn makes a direct API call to the provider that key belongs to.</p>
@@ -89,14 +89,20 @@
     <div class="docs-section" id="ollama">
       <div class="section-label">Local AI</div>
       <h2>Ollama Setup</h2>
-      <p>The Methoryn Agent (Qwen 2.5 Coder 3B) runs locally through Ollama - no API keys, no rate limits, fully private.</p>
+      <p>The Methoryn Agent (Qwen 2.5 Coder 3B) runs locally through Ollama - no API keys, no rate limits, fully private. <strong style="color:#fff;">Ollama is auto-installed on first launch</strong> — you don't need to set it up manually.</p>
 
-      <h3>Installing Ollama</h3>
-      <p>Download from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>. Works on Windows, macOS, and Linux.</p>
+      <h3>What happens on first launch</h3>
+      <ol style="padding-left:1.25rem; line-height:2;">
+        <li>Methoryn checks if Ollama is installed</li>
+        <li>If not found, it auto-installs Ollama (Windows) or guides you through installation (macOS/Linux)</li>
+        <li>Downloads the Qwen 2.5 Coder model (~2 GB, one-time)</li>
+        <li>Warms up the model for fast first response</li>
+      </ol>
 
-      <h3>Pulling the models</h3>
-      <div class="code-block">ollama pull qwen2.5-coder  <span class="comment"># Methoryn Agent</span></div>
-      <p>Methoryn auto-downloads models during first launch if they are not already present, but pre-pulling them avoids a wait on first startup.</p>
+      <h3>Manual installation (optional)</h3>
+      <p>If you prefer to install Ollama yourself, download from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>. Works on Windows, macOS, and Linux.</p>
+
+      <div class="code-block">ollama pull qwen2.5-coder  <span class="comment"># Pre-pull to skip download on first launch</span></div>
     </div>
 
     <div class="docs-section" id="managing">

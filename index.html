@@ -32,7 +32,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.58 — Free to install
+        <span></span> v0.1.59 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em> lives in the terminal.</h1>
@@ -69,14 +69,13 @@
         </div>
         <div class="terminal-body">
           <div><span class="t-prompt">Methoryn</span> <span class="t-success">ready.</span> <span class="t-dim">2-agent system online.</span></div>
-          <div class="t-dim">  Methoryn     ready  [all Ollama tasks]</div>
-          <div class="t-dim">  ✓ Project     ready  [execution &amp; code]</div>
-          <div class="t-dim">  ✓ Architect   ready  [research &amp; multimodal]</div>
+          <div class="t-dim">  Methoryn     ready  [Ollama — Qwen Coder]</div>
+          <div class="t-dim">  ✓ Architect   ready  [Gemini — image generation]</div>
           <br/>
           <div><span class="t-prompt">You:</span> <span class="t-cmd">write a summary of my last 10 emails and save it as a PDF</span></div>
           <br/>
           <div class="t-dim">  Methoryn: processing...</div>
-          <div class="t-dim">  ▸ Project: fetching Gmail, summarising 10 messages…</div>
+          <div class="t-dim">  ▸ Fetching Gmail, summarising 10 messages…</div>
           <div class="t-dim">  ▸ Architect: generating PDF…</div>
           <div><span class="t-success">  ✓ Saved to Desktop/email_summary.pdf</span></div>
         </div>
@@ -90,7 +89,7 @@
   <section id="features">
     <div class="container">
       <div class="section-label">Capabilities</div>
-      <h2>Three agents. One prompt.</h2>
+      <h2>Two agents. One prompt.</h2>
       <p style="color:var(--text-dim); max-width:560px;">Methoryn routes tasks through specialised agents automatically — you just type what you want.</p>
 
       <div class="features-grid">
@@ -197,8 +196,8 @@
   <section id="requirements">
     <div class="container">
       <div class="section-label">What You Need</div>
-      <h2>One key. Free tier.</h2>
-      <p style="color:var(--text-dim); max-width:580px;">Methoryn runs locally with Ollama (no keys needed for the Methoryn Agent). Only GOOGLE_API_KEY is needed for Architect (Gemini) - it has a free tier.</p>
+      <h2>One key. Free tier. Auto-setup.</h2>
+      <p style="color:var(--text-dim); max-width:580px;">Methoryn handles the heavy lifting. Ollama is auto-installed on first launch, and the Qwen model downloads automatically. You only need one API key for Gemini.</p>
 
       <div class="keys-grid">
         <div class="key-card">
@@ -206,15 +205,16 @@
             <span class="key-name">GOOGLE_API_KEY</span>
             <span class="badge badge-required">Required</span>
           </div>
-          <span class="key-desc">Architect — Gemini multimodal &amp; research — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
+          <span class="key-desc">Powers Architect for image generation — <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a></span>
           <span class="badge badge-free">1M tokens/month free</span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span class="key-name">Ollama (local)</span>
-            <span class="badge badge-free" style="background:var(--accent); color:#000;">No key needed</span>
+            <span class="key-name">Ollama + Qwen 2.5 Coder</span>
+            <span class="badge badge-free" style="background:var(--accent); color:#000;">Auto-installed</span>
           </div>
-          <span class="key-desc">Methoryn Agent (Qwen 2.5 Coder) - runs on your machine via <a href="https://ollama.com/download" target="_blank">Ollama</a></span>
+          <span class="key-desc">Runs locally on your machine — no API key, no data leaves your device</span>
+          <span class="badge badge-free">Unlimited</span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
@@ -268,7 +268,7 @@
       <div class="cta-banner">
         <div class="section-label">Get Started</div>
         <h2>Install in one command.</h2>
-        <p>No build steps. No config files to edit. Run <code style="color:var(--accent);">Methoryn</code> and the setup screen walks you through everything.</p>
+        <p>No build steps. No config files to edit. Run <code style="color:var(--accent);">Methoryn</code> — it auto-installs Ollama, downloads the model, and walks you through the one API key you need.</p>
         <div style="display:flex; justify-content:center; margin-bottom:1.5rem;">
           <div class="install-box">
             <span class="prompt">$</span>
