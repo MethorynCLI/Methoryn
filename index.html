@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Methoryn — Multi-Agent AI CLI</title>
-  <meta name="description" content="Methoryn is a terminal-based multi-agent AI assistant powered by Ollama (local Llama 3.2 + Qwen 2.5 Coder) and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, and more."/>
+  <meta name="description" content="Methoryn is a terminal-based AI assistant powered by Ollama (Qwen 2.5 Coder) and Gemini. Runs on your desktop. Handles files, code, Gmail, Drive, Docs, Sheets, Slides, images, and more."/>
   <meta name="google-site-verification" content="hRwFmgSEQUuL4GQGthrdGrZCPT9LJMTdBZfzqqaU3xQ" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css"/>
@@ -32,7 +32,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">
-        <span></span> v0.1.57 — Free to install
+        <span></span> v0.1.58 — Free to install
       </div>
 
       <h1>Your <em>AI agent</em> lives in the terminal.</h1>
@@ -40,7 +40,7 @@
       <h2 style="font-size:1rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Methoryn — Multi-Agent AI Assistant</h2>
 
       <p class="hero-sub">
-        Methoryn is a 3-agent AI system powered by Ollama (local Llama 3.2 + Qwen 2.5 Coder)
+        Methoryn is a 2-agent AI system powered by Ollama (Qwen 2.5 Coder)
         and Gemini. It writes files,
         runs code, reads your Gmail, edits Google Docs, builds presentations,
         and handles complex tasks — all from a single prompt.
@@ -68,14 +68,14 @@
           <span style="color:#444; font-size:0.75rem; margin-left:0.5rem; font-family:monospace;">Methoryn</span>
         </div>
         <div class="terminal-body">
-          <div><span class="t-prompt">◉</span> <span class="t-success">Methoryn ready.</span> <span class="t-dim">3-agent system online.</span></div>
-          <div class="t-dim">  ✓ Converse    ready  [conversation &amp; planning]</div>
+          <div><span class="t-prompt">Methoryn</span> <span class="t-success">ready.</span> <span class="t-dim">2-agent system online.</span></div>
+          <div class="t-dim">  Methoryn     ready  [all Ollama tasks]</div>
           <div class="t-dim">  ✓ Project     ready  [execution &amp; code]</div>
           <div class="t-dim">  ✓ Architect   ready  [research &amp; multimodal]</div>
           <br/>
           <div><span class="t-prompt">You:</span> <span class="t-cmd">write a summary of my last 10 emails and save it as a PDF</span></div>
           <br/>
-          <div class="t-dim">  ▸ Converse: planning…</div>
+          <div class="t-dim">  Methoryn: processing...</div>
           <div class="t-dim">  ▸ Project: fetching Gmail, summarising 10 messages…</div>
           <div class="t-dim">  ▸ Architect: generating PDF…</div>
           <div><span class="t-success">  ✓ Saved to Desktop/email_summary.pdf</span></div>
@@ -97,7 +97,7 @@
         <div class="feature-card">
           <div class="feature-icon">🤖</div>
           <h3>Multi-Agent Execution</h3>
-          <p>Three specialised agents work as one system: Converse plans and orchestrates locally with Ollama, Project executes tasks and writes code with Qwen, and Architect handles research and images with Gemini.</p>
+          <p>Two agents work as one system: Methoryn handles conversation, planning, execution, and code locally with Ollama, and Architect handles image generation with Gemini.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📁</div>
@@ -165,12 +165,12 @@
         <div class="feature-card">
           <div class="feature-icon">🔑</div>
           <h3>Bring Your Own Key</h3>
-          <p>Same BYOK model as the CLI. Add your Gemini key in Settings — stored only in your browser's localStorage. Converse and Project run locally via Ollama.</p>
+          <p>Same BYOK model as the CLI. Add your Gemini key in Settings - stored only in your browser's localStorage. Methoryn Agent runs locally via Ollama.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🤖</div>
           <h3>Same Agent Stack</h3>
-          <p>You chat with Converse (orchestrator) — the Project and Architect layers stay configured behind it, exactly like the CLI.</p>
+          <p>You chat with Methoryn (unified agent) - Architect handles image generation behind the scenes, exactly like the CLI.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📄</div>
@@ -198,7 +198,7 @@
     <div class="container">
       <div class="section-label">What You Need</div>
       <h2>One key. Free tier.</h2>
-      <p style="color:var(--text-dim); max-width:580px;">Methoryn runs locally with Ollama (no keys needed for Converse and Project). Only GOOGLE_API_KEY is needed for Architect (Gemini) — it has a free tier.</p>
+      <p style="color:var(--text-dim); max-width:580px;">Methoryn runs locally with Ollama (no keys needed for the Methoryn Agent). Only GOOGLE_API_KEY is needed for Architect (Gemini) - it has a free tier.</p>
 
       <div class="keys-grid">
         <div class="key-card">
@@ -214,7 +214,7 @@
             <span class="key-name">Ollama (local)</span>
             <span class="badge badge-free" style="background:var(--accent); color:#000;">No key needed</span>
           </div>
-          <span class="key-desc">Converse (Llama 3.2) + Project (Qwen 2.5 Coder) — runs on your machine via <a href="https://ollama.com/download" target="_blank">Ollama</a></span>
+          <span class="key-desc">Methoryn Agent (Qwen 2.5 Coder) - runs on your machine via <a href="https://ollama.com/download" target="_blank">Ollama</a></span>
         </div>
         <div class="key-card">
           <div style="display:flex; align-items:center; justify-content:space-between;">
